@@ -1,211 +1,187 @@
-# The Beef Noodle Shop — tiga arah desain
+# The Beef Noodle Shop — design directions
 
-Repo perbandingan desain untuk **The Beef Noodle Shop 牛肉麵**, restoran bakmi sapi
-Taiwan di Paradigm Mall, Petaling Jaya.
+Design comparison repo for **The Beef Noodle Shop 牛肉麵**, a Taiwanese beef
+noodle restaurant at Paradigm Mall, Petaling Jaya.
 
-**Arah yang dikerjakan: Warisan (`/warisan`)** — replika bahasa visual
-[dishoom.com](https://www.dishoom.com/) dengan konten The Beef Noodle Shop.
-Kaldu dan Bara disimpan sebagai stub, catatan apa yang sempat dipertimbangkan
-dan kenapa tidak dipilih.
-
-**Branch ini (`terang-build`) juga menyimpan draf pertama Terang** (`/terang`)
-— dibangun sebelum arah Warisan disepakati. Disimpan terpisah dari `main`
-sebagai referensi, bukan diusulkan ulang sebagai pilihan.
+**Warisan (`/warisan`) is the chosen direction.** Kaldu and Terang are built
+alternatives, kept because they are real pages worth looking at — not stubs.
 
 ```bash
 npm install
 npm run dev
 ```
 
-| Route      | Arah        | Ground   | Turunan dari                   | Status        |
-| ---------- | ----------- | -------- | ------------------------------ | ------------- |
-| `/`        | Pintu masuk | netral   | —                              | —             |
-| `/warisan` | Warisan     | campuran | dishoom.com                    | **dikerjakan** |
-| `/kaldu`   | Kaldu       | gelap    | Ember (aura.build)             | tidak dipilih |
-| `/terang`  | Terang      | terang   | Little Latte (aura.build)      | tidak dipilih |
-| `/bara`    | Bara        | campuran | Ember + Little Latte + Dishoom | tidak dipilih |
+| Route      | Direction   | Ground | Derived from              | Status |
+| ---------- | ----------- | ------ | ------------------------- | ------ |
+| `/`        | Entry page  | neutral | —                        | —      |
+| `/warisan` | Warisan     | mixed  | dishoom.com               | **chosen** |
+| `/kaldu`   | Kaldu       | dark   | Ember (aura.build)        | built  |
+| `/terang`  | Terang      | light  | Little Latte (aura.build) | built  |
 
-Nama route sengaja tematik, bukan `sample1`–`sample3`. Kalau nanti satu arah
-dibuang atau urutannya berubah, namanya tetap masuk akal.
+Route names are thematic rather than `sample1`–`sample3`, so a name still makes
+sense if the order changes or one is dropped.
 
-### Cara Warisan diturunkan
+## Three rules that keep the comparison honest
 
-Bukan dikira-kira dari screenshot. Halaman referensinya di-probe langsung untuk
-membaca computed style-nya, lalu angkanya dipakai:
+**1. Content is shared, design is not.** All copy — menu, story, hours — comes
+from one file, `lib/content.ts`. Every direction renders exactly the same
+content. If one invents its own copy to flatter its layout, the comparison is
+worthless.
 
-| Diukur                | Nilai                                    | Dipakai jadi          |
-| --------------------- | ---------------------------------------- | --------------------- |
-| Ground                | `rgb(240,236,224)`                       | `--ground`            |
-| Ink                   | `rgb(53,56,57)`                          | `--ink`               |
-| Teks di atas gelap    | `rgb(255,253,249)`                       | `--cream`             |
-| Display serif         | ITC Cheltenham                           | **Fraunces** (open)   |
-| Sans humanis          | Gill Sans Nova                           | **Cabin** (open)      |
-| Heading uppercase     | tracking `0.18–0.25em`                   | `.display-wide`       |
-| Nav / label           | 15px, uppercase, tracking `0.25em`       | `.label`              |
+**2. Themes are quarantined.** Each direction owns `app/<slug>/theme.css`,
+scoped to a `.theme-<slug>` class. The root layout (`app/layout.tsx`) loads no
+fonts, sets no colours, sets no ground — deliberately. Anything placed there is
+inherited by all of them and quietly contaminates the comparison.
 
-Yang ditiru itu **struktur dan perlakuan** — bukan foto, copy, atau aset merek
-mereka. Di mana referensi dan brief berselisih, brief yang menang: `--accent`
-tetap Broth Rust `#B5502C` dari palette klien.
+**3. Same token names, different values.** Every theme declares the same
+variables — `--ground`, `--ground-alt`, `--ink`, `--ink-muted`, `--accent`,
+`--gold`, `--line`, `--font-display`, `--font-body`. A component written for one
+direction can be lifted into another and re-skins itself.
 
-### Gerak
+## How each direction was derived
 
-Referensi **tidak memakai library animasi** — tidak ada GSAP, tidak ada Lenis,
-`scroll-behavior` biasa. Semuanya CSS transition dengan satu kurva:
-`cubic-bezier(0.4, 0, 0.2, 1)` pada 0.15s / 0.3s / 0.5s / 0.7s. Satu kurva untuk
-segalanya itu sebagian besar alasan kenapa situsnya terasa tenang, bukan ramai.
+None of them were guessed from screenshots. Each reference page was probed live
+to read its computed styles, and those numbers were used.
 
-| Gerak                | Mekanisme                                                                 |
-| -------------------- | ------------------------------------------------------------------------- |
-| Hero scroll-through  | Kartu inset (1066×738, radius 5px) membuka jadi full-bleed (1440×900, radius 0) sepanjang 0.85 viewport pertama (`Hero.tsx`) |
-| Reveal kata          | Tiap kata dibungkus `<span>` sendiri, mulai dari `--cream-muted` lalu transisi ke `--ink` saat naik melewati 68% tinggi viewport (`RevealWords.tsx`) |
-| Header membalik      | Transparan + cream di atas hero, jadi solid + ink setelah hero lewat       |
-| Tile hover           | Klip senyap fade-in di atas still lalu diputar; keluar → pause + rewind (`TileCard.tsx`) |
-| Plat tile            | Melebar ke bawah saat hover, memunculkan panah berekor                     |
-| Foto tile            | `scale(1.035)` selama 0.7s                                                 |
+### Warisan — dishoom.com
 
-### Sepuluh blok
+| Measured           | Value                              | Became          |
+| ------------------ | ---------------------------------- | --------------- |
+| Ground             | `rgb(240,236,224)`                 | `--ground`      |
+| Ink                | `rgb(53,56,57)`                    | `--ink`         |
+| Text on dark       | `rgb(255,253,249)`                 | `--cream`       |
+| Display serif      | ITC Cheltenham                     | **Fraunces**    |
+| Humanist sans      | Gill Sans Nova                     | **Cabin**       |
+| Uppercase headings | tracking `0.18–0.25em`             | `.display-wide` |
+| Nav / labels       | 15px, uppercase, tracking `0.25em` | `.label`        |
 
-Referensinya punya 11 blok / 11.218px. Punya kita 10 blok / 9.463px.
+Eleven blocks, ~9,400px against the reference's eleven blocks and 11,218px. The
+awards wall and recipe archive were deliberately skipped: the shop opened on
+1 August 2026 and has neither, so staging them would invent credentials — which
+is exactly what the brief's anti-hype position rules out.
 
-| # | Blok           | Ada di referensi | Kita |
-| - | -------------- | ---------------- | ---- |
-| 1 | Hero scroll-through | ✓ | ✓ |
-| 2 | Love letter (reveal kata) | ✓ | ✓ |
-| 3 | Router 3 tile (hover video) | ✓ | ✓ |
-| 4 | Full-bleed + daftar rata kanan | ✓ | ✓ |
-| 5 | Grid hidangan | ✓ | ✓ |
-| 6 | Menu tertulis | — | ✓ (tambahan kita) |
-| 7 | Banner unggulan | ✓ | ✓ |
-| 8 | Visit / lokasi | — | ✓ (tambahan kita) |
-| 9 | Newsletter | ✓ | ✓ |
-| 10 | Footer | ✓ | ✓ |
-| — | Carousel resep | ✓ | **sengaja dilewati** |
-| — | Penghargaan | ✓ | **sengaja dilewati** |
+Motion uses no animation library, matching the reference. One curve everywhere:
+`cubic-bezier(0.4, 0, 0.2, 1)` at 0.15s / 0.3s / 0.5s / 0.7s.
 
-Dua yang dilewati bukan karena sulit. Restonya buka 1 Agustus 2026 — belum punya
-penghargaan dan belum punya arsip resep. Memasang blok itu berarti mengisi klaim
-yang tidak ada, dan itu justru melawan posisi anti-hype yang jadi inti brief.
+| Motion              | Mechanism                                                                 |
+| ------------------- | ------------------------------------------------------------------------- |
+| Hero scroll-through | Inset card (1066×738, radius 5px) opens to full-bleed (1440×900, radius 0) across the first 0.85 viewport |
+| Word reveal         | Each word in its own `<span>`, transitioning from `--cream-muted` to `--ink` as it rises past 68% of viewport height |
+| Header inversion    | Transparent + cream over the hero, solid + ink once past it               |
+| Tile hover          | A muted clip fades in over the still and plays; leaving pauses and rewinds |
 
-Form newsletter **tidak terhubung ke apa pun**. Menekan Sign up memberi tahu
-begitu, bukan diam seolah terkirim — sign-up yang tampak jalan padahal tidak itu
-lebih buruk daripada tidak ada sama sekali.
+`RevealWords` uses a rAF scroll handler rather than an IntersectionObserver on
+purpose. An observer only fires on *transitions*, so anything jumped past — a
+reload deep in the page, an anchor click — would stay stuck at the muted colour.
+This is not theoretical: the observer version failed its test with 0 of 21 words
+lit.
 
-`RevealWords` sengaja memakai handler scroll ber-rAF, **bukan
-IntersectionObserver**. Observer hanya menyala saat ada *transisi*; apa pun yang
-terlewat dalam satu lompatan — reload di tengah halaman, klik anchor, scroll
-terprogram — akan tersangkut selamanya di warna muted. Cek posisi dievaluasi dari
-mana pun halaman berada. Ini bukan teori: versi observer-nya gagal di tes,
-0 dari 21 kata menyala.
+The newsletter block is a mailto, not a sign-up form. The shop has no mailing
+list, so a form there could only collect an address and drop it.
 
-Semua gerak dimatikan di bawah `prefers-reduced-motion: reduce`.
+### Kaldu — Ember (aura.build)
 
-## Tiga aturan yang menjaga perbandingan ini tetap jujur
+Structure was measured from the reference; its character deliberately was not.
 
-**1. Konten dibagi, desain tidak.** Semua teks — menu, harga, cerita, jam buka —
-datang dari satu file: `lib/content.ts`. Ketiga arah merender konten yang sama
-persis. Kalau satu arah mengarang copy sendiri supaya layout-nya kelihatan bagus,
-perbandingannya jadi tidak ada artinya.
+Three fixes over the original:
 
-**2. Tema terkurung.** Tiap arah punya `app/<slug>/theme.css` yang di-scope ke
-class `.theme-<slug>`. Root layout (`app/layout.tsx`) tidak memuat font, warna,
-atau ground apa pun — sengaja kosong. Apa pun yang ditaruh di root diwarisi
-ketiganya dan diam-diam mencemari perbandingan.
+1. **The pinned photograph changes per step.** On the reference the left column
+   pins for 3,740px while five steps scroll past, but the image never changes —
+   a finished cocktail sits there while the copy describes malting barley. A
+   constant image is the same as no image.
+2. **Dead space closed.** The reference gives each step ~750px of scroll for
+   ~480px of content. Here the process section runs 2,192px for the same five
+   steps.
+3. **A type floor.** On the reference 8 of 29 text nodes fall below 4.5:1,
+   using weight 300 at sizes down to 8.96px. Here body text is ≥15px/400 and
+   labels ≥12px/500, enforced in CSS rather than by habit.
 
-**3. Nama token sama, nilainya beda.** Ketiga tema mendeklarasikan variabel yang
-identik — `--ground`, `--ground-alt`, `--ink`, `--ink-muted`, `--accent`,
-`--gold`, `--line`, `--font-display`, `--font-body`. Komponen yang ditulis untuk
-satu arah bisa diangkat ke arah lain dan langsung berganti kulit sendiri.
+Typography is **Instrument Serif + Newsreader**, deliberately not the
+reference's Playfair Display + Inter — between them the two most-used faces on
+the web, which is what made the first pass read as templated. Rust does the
+working colour, gold is kept rare. Dark and brown bands alternate per section.
 
-## Struktur
+### Terang — Little Latte (aura.build)
 
-```
-app/
-  layout.tsx          root — tanpa font, tanpa warna, sengaja kosong
-  globals.css         reset + token netral khusus halaman pintu masuk
-  page.tsx            pintu masuk, merender dari lib/samples.ts
-  kaldu/
-    theme.css         token .theme-kaldu
-    layout.tsx        muat font di sini, bukan di root
-    page.tsx          stub — ganti dengan halaman asli saat dibangun
-  terang/
-    theme.css         token .theme-terang
-    layout.tsx        font Archivo (next/font), dibind ke --font-terang-*
-    page.tsx          halaman asli — dibangun
-    _components/      komponen khusus arah Terang
-  bara/               idem seperti kaldu — masih stub
-  warisan/            arah terpilih (selesai) — lihat "Cara Warisan diturunkan" di atas
-components/
-  SampleStub.tsx      placeholder "belum dibangun", dipakai kaldu & bara (terang sudah lepas dari ini)
-lib/
-  samples.ts          registry ketiga arah — tesis, risiko, swatch
-  content.ts          SATU sumber konten restoran untuk ketiga arah
-public/placeholder/   foto sementara + catatan foto asli yang dibutuhkan
-docs/                 brief, alasan tiap arah, konvensi kode
-```
+Built by Bagas on the `terang-build` branch and merged as PR #1. Archivo in two
+weight ranges, 牛肉麵 as giant outline lettering over the dining-room
+photograph, full menu without prices.
 
-## Pengaman build
+## Build guard
 
-`npm run build` **menolak jalan** selama situs masih membawa konten placeholder.
+`npm run build` **refuses to run** while the site is still carrying placeholder
+content.
 
 ```
 ✖ Refusing to build: the site is still carrying placeholder content
     CONTENT_STATUS.placeholder is still true
     contact email is still email@example.com
-    GrabFood link still points at #
     ...
 ```
 
-Catatan placeholder yang dulu tampil di halaman sudah dihapus supaya bersih saat
-dipresentasikan ke klien. Itu sekaligus menghapus satu-satunya hal yang mencegah
-jam buka karangan dan mailto mati ikut ter-deploy seolah data nyata. Pengaman ini
-mengembalikan remnya, di tempat yang tidak bisa dilewati orang tanpa sadar.
+The on-page placeholder notices were removed so the pages present cleanly to the
+client. That removed the only thing stopping invented hours and a dead mailto
+from being deployed as though real. This puts the brake back somewhere nobody
+walks past by accident.
 
 | | |
 | --- | --- |
-| Kapan jalan | `prebuild`, jadi hanya pada `npm run build` — `npm run dev` tidak tersentuh |
-| Cek manual | `npm run check:placeholders` |
-| Lolos sengaja | `ALLOW_PLACEHOLDER_BUILD=1 npm run build` (lolos dengan peringatan besar) |
-| Skrip | `scripts/check-placeholders.mjs` |
+| When it runs | `prebuild`, so only on `npm run build` — `npm run dev` is untouched |
+| Manual check | `npm run check:placeholders` |
+| Deliberate override | `ALLOW_PLACEHOLDER_BUILD=1 npm run build` (passes with a loud warning) |
+| Script | `scripts/check-placeholders.mjs` |
 
-Yang diperiksa: flag `CONTENT_STATUS.placeholder`, **dan** nilai-nilai yang memang
-masih karangan (email, ketiga link delivery, nomor unit). Jadi menurunkan flag-nya
-saja tidak cukup untuk lolos.
+It checks the `CONTENT_STATUS.placeholder` flag **and** the values that are
+still invented (email, the three delivery links, unit number) — so lowering the
+flag alone is not enough to pass.
 
-Pengaman ini **fail closed**: kalau flag-nya hilang atau diganti nama, build ikut
-gagal, bukan diam-diam lolos. Sudah ditest untuk keempat jalur — normal (exit 1,
-`next build` tidak sempat mulai), override (exit 0 + peringatan), `dev` (tidak
-terpengaruh), dan flag hilang (exit 1).
+It **fails closed**: if the flag is renamed or removed the build fails rather
+than quietly passing. Tested across four paths — normal (exit 1, `next build`
+never starts), override (exit 0 + warning), `dev` (unaffected), flag missing
+(exit 1).
+
+## Structure
+
+```
+app/
+  layout.tsx          root — no fonts, no colours, deliberately empty
+  globals.css         reset + neutral tokens for the entry page only
+  page.tsx            entry page, rendered from lib/samples.ts
+  warisan/            the chosen direction
+  kaldu/              dark direction
+  terang/             light direction
+lib/
+  samples.ts          registry — thesis, risk, swatches, what got built
+  content.ts          ONE source of restaurant content for every direction
+public/placeholder/   temporary media + notes on what real assets are needed
+public/previews/      entry-page screenshots
+docs/                 brief, per-direction reasoning, code conventions
+```
 
 ## Status
 
-| Bagian                     | Status                                       |
-| -------------------------- | -------------------------------------------- |
-| Struktur repo & routing    | selesai                                      |
-| Token warna per arah       | selesai (dari palette brief + hasil ukur)    |
-| Konten bersama             | terisi, **harga & jam masih placeholder**; `story.narrative` (dipakai `/terang`) juga **placeholder — karangan**, bukan dari brief |
-| Tipografi Warisan          | Fraunces + Cabin, sudah terpasang            |
-| Tipografi Terang           | Archivo, sudah terpasang (di branch `terang-build`) |
-| Desain `/warisan`          | **selesai** — 7 section, siap direview       |
-| Desain `/terang`           | **draf pertama selesai di branch `terang-build`** — belum di-merge ke `main`, disimpan sebagai referensi |
-| Desain kaldu/bara          | stub, tidak dilanjutkan                      |
-| Foto                       | **belum ada** — placeholder bergenerate. `/terang` pakai foto referensi Unsplash sementara, ditandai jelas "Temp stock" di tiap gambar |
-| Font 繁中                   | masih fallback sistem — belum di-subset      |
+| Area                    | State                                        |
+| ----------------------- | -------------------------------------------- |
+| Repo structure, routing | done                                         |
+| Warisan                 | **done** — 11 blocks                         |
+| Kaldu                   | **done** — 8 blocks                          |
+| Terang                  | **done** — 9 blocks                          |
+| Shared content          | filled, **hours and unit still placeholder** |
+| Photography             | **licensed stock, not the client's**         |
+| Traditional Chinese font | still a system fallback — not yet subset     |
 
-## Yang masih ditunggu dari klien
+## Still needed from the client
 
-1. **Foto.** Ini penentu terbesar hasil akhirnya. Ketiga arah bertumpu pada
-   fotografi full-bleed yang nyata — ruangan 30-pax, mangkuk, panci, uap.
-   Tanpa itu, sebagus apa pun layout-nya akan terbaca kosong. Terang sementara
-   pakai foto referensi Unsplash berlabel "Temp stock" persis di tempat foto
-   asli nanti masuk — bukan buat dikirim ke klien.
-2. **Menu, harga, dan cerita bisnis sebenarnya.** Yang ada sekarang karangan
-   (termasuk `story.narrative`, ditulis panjang buat ngisi layout), lihat
-   `lib/content.ts`.
-3. **Jam buka, nomor unit persis di Paradigm Mall, link merchant** GrabFood /
-   ShopeeFood / Foodpanda.
+1. **Photography.** The single biggest risk. Every direction leans on real
+   full-bleed imagery. Most valuable of all: an archive photograph of the
+   original 1980s shop, if the founder's family has one.
+2. **Real menu, opening hours, exact unit number at Paradigm Mall, merchant
+   links** for GrabFood / ShopeeFood / Foodpanda, and a real email address.
+3. A decision on the Traditional Chinese typeface, which must be subset — the
+   site uses only a handful of characters, and the full fonts run 5–15 MB.
 
-## Bacaan lanjutan
+## Further reading
 
-- [`docs/01-brief.md`](docs/01-brief.md) — ringkasan brief klien dan apa yang tidak dijawabnya
-- [`docs/02-arah-desain.md`](docs/02-arah-desain.md) — alasan tiap arah, referensinya, risikonya
-- [`docs/03-konvensi.md`](docs/03-konvensi.md) — konvensi kode saat mulai membangun
+- [`docs/01-brief.md`](docs/01-brief.md) — the client brief, and what it does not answer
+- [`docs/02-directions.md`](docs/02-directions.md) — the reasoning behind each direction
+- [`docs/03-conventions.md`](docs/03-conventions.md) — code conventions

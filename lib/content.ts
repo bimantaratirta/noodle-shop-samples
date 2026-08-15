@@ -87,7 +87,7 @@ export const nav = {
   story: "Story",
   menu: "Menu",
   visit: "Visit",
-  /** Approved CTA wording (docs/02-arah-desain.md) — Malay, deliberately. */
+  /** Approved CTA wording (docs/02-directions.md) — Malay, deliberately. */
   order: "Pesan",
 } as const;
 

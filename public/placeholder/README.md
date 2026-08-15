@@ -1,57 +1,60 @@
-# Media sementara
+# Temporary media
 
-**Semua isi folder ini placeholder. Tidak satu pun boleh ikut tayang.**
+**Everything in this folder is a placeholder. None of it may ship.**
 
-Sekarang isinya stock berlisensi, bukan gambar generate — supaya `/warisan` bisa
-dinilai 1:1 terhadap referensinya. Layout yang bertumpu pada fotografi tidak bisa
-dinilai dengan kotak abu-abu.
+It is licensed stock rather than generated fills, so the built directions can be
+judged properly — a layout that leans on photography cannot be assessed against
+grey boxes.
 
-## Isi
+## Contents
 
-| File                 | Sumber                    | Slot                                |
-| -------------------- | ------------------------- | ----------------------------------- |
-| `hero.mp4`           | Pexels (Pexels License)   | Video latar hero, 1600px, 11,8s, senyap |
-| `hero-poster.jpg`    | frame dari `hero.mp4`     | Poster + pengganti saat reduced-motion |
-| `story-archive.jpg`  | Unsplash (Unsplash License) | Foto arsip di section cerita       |
-| `story-bowl.jpg`     | Unsplash                  | Detail mangkuk                      |
-| `tile-menu.jpg`      | Unsplash                  | Tile MENU                           |
-| `tile-visit.jpg`     | Unsplash                  | Tile VISIT                          |
-| `tile-order.jpg`     | Unsplash                  | Tile DELIVERY                       |
-| `broth.jpg`          | Unsplash                  | Section gelap                       |
-| `sourcing.jpg`       | Unsplash                  | Cadangan                            |
+| File                | Source                      | Slot                                    |
+| ------------------- | --------------------------- | --------------------------------------- |
+| `hero.mp4`          | Pexels (Pexels License)     | Hero background video, 1600px, 11.8s, silent |
+| `hero-poster.jpg`   | frame from `hero.mp4`       | Poster, and the stand-in under reduced motion |
+| `story-archive.jpg` | Unsplash (Unsplash License) | Archive photograph in the story section  |
+| `story-bowl.jpg`    | Unsplash                    | Bowl detail                              |
+| `tile-menu.jpg`     | Unsplash                    | MENU tile                                |
+| `tile-visit.jpg`    | Unsplash                    | VISIT tile                               |
+| `tile-order.jpg`    | Unsplash                    | DELIVERY tile                            |
+| `broth.jpg`         | frame from `hero.mp4`       | Dark section                             |
+| `feature.jpg`       | Unsplash                    | Featured dish                            |
+| `sourcing.jpg`      | Unsplash                    | Sourcing / process                       |
 
-Unsplash License dan Pexels License sama-sama mengizinkan pemakaian komersial
-tanpa atribusi. Keduanya melarang menjual ulang asetnya sendiri, yang tidak kita
-lakukan.
+The Unsplash and Pexels licences both permit commercial use without attribution.
+Both prohibit reselling the assets themselves, which we are not doing.
 
-## Kenapa tetap harus diganti
+## Why they still have to be replaced
 
-Lisensinya membolehkan, tapi **memasang foto mi buatan restoran lain di situs
-restoran yang sungguhan itu menyesatkan pelanggan.** Orang menganggap foto di
-situs restoran adalah makanan yang akan mereka terima. Ini boleh dipakai untuk
-review internal dan presentasi ke klien; sebelum tayang, harus diganti foto milik
-klien sendiri.
+The licence permits it, but **putting photographs of another restaurant's noodles
+on a real restaurant's website misleads customers.** People take a photograph on
+a restaurant site to be the food they will receive. This is fine for internal
+review and client presentation; before launch it must be the client's own
+photography.
 
-## Catatan kuratorial
+## Curation note
 
-Pass pertama menarik kedai ramen **Jepang** — ada ラーメン, 担担麺, 玉子焼き di
-papannya. Brief melarang itu secara eksplisit: *"culturally specific (Taiwanese,
-not generic 'Asian')"* dan *"avoid literal chopsticks-and-lantern clichés"*.
-Sudah diganti dengan yang Tionghoa/Taiwan (Traditional Chinese, gerobak 甜不辣,
-kedai 紅茶冰) atau yang tanpa papan nama sama sekali. **Kalau nanti mengganti
-gambar mana pun di sini, periksa ini lagi** — hasil pencarian stock untuk "noodle"
-condong ke Jepang secara default.
+The first pass pulled **Japanese** ramen shops — ラーメン, 担担麺 and 玉子焼き
+were all visible on the signage. The brief rules that out explicitly:
+*"culturally specific (Taiwanese, not generic 'Asian')"* and *"avoid literal
+chopsticks-and-lantern clichés"*. They were replaced with Chinese/Taiwanese
+imagery (Traditional characters, a 甜不辣 stall, a 紅茶冰 shop) or shots with no
+signage at all.
 
-## Foto asli yang dibutuhkan dari klien
+**Check this again if any image here is ever swapped** — stock search results for
+"noodle" skew Japanese by default, so the mistake is easy to repeat.
 
-| Slot             | Kebutuhan                                                              |
-| ---------------- | ---------------------------------------------------------------------- |
-| Video hero       | Ruangan 30-pax atau panci kaldu, gelap, gerak pelan, tanpa audio        |
-| Video tile ×3    | **Ketiga tile sekarang berbagi satu klip yang sama** (`hero.mp4`), karena cuma itu yang ada. Masing-masing butuh klip sendiri: mangkuk, gerai, kemasan |
-| Arsip 1980-an    | **Aset paling berharga di seluruh situs.** Kalau keluarga pendiri punya foto kedai lama, minta. Dishoom membangun mereknya di atas foto seperti ini. |
-| Mangkuk          | Dari atas, uap terlihat, cahaya hangat                                 |
-| Tampak depan     | Gerai di Paradigm Mall, sore hari saat neon warm-white menyala          |
-| Kemasan takeaway | Untuk tile DELIVERY — sekarang diisi foto interior, semantiknya meleset |
+## What is still needed from the client
 
-Jangan mengunci layout ke rasio aspek file mana pun di sini. Tinggi ditentukan
-container plus `object-fit: cover`, bukan oleh gambarnya.
+| Slot                | Requirement                                                              |
+| ------------------- | ------------------------------------------------------------------------ |
+| Hero video          | The 30-seat room or the stockpot — dark, slow-moving, no audio            |
+| Tile videos ×3      | **All three tiles currently share one clip** (`hero.mp4`), because it is all we have. Each wants its own: bowl, shopfront, packaging |
+| 1980s archive       | **The most valuable asset on the whole site.** If the founder's family has a photograph of the original shop, ask for it. Dishoom built its brand on exactly this. |
+| Bowl                | From above, steam visible, warm light                                    |
+| Shopfront           | The Paradigm Mall unit in the evening, with the warm-white neon lit      |
+| Takeaway packaging  | For the DELIVERY tile — currently filled with an interior shot, which is semantically wrong |
+
+Never lock a layout to the aspect ratio of any file here. Real photographs will
+arrive with different crops: let the container set the height and use
+`object-fit: cover`.

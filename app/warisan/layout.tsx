@@ -11,7 +11,7 @@ import "./theme.css";
  *                                 slightly characterful serif")
  *   Gill Sans Nova  → Cabin      (humanist sans drawn in the Johnston/Gill line)
  *
- * Loaded here, never in the root layout — see docs/03-konvensi.md.
+ * Loaded here, never in the root layout — see docs/03-conventions.md.
  */
 
 // Weight is left off deliberately: that loads Fraunces as a variable font, which

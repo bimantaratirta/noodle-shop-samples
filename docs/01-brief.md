@@ -1,91 +1,93 @@
-# Ringkasan brief klien
+# Client brief, distilled
 
-Sumber: `The-Beef-Noodle-Shop-Brand-Brief-1.docx`. Brief aslinya ditulis untuk
-**brand graphic designer** — deliverable-nya logo lock-up, varian warna, dan
-aplikasi ke signage/packaging/seragam. Bukan brief website. Dokumen ini menyaring
-bagian yang mengikat keputusan desain web.
+Source: `The-Beef-Noodle-Shop-Brand-Brief-1.docx`. The original was written for a
+**brand graphic designer** — its deliverables are logo lock-ups, colour variants
+and applications to signage, packaging and uniforms. It is not a website brief.
+This document distils the parts that bind web design decisions.
 
-## Fakta
+## Facts
 
-| Field       | Isi                                                                       |
-| ----------- | ------------------------------------------------------------------------- |
-| Nama        | The Beef Noodle Shop · 牛肉麵                                              |
-| Kategori    | Restoran Taiwan modern — bakmi sapi, pork chop, lu rou fan, gua bao, shaved ice, plum juice |
-| Lokasi      | Paradigm Mall, Petaling Jaya, Malaysia                                    |
-| Format      | Dine-in 30 pax + takeaway + delivery (GrabFood, ShopeeFood, Foodpanda)     |
-| Status      | **Non-halal**                                                             |
-| Buka        | 1 Agustus 2026                                                            |
-| Visi 3 thn  | Dua cabang lagi — KL, dan Puchong atau Bukit Jalil                        |
-| Tagline     | "Good food, better mood." / 好味道，好心情。                                |
+| Field        | Detail                                                                     |
+| ------------ | -------------------------------------------------------------------------- |
+| Name         | The Beef Noodle Shop · 牛肉麵                                               |
+| Category     | Modern Taiwanese restaurant — beef noodles, pork chop, lu rou fan, gua bao, shaved ice, plum juice |
+| Location     | Paradigm Mall, Petaling Jaya, Malaysia                                     |
+| Format       | 30-seat dine-in + takeaway + delivery (GrabFood, ShopeeFood, Foodpanda)     |
+| Status       | **Non-halal**                                                              |
+| Opened       | 1 August 2026                                                              |
+| 3-year plan  | Two further branches — KL, and Puchong or Bukit Jalil                      |
+| Tagline      | "Good food, better mood." / 好味道，好心情。                                 |
 
-## Kepribadian merek
+## Brand personality
 
-Satu baris dari brief: *fun, energetic dan modern — tapi berakar pada tradisi.
-Hangat dan berani, tidak pernah berisik. Sederhana dan bersih, tapi tidak pernah
-dingin.*
+The brief's own one-liner: fun, energetic and modern, but rooted in tradition;
+warm and bold, never loud; simple and clean, yet never cold.
 
-Brief menyajikannya sebagai **dial, bukan saklar** — semuanya duduk di tengah
-yang percaya diri, tidak pernah mentok ke salah satu ujung:
+It presents this as a set of **dials rather than switches** — everything sits in
+a confident middle, never pushed to either extreme:
 
-- Tradisional ←→ Modern — berakar di warisan, diungkapkan dengan tangan modern
-- Tenang ←→ Berisik — berani, bukan berisik
-- Kasual ←→ Fine dining — hangat dan berkelas, tetap terasa kedai tetangga
-- Fast food ←→ Slow food — layanan efisien, tapi tidak pernah terbaca fast food
-- Minimal ←→ Ornate — bersih sebagai default, detail kultural sebagai aksen
-- Playful ←→ Serius — nada boleh jenaka, tapi mark-nya harus tenang dan bisa dipercaya
+- Traditional ←→ Modern — anchored in heritage, expressed with a modern hand
+- Quiet ←→ Loud — bold, not loud
+- Casual ←→ Fine dining — warm and classy, still a neighbourhood spot
+- Fast food ←→ Slow food — efficient service that never reads as fast food
+- Minimal ←→ Ornate — clean by default, cultural detail as considered accent
+- Playful ←→ Serious — the tone can be cheeky, but the mark stays composed
 
 ## DO / DON'T
 
-**DO** — terasa seperti sudah ada berpuluh tahun tapi relevan hari ini · isyaratkan
-kualitas bahan (Australian beef, soup bone) tanpa menjelaskan berlebihan · terasa
-dipikirkan sampai ke serbet · terbaca jelas di ukuran kecil (ikon app delivery)
-maupun besar (signage).
+**DO** — feel like it could have existed for decades yet belongs today · signal
+ingredient quality without over-explaining · feel considered down to the napkin ·
+stay legible small (a delivery-app tile) and large (signage).
 
-**DON'T** — terlihat seperti rantai fast-casual atau cloud kitchen · mengejar tren
-estetik (neon-brutalist, Y2K, meme) · mengandalkan kekacauan, gimmick, atau maskot
-· **terlihat mahal/eksklusif sampai merusak posisi "affordable, everyday treat"**.
+**DON'T** — look like a fast-casual chain or a cloud kitchen · chase a trend
+aesthetic · rely on clutter, gimmicks or a mascot · **look expensive or exclusive
+in a way that undercuts the affordable, everyday-treat positioning**.
 
-Poin terakhir itu yang paling menekan arah **Kaldu**. Lihat `02-arah-desain.md`.
+That last point is the one that presses hardest on the Kaldu direction. See
+`02-directions.md`.
 
-## Palette awal dari brief
+## Starting palette
 
-| Token         | Hex       | Peran                                     |
-| ------------- | --------- | ----------------------------------------- |
-| Broth Rust    | `#B5502C` | primer — hangat, menggugah selera         |
-| Warm Gold     | `#C99A3F` | aksen — menggemakan cahaya neon gerai     |
-| Ink Brown     | `#2B2320` | teks/garis — lebih hangat dari hitam murni |
-| Paper Cream   | `#F4EDE1` | background — hangat, bukan putih steril   |
+| Token       | Hex       | Role                                    |
+| ----------- | --------- | --------------------------------------- |
+| Broth Rust  | `#B5502C` | primary — warm, appetising              |
+| Warm Gold   | `#C99A3F` | accent — echoes the shopfront neon glow |
+| Ink Brown   | `#2B2320` | text and rules, warmer than pure black  |
+| Paper Cream | `#F4EDE1` | background — warm, not sterile          |
 
-Jangkarnya adalah **neon warm-white 2700–3000K** yang sudah dipilih klien untuk
-tampak depan gerai. Itu suhu warna yang harus dikejar seluruh sistem.
+The anchor is the **2700–3000K warm-white neon** the client already chose for the
+shopfront. That colour temperature is what the whole system has to sit against.
 
-## Arahan tipografi
+## Typography direction
 
-- Serif atau humanis display yang percaya diri dan sedikit berkarakter untuk
-  wordmark — hangat dan berkelas, bukan sans generik yang bisa jadi milik kafe mana pun
-- Pendamping yang sangat terbaca untuk menu, kemasan, listing app delivery —
-  ini kuda beban, harus tahan di ukuran kecil
-- Kalau karakter Cina dipakai, harus terasa dipertimbangkan, bukan font sistem default
+- A confident, slightly characterful serif or humanist display face for the
+  wordmark — warm and classy, not a generic sans that could belong to any café
+- A highly legible companion for menus, packaging and delivery-app listings —
+  this is the workhorse and has to hold up small
+- If Chinese characters appear in the mark, they should feel considered rather
+  than a default system font
 
-## Tiga hal yang brief tidak jawab, tapi mengubah desain
+## Three things the brief does not answer, which change the design
 
-**1. Restonya sudah buka.** Brief menulis "Opening 1 August 2026". Per 15 Agustus
-2026 restonya sudah jalan dua minggu. Jadi tugas situs ini bukan membangun hype
-pra-buka, tapi **mengisi kursi weekday dan mendorong order delivery**.
+**1. The shop is already open.** The brief says "Opening 1 August 2026". As of
+15 August 2026 it had been trading a fortnight. So the site's job is not
+pre-launch hype — it is filling weekday covers and driving delivery orders.
 
-**2. 繁中 di Malaysia itu sinyal, bukan terjemahan.** Malaysia memakai Chinese
-**Simplified** secara resmi — sekolah dan koran Cina Malaysia semuanya Simplified.
-Traditional itu Taiwan. Jadi 牛肉麵 dan 好味道，好心情 di situs berfungsi sebagai
-**penanda keaslian Taiwan**, bukan supaya pembaca lokal bisa membacanya.
-Konsekuensinya: pakai 繁中 sebagai tipografi display/brand, **jangan bangun layer
-terjemahan penuh**. Menghemat scope besar dan lebih tepat secara strategi.
+**2. Traditional Chinese is a signal in Malaysia, not a translation.** Malaysia
+uses **Simplified** Chinese officially; Chinese-language schools and newspapers
+there are Simplified. Traditional is Taiwan. So 牛肉麵 and 好味道，好心情 work as
+**markers of Taiwanese lineage**, not as text local readers need in order to
+understand the page. The consequence: use Traditional Chinese as display and
+brand typography, and **do not build a full translation layer**. That saves a
+large amount of scope and is strategically more correct.
 
-**3. Non-halal harus dinyatakan tenang dan awal.** Di Malaysia ini bukan detail
-kecil — ini soal menghormati ekspektasi orang dan menentukan siapa audiensnya.
-Harus masuk ke konten dengan tenang, tidak dikubur di footer, tidak pula canggung.
+**3. Non-halal has to be stated calmly and early.** In Malaysia this is not a
+small detail — it sets expectations and defines the addressable audience. It
+belongs in the content, plainly, neither buried in a footer nor made awkward.
 
-## Catatan teknis yang lahir dari brief
+## A technical note the brief creates
 
-Font Traditional Chinese berukuran **5–15 MB**. Situs ini cuma memakai segelintir
-karakter (牛肉麵, 好味道，好心情, nama hidangan). Harus di-**subset** jadi beberapa
-KB. Ini memengaruhi pilihan typeface, jadi harus diputuskan di awal, bukan di akhir.
+Traditional Chinese fonts run **5–15 MB**. This site uses only a handful of
+characters (牛肉麵, 好味道，好心情, dish names). They must be **subset** down to a
+few KB. That affects which typeface can be chosen, so it has to be decided early
+rather than late.

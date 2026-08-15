@@ -1,15 +1,15 @@
 /**
- * Registry of the three design directions.
+ * Registry of the design directions.
  *
- * This is the single source of truth for what samples exist. The entry page
- * (`app/page.tsx`) renders from this list, so adding a fourth direction means
- * adding an entry here plus a matching folder under `app/`.
+ * This is the single source of truth for what exists. The entry page
+ * (`app/page.tsx`) renders from this list, so adding a direction means adding an
+ * entry here plus a matching folder under `app/`.
  *
- * Slugs are thematic, not numbered — the name should say something about the
- * direction so it survives being reordered or dropped.
+ * Slugs are thematic rather than numbered — a name should say something about
+ * the direction, so it survives being reordered or dropped.
  */
 
-export type SampleSlug = "warisan" | "kaldu" | "terang" | "bara";
+export type SampleSlug = "warisan" | "kaldu" | "terang";
 
 export interface Sample {
   slug: SampleSlug;
@@ -19,17 +19,17 @@ export interface Sample {
   gloss: string;
   /** The single argument this direction makes. */
   thesis: string;
-  /** Which of the three approved references this is derived from. */
+  /** Which approved reference it is derived from. */
   derivedFrom: string;
   /** Dominant ground colour — the fastest way to tell them apart. */
-  ground: "gelap" | "terang" | "campuran";
+  ground: "dark" | "light" | "mixed";
   /** The honest failure mode. Every direction has one. */
   risk: string;
   /** Swatches for the entry-page card, in visual order. */
   swatches: string[];
   /** Screenshot shown on the entry page. Only directions that exist have one. */
   preview?: string;
-  /** What actually got built, for a direction that is finished. */
+  /** What actually got built. */
   built?: {
     blocks: number;
     height: string;
@@ -37,11 +37,10 @@ export interface Sample {
   };
   /**
    * Where this direction stands.
-   * `built`   — the real page exists
-   * `stub`    — placeholder only
-   * `dropped` — kept as a record of what was considered and not chosen
+   * `built` — the real page exists
+   * `stub`  — placeholder only
    */
-  status: "built" | "stub" | "dropped";
+  status: "built" | "stub";
 }
 
 export const SAMPLES: Sample[] = [
@@ -50,25 +49,25 @@ export const SAMPLES: Sample[] = [
     name: "Warisan",
     gloss: "heritage — the thing you inherit rather than invent",
     thesis:
-      "Replika bahasa visual Dishoom: serif uppercase ber-tracking lebar, foto berbingkai garis rambut dengan caption arsip, body rata kanan-kiri, tile foto ber-label outline. Cerita 1980-an jadi tulang punggungnya.",
-    derivedFrom: "dishoom.com — diukur langsung lewat probe DOM, bukan dikira-kira",
-    ground: "campuran",
+      "A replica of the Dishoom visual language: uppercase serif on wide tracking, hairline-framed photographs with archive captions, justified body copy, photo tiles with outlined label plates. The 1980s story carries the page.",
+    derivedFrom: "dishoom.com — measured by probing the live DOM, not guessed",
+    ground: "mixed",
     risk:
-      "Bergantung penuh pada fotografi arsip dan ruangan yang nyata. Dengan stock pun layout-nya kebaca, tapi dengan foto lemah seluruh arah ini runtuh.",
+      "Leans entirely on real archive and interior photography. The layout reads even with stock, but weak photographs would collapse the whole direction.",
     swatches: ["#F0ECE0", "#353839", "#B5502C", "#1A1512"],
     status: "built",
     preview: "/previews/warisan.jpg",
     built: {
       blocks: 11,
-      height: "±9.400px",
+      height: "~9,400px",
       notes: [
-        "Hero scroll-through: kartu inset 1066×738 membuka jadi full-bleed 1440×900",
-        "Reveal kata per kata mengikuti scroll, tanpa library animasi",
-        "Tile hover memutar klip video; plat melebar memunculkan panah",
-        "Fraunces + Cabin, pengganti open-source untuk Cheltenham + Gill Sans Nova",
-        "Semua transisi cubic-bezier(.4,0,.2,1), sesuai hasil ukur",
-        "Anchor meluncur, mati di bawah prefers-reduced-motion",
-        "Blok penghargaan & arsip resep sengaja dilewati — belum ada isinya",
+        "Hero scroll-through: a 1066×738 inset card opening to full-bleed 1440×900",
+        "Word-by-word colour reveal driven by scroll position, no animation library",
+        "Tiles play a muted clip on hover; the label plate grows to reveal an arrow",
+        "Fraunces + Cabin, open substitutes for Cheltenham + Gill Sans Nova",
+        "Every transition on cubic-bezier(.4,0,.2,1), matching the measured original",
+        "Anchors glide, and stop under prefers-reduced-motion",
+        "Awards and recipe-archive blocks deliberately skipped — no content for them",
       ],
     },
   },
@@ -77,26 +76,26 @@ export const SAMPLES: Sample[] = [
     name: "Kaldu",
     gloss: "broth — the thing that simmers before the shop opens",
     thesis:
-      "Gelap, dalam, dan tenang. Struktur dan mekanik sticky-nya diambil dari Ember; tipografi, peran warna, dan ritme layout-nya sengaja tidak — menyamai persis menghasilkan halaman yang benar tapi tanpa suara.",
-    derivedFrom: "Ember (aura.build) — strukturnya diukur, rasanya diganti",
-    ground: "gelap",
+      "Dark, deep and unhurried. Structure and the pinned-scroll mechanic come from Ember; the typography, colour roles and layout rhythm deliberately do not — matching it exactly produced a page that was correct and completely voiceless.",
+    derivedFrom: "Ember (aura.build) — structure measured, character replaced",
+    ground: "dark",
     risk:
-      "Gelap tetap membaca sebagai mahal, dan brief melarang keras terlihat eksklusif. Sejak harga dihapus atas permintaan klien, penangkalnya tinggal nada dan kehangatan — tidak ada lagi angka yang membumikan halaman ini.",
-    swatches: ["#17110E", "#2E1F16", "#C85A30", "#D8A349"],
+      "Dark still reads as expensive, and the brief rules hard against looking exclusive. Since prices were removed at the client's request, the only counterweight left is tone and warmth — there is no number grounding the page any more.",
+    swatches: ["#17110E", "#3B2719", "#C85A30", "#D8A349"],
     status: "built",
     preview: "/previews/kaldu.jpg",
     built: {
       blocks: 8,
-      height: "±7.900px",
+      height: "~7,900px",
       notes: [
-        "Instrument Serif + Newsreader — sengaja BUKAN Playfair+Inter milik referensi",
-        "Proses sticky dengan gambar yang BERGANTI per langkah + indikator 01/05",
-        "Section proses 2.192px vs 3.740px di referensi, konten sama banyak",
-        "Lantai tipografi: badan ≥15px/400, label ≥12px/500 — referensi turun ke 9px/300",
-        "Easing cubic-bezier(.16,1,.3,1) dengan stagger 0.1s, sesuai hasil ukur",
-        "Rust jadi warna kerja, emas dibuat langka; tiga tingkat ground, bukan satu",
-        "Tanpa harga; tiap hidangan punya fotonya sendiri, grid berirama lebar/sempit",
-        "Marquee penghargaan diganti tagline — resto belum punya penghargaan",
+        "Instrument Serif + Newsreader — deliberately NOT the reference's Playfair + Inter",
+        "Pinned process column whose photograph CHANGES per step, plus an 01/05 indicator",
+        "Process section 2,192px against the reference's 3,740px for the same content",
+        "Type floor: body ≥15px/400, labels ≥12px/500 — the reference drops to 9px/300",
+        "cubic-bezier(.16,1,.3,1) with a 0.1s stagger, matching the measured original",
+        "Rust does the work, gold made rare; dark and brown bands alternate per section",
+        "No prices; every dish carries its own photograph, wide/narrow grid rhythm",
+        "Awards marquee replaced with the tagline — the shop has no awards yet",
       ],
     },
   },
@@ -105,26 +104,26 @@ export const SAMPLES: Sample[] = [
     name: "Terang",
     gloss: "bright — daylight, open door, nothing hidden",
     thesis:
-      "Cream terang, tipografi raksasa, ruang kosong berani. 牛肉麵 sebagai huruf outline di atas foto ruangan — identitas tanpa perlu logo.",
-    derivedFrom: "Little Latte (aura.build) — editorial, asimetris, outline type",
-    ground: "terang",
+      "Bright cream, oversized typography, bold empty space. 牛肉麵 set as giant outline lettering over a photograph of the room — an identity that works before any logo exists.",
+    derivedFrom: "Little Latte (aura.build) — editorial, asymmetric, outline type",
+    ground: "light",
     risk:
-      "Grotesk murni bisa terbaca dingin. Brief minta hangat dan berkarakter, bukan Swiss yang steril.",
+      "A pure grotesk can read cold, and the brief asks for warm and characterful rather than sterile Swiss. Warmth has to arrive from the photography and a braver use of Broth Rust.",
     swatches: ["#F4EDE1", "#2B2320", "#B5502C", "#C99A3F"],
-    status: "dropped",
-  },
-  {
-    slug: "bara",
-    name: "Bara",
-    gloss: "embers — a warm glow held inside the dark",
-    thesis:
-      "Cream sebagai ground utama, gelap dipakai sebagai tanda baca — satu section untuk cerita 1988. Kerajinan Ember tanpa masalah eksklusifnya.",
-    derivedFrom: "Ember + Little Latte + Dishoom — hibrida",
-    ground: "campuran",
-    risk:
-      "Hibrida paling gampang jadi kompromi yang tidak berpendirian. Peralihan cream→gelap harus terasa disengaja, bukan ragu-ragu.",
-    swatches: ["#F4EDE1", "#1A1512", "#B5502C", "#C99A3F"],
-    status: "dropped",
+    status: "built",
+    preview: "/previews/terang.jpg",
+    built: {
+      blocks: 9,
+      height: "—",
+      notes: [
+        "Built by Bagas on the terang-build branch, merged as PR #1",
+        "Archivo in two weight ranges — 700/900 for display, 400/500 for body",
+        "牛肉麵 as giant outline lettering over the dining-room photograph",
+        "Full menu category by category, photo-backed cards, no prices",
+        'Renamed "Best Sellers" to "Signature" — there is no sales data behind that claim',
+        "Stand-in photographs are labelled Temp stock on the page itself",
+      ],
+    },
   },
 ];
 

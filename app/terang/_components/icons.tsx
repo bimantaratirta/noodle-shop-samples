@@ -1,5 +1,5 @@
 /**
- * Hand-rolled line icons. No icon library is installed (docs/03-konvensi.md:
+ * Hand-rolled line icons. No icon library is installed (docs/03-conventions.md:
  * "tanpa dependency UI tambahan") — a handful of glyphs don't justify
  * pulling one in for a single direction that may not even be chosen. Stroke weight
  * matches the reference's lucide icons (~1.5px) without the dependency.

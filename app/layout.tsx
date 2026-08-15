@@ -10,9 +10,9 @@ import "./globals.css";
  */
 
 export const metadata: Metadata = {
-  title: "The Beef Noodle Shop — arah desain",
+  title: "The Beef Noodle Shop — design directions",
   description:
-    "Tiga arah desain untuk The Beef Noodle Shop, Paradigm Mall PJ. Dokumen kerja internal.",
+    "Design directions for The Beef Noodle Shop, Paradigm Mall PJ. Internal working document.",
   robots: { index: false, follow: false },
 };
 

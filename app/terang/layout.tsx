@@ -4,8 +4,8 @@ import { getSample } from "@/lib/samples";
 import "./theme.css";
 
 /*
- * One family, two weight ranges — "sama dengan display, beda weight" per
- * docs/02-arah-desain.md. Bound to the CSS variable names theme.css already
+ * One family, two weight ranges — "same as display, different weight" per
+ * docs/02-directions.md. Bound to the CSS variable names theme.css already
  * declares fallbacks for, so theme.css itself never needs to change.
  */
 const archivoDisplay = Archivo({

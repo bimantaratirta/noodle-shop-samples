@@ -12,9 +12,9 @@ import { brand, outlet, CONTENT_STATUS } from "@/lib/content";
  */
 
 const GROUND_LABEL: Record<string, string> = {
-  gelap: "Ground gelap",
-  terang: "Ground terang",
-  campuran: "Ground campuran",
+  dark: "Dark ground",
+  light: "Light ground",
+  mixed: "Mixed ground",
 };
 
 export default function EntryPage() {
@@ -26,19 +26,20 @@ export default function EntryPage() {
             className="text-xs uppercase tracking-[0.2em]"
             style={{ color: "var(--neutral-muted)" }}
           >
-            Dokumen kerja internal · bukan untuk klien
+            Internal working document · not for the client
           </p>
           <h1 className="mt-5 text-3xl font-semibold tracking-tight sm:text-4xl">
             {brand.name} <span className="font-normal">{brand.chinese}</span>
           </h1>
           <p className="mt-3 max-w-2xl text-base leading-relaxed" style={{ color: "var(--neutral-muted)" }}>
-            Arah desain untuk {outlet.name}. Semuanya memakai konten yang sama
-            persis — menu, harga, cerita, jam buka — supaya satu-satunya variabel
-            yang dibandingkan adalah desainnya.{" "}
+            Design directions for {outlet.name}. All of them render exactly the
+            same content — menu, story, opening hours — so the only variable being
+            compared is the design.{" "}
             <strong style={{ color: "var(--neutral-ink)" }}>
-              Arah yang dikerjakan: Warisan.
+              Warisan is the chosen direction.
             </strong>{" "}
-            Sisanya disimpan sebagai catatan apa yang sempat dipertimbangkan.
+            The others are kept as built alternatives and as a record of what was
+            considered.
           </p>
         </header>
 
@@ -47,12 +48,12 @@ export default function EntryPage() {
             className="mt-8 border-l-2 py-1 pl-4 text-sm leading-relaxed"
             style={{ borderColor: "#B5502C", color: "var(--neutral-muted)" }}
           >
-            <strong style={{ color: "var(--neutral-ink)" }}>Konten masih placeholder.</strong>{" "}
-            Jam buka, nomor unit, alamat email dan link delivery belum dari klien.
-            Foto dan video hero memakai stock berlisensi, bukan milik resto.
-            Lihat <code>lib/content.ts</code> dan{" "}
+            <strong style={{ color: "var(--neutral-ink)" }}>Content is still placeholder.</strong>{" "}
+            Opening hours, unit number, email address and delivery links are not
+            from the client. Photographs and the hero video are licensed stock,
+            not the restaurant&rsquo;s own. See <code>lib/content.ts</code> and{" "}
             <code>public/placeholder/README.md</code>.{" "}
-            <code>npm run build</code> menolak jalan selama ini masih begini.
+            <code>npm run build</code> refuses to run while this is the case.
           </p>
         )}
 
@@ -84,7 +85,7 @@ export default function EntryPage() {
                       color: sample.status === "built" ? "#B5502C" : "var(--neutral-muted)",
                     }}
                   >
-                    {sample.status === "built" ? "Dikerjakan" : "Tidak dipilih"} ·{" "}
+                    {sample.status === "built" ? "Built" : "Stub"} ·{" "}
                     {GROUND_LABEL[sample.ground]}
                   </span>
                 </div>
@@ -101,7 +102,7 @@ export default function EntryPage() {
                   >
                     <Image
                       src={sample.preview}
-                      alt={`Tangkapan layar arah ${sample.name}`}
+                      alt={`Screenshot of the ${sample.name} direction`}
                       fill
                       sizes="(max-width: 900px) 100vw, 820px"
                       className="object-cover object-top"
@@ -123,11 +124,11 @@ export default function EntryPage() {
 
                 <dl className="mt-5 space-y-1.5 text-sm" style={{ color: "var(--neutral-muted)" }}>
                   <div className="flex gap-2">
-                    <dt className="shrink-0 font-medium">Turunan dari</dt>
+                    <dt className="shrink-0 font-medium">Derived from</dt>
                     <dd>{sample.derivedFrom}</dd>
                   </div>
                   <div className="flex gap-2">
-                    <dt className="shrink-0 font-medium">Risiko</dt>
+                    <dt className="shrink-0 font-medium">Risk</dt>
                     <dd>{sample.risk}</dd>
                   </div>
                 </dl>
@@ -138,7 +139,7 @@ export default function EntryPage() {
                     style={{ borderColor: "var(--neutral-line)" }}
                   >
                     <p className="text-sm font-medium">
-                      Terbangun · {sample.built.blocks} blok · {sample.built.height}
+                      Built · {sample.built.blocks} blocks · {sample.built.height}
                     </p>
                     <ul
                       className="mt-2 space-y-1 text-sm"
@@ -163,8 +164,8 @@ export default function EntryPage() {
           style={{ borderColor: "var(--neutral-line)", color: "var(--neutral-muted)" }}
         >
           <p>
-            Struktur, konvensi dan alasan di balik ketiga arah ada di{" "}
-            <code>docs/</code>. Mulai dari <code>README.md</code>.
+            Structure, conventions and the reasoning behind each direction live
+            in <code>docs/</code>. Start with <code>README.md</code>.
           </p>
         </footer>
       </div>

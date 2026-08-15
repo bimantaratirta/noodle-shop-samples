@@ -1,64 +1,65 @@
 /*
- * Kaldu — ground gelap, diturunkan dari traverse-railway-10.aura.build (Ember).
+ * Kaldu — dark ground, derived from traverse-railway-10.aura.build (Ember).
  *
- * Strukturnya diukur dari halaman itu; rasanya sengaja tidak.
+ * Its structure was measured from that page; its character deliberately was not.
  *
- * Referensinya memakai Playfair Display + Inter dengan satu ground rata dan emas
- * di setiap elemen. Menyamainya persis menghasilkan halaman yang benar tapi tanpa
- * suara. Yang dipertahankan: kurva geraknya, mekanik sticky-nya, kerapatan
- * katalognya. Yang diganti: tipografi, peran warna, dan ritme layout-nya.
+ * The reference pairs Playfair Display with Inter over one flat ground and puts
+ * gold on every element. Matching it exactly produced a page that was correct
+ * and completely voiceless. Kept: the motion curve, the pinned-scroll mechanic,
+ * the density of the catalogue. Replaced: typography, colour roles, and the
+ * rhythm of the layout.
  *
- * Nama token identik dengan arah lain (lihat app/warisan/theme.css) supaya
- * komponen bisa diangkat antar arah dan berganti kulit sendiri.
+ * Token names match the other directions (see app/warisan/theme.css) so a
+ * component can be lifted across and re-skin itself.
  */
 
 .theme-kaldu {
   /*
-   * Tiga ground, bukan satu. Satu ground rata untuk seluruh halaman adalah
-   * separuh alasan pass pertama terasa datar — mata tidak punya penanda sudah
-   * sampai mana.
+   * Three grounds, not one. A single flat ground across the whole page was half
+   * the reason the first pass felt inert — the eye gets no marker for how far
+   * down it has come.
    */
-  --ground: #17110e; /* paling dalam — hero, jeda */
-  --ground-alt: #221913; /* satu tingkat naik — section bercerita */
-  --ground-warm: #2e1f16; /* paling hangat — tempat kaldu "menyala" */
+  --ground: #17110e; /* deepest — hero, interludes */
+  --ground-alt: #221913; /* one step up — narrative sections */
+  --ground-warm: #2e1f16; /* warmest — where the broth "glows" */
 
   --ink: #f7f0e4;
-  /* Diukur 8.12:1 terhadap ground — lewat AAA. Kegagalan kontras di referensi
-     datang dari ukuran dan weight, bukan dari warnanya. */
+  /* Measured 8.12:1 against the ground — passes AAA. The reference's contrast
+     failures come from size and weight, not from its colour. */
   --ink-muted: #b8ac9c;
 
   /*
-   * Peran warnanya dibalik dari pass pertama.
+   * The colour roles are inverted from the first pass.
    *
-   * Brief menyebut Broth Rust sebagai PRIMER dan Warm Gold cuma sebagai aksen
-   * "yang menggemakan cahaya neon gerai". Pass pertama memakai emas di
-   * mana-mana — setiap eyebrow, setiap angka, setiap garis — sampai emas
-   * berhenti berarti apa pun. Sekarang rust yang bekerja, emas jadi barang
-   * langka: hanya untuk hal yang sedang hidup di layar.
+   * The brief names Broth Rust as the PRIMARY and Warm Gold only as an accent
+   * that "echoes the shopfront neon glow". The first pass used gold everywhere —
+   * every eyebrow, every number, every rule — until gold stopped meaning
+   * anything. Now rust does the work and gold is rare: reserved for whatever is
+   * currently alive on screen.
    */
-  --accent: #c85a30; /* Broth Rust — untuk isian, garis, dan border */
+  --accent: #c85a30; /* Broth Rust — for fills, rules and borders */
   /*
-   * Rust sebagai TEKS butuh nilai lain.
+   * Rust as TEXT needs a different value.
    *
-   * Diukur: #C85A30 sebagai teks cuma 4.42:1 di pita gelap dan 3.64:1 di pita
-   * terang — dua-duanya jatuh di bawah lantai 4.5:1 yang justru jadi jualan
-   * utama arah ini. Jadi warna isian dan warna teks dipisah: --accent tetap
-   * untuk garis dan border (yang tidak diikat aturan kontras teks),
-   * --accent-text dinaikkan supaya lolos.
+   * Measured: #C85A30 as text is only 4.42:1 on the dark band and 3.64:1 on the
+   * light one — both under the 4.5:1 floor that is this direction's whole
+   * selling point over the reference. So fill and text are separated: --accent
+   * stays for rules and borders, which text-contrast rules do not govern, while
+   * --accent-text is lifted until it passes.
    */
   --accent-text: #e5834f;
-  --gold: #d8a349; /* Warm Gold — dipakai jarang, sengaja */
+  --gold: #d8a349; /* Warm Gold — used sparingly, on purpose */
 
   --line: rgba(247, 240, 228, 0.12);
-  --line-strong: rgba(200, 90, 48, 0.42); /* garis pun ikut hangat, bukan abu-abu */
+  --line-strong: rgba(200, 90, 48, 0.42); /* even the rules run warm, never grey */
 
   --font-display: var(--font-kaldu-display), Georgia, serif;
   --font-body: var(--font-kaldu-body), ui-sans-serif, system-ui, sans-serif;
 
   /*
-   * Kurva Ember, bukan kurva Dishoom. Diukur: cubic-bezier(0.16, 1, 0.3, 1)
-   * pada 0.6s dan 0.8s, dengan stagger 0.1s dan 0.2s. Karakternya melesat lalu
-   * mendarat pelan — berbeda dari .4,0,.2,1 yang rata.
+   * Ember's curve, not Dishoom's. Measured: cubic-bezier(0.16, 1, 0.3, 1) at
+   * 0.6s and 0.8s, with 0.1s and 0.2s stagger. It leaves fast and lands slowly —
+   * a different character from the flat .4,0,.2,1.
    */
   --ease: cubic-bezier(0.16, 1, 0.3, 1);
 
@@ -72,13 +73,13 @@
  *
  * Ini perbaikan paling penting terhadap referensinya. Di sana 8 dari 29 node
  * teks jatuh di bawah 4.5:1, memakai weight 300 pada ukuran serendah 8,96px.
- * Kombinasi kecil + tipis + pucat itu yang bikin susah dibaca, dan brief kita
- * menyebut "multi-generational groups" — jadi lantainya dinaikkan:
+ * Small plus thin plus pale is what makes it hard to read, and our brief names
+ * "multi-generational groups" — so the floor goes up:
  *
  *   teks badan   ≥ 15px, weight ≥ 400
  *   label mikro  ≥ 12px, weight ≥ 500, dan selalu ber-tracking
  *
- * Tidak ada apa pun di arah ini yang boleh turun di bawah itu.
+ * Nothing in this direction may drop below that.
  */
 .theme-kaldu p,
 .theme-kaldu li {
@@ -90,10 +91,10 @@
 /*
  * PITA TERANG / GELAP BERGANTIAN.
  *
- * Dua tingkat, bukan tiga yang beda tipis. Gelap, coklat, gelap, coklat.
+ * Two levels, not three that barely differ. Dark, brown, dark, brown.
  *
- * Dua-duanya gelap, jadi tintanya tetap krem di mana pun dan tidak ada token
- * yang perlu dibalik.
+ * Both are dark, so the ink stays cream throughout and no token needs
+ * inverting.
  *
  * Urutannya: hero gelap → cerita terang → katalog gelap → proses terang →
  * karakter gelap → marquee terang → kunjungi gelap → footer terang.
@@ -105,16 +106,16 @@
 
 .theme-kaldu .band-brown {
   /*
-   * Coklat, bukan cream.
+   * Brown, not cream.
    *
-   * Percobaan cream membuat pergantiannya terasa, tapi terlalu terang untuk arah
-   * yang seharusnya gelap sepanjang halaman. Coklat ini cukup naik dari ground
-   * terdalam untuk terbaca sebagai pita berbeda, tanpa halamannya berhenti
-   * terasa seperti kedai yang remang.
+   * A cream band made the alternation register, but it was too bright for a
+   * direction that should stay dim the whole way down. This brown lifts far
+   * enough off the deepest ground to read as a separate band without the page
+   * ceasing to feel like a low-lit shop.
    *
-   * Karena tetap gelap, tintanya tidak perlu dibalik sama sekali — semua token
+   * Because it stays dark, the ink needs no inverting at all — every token
    * krem dari .theme-kaldu tetap berlaku. Ini juga menghapus seluruh
-   * penyesuaian --gold dan --accent-text yang tadi dibutuhkan di atas cream.
+   * adjustments to --gold and --accent-text that cream had required.
    */
   --ground: #3b2719;
   --ground-alt: #4a3221;
@@ -125,15 +126,15 @@
 
 /*
  * Warna teks di ATAS isian rust. Rust cukup gelap sehingga krem terbaca di
- * atasnya di pita mana pun — jadi tokennya tetap, tidak ikut terbalik.
+ * on top of it on either band — so the token is fixed and never inverts.
  */
 .theme-kaldu {
   --on-accent: #f7f0e4;
 }
 
 /*
- * Label pun diset dengan serif, bukan sans. Tidak ada sans netral di mana pun di
- * arah ini — begitu satu muncul, bagian itu langsung terbaca seperti panel admin.
+ * Labels are set in the serif too, not a sans. There is no neutral sans anywhere in
+ * this direction — the moment one appears, that part reads like an admin panel.
  */
 .theme-kaldu .label {
   font-family: var(--font-body);
@@ -144,7 +145,7 @@
   line-height: 1.4;
 }
 
-/* Eyebrow bergaris pendek. Garisnya rust, bukan emas — emas disimpan. */
+/* Short-ruled eyebrow. The rule is rust, not gold — gold is being saved. */
 .theme-kaldu .rule-label {
   display: flex;
   align-items: center;
@@ -160,9 +161,9 @@
 }
 
 /*
- * 牛肉麵 sebagai elemen grafis besar, bukan sekadar teks kecil pendamping.
- * Brief menyebutnya sebagai penanda keaslian Taiwan, dan logo belum ada — jadi
- * karakter ini yang memikul kerja identitas.
+ * 牛肉麵 as a large graphic element, not a small line of supporting text.
+ * The brief calls them the marker of Taiwanese lineage, and no logo exists yet — so
+ * these characters carry the identity work.
  */
 .theme-kaldu .han-mark {
   font-family: var(--font-display);
@@ -173,15 +174,15 @@
   user-select: none;
 }
 
-/* Display serif, dengan italic emas sebagai satu-satunya alat penekanan. */
+/* Display serif, with gold italic as the only device for emphasis. */
 .theme-kaldu .display {
   font-family: var(--font-display);
   font-weight: 400;
   line-height: 1.06;
   letter-spacing: -0.015em;
 }
-/* Italic emas adalah satu-satunya alat penekanan — dan karena emas dipakai
-   jarang di tempat lain, di sini ia benar-benar terasa menyala. */
+/* Gold italic is the only emphasis device — and because gold is used sparingly
+   everywhere else, here it genuinely reads as lit. */
 .theme-kaldu .display em {
   font-style: italic;
   color: var(--gold);

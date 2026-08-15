@@ -3,7 +3,7 @@ import type { ReactNode } from "react";
 /**
  * A real (temporary) photo standing in for commissioned photography.
  * `public/placeholder/` has no real shots yet, and the shared standard
- * (docs/02-arah-desain.md) forbids shipping stock photography as final —
+ * (docs/02-directions.md) forbids shipping stock photography as final —
  * so this is explicitly NOT final art: a small on-page label makes that
  * impossible to miss or ship by accident. Swap `src` for a real photo (or
  * `next/image`) later; nothing else about the layout needs to change.
