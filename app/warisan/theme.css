@@ -56,6 +56,67 @@
   line-height: 1.32;
 }
 
+/*
+ * Outlined buttons.
+ *
+ * Set as letterspaced uppercase micro-type so they belong to the same family as
+ * the nav and the section labels, rather than reading as generic bold sans in a
+ * box. On hover the button inverts — the rule fills in and the type drops out of
+ * it — which is the quietest way to acknowledge a pointer without moving
+ * anything on the page.
+ *
+ * Two variants because the inverted colour has to be the ground the button sits
+ * on: `.btn` for light sections, `.btn-cream` over photographs.
+ */
+.theme-warisan .btn,
+.theme-warisan .btn-cream {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  padding: 1.05rem 2.1rem;
+  border: 1px solid currentColor;
+  transition: background-color 0.3s var(--ease), color 0.3s var(--ease);
+}
+
+.theme-warisan .btn {
+  color: var(--ink-on-light);
+}
+.theme-warisan .btn:hover,
+.theme-warisan .btn:focus-visible {
+  background: var(--ink-on-light);
+  color: var(--ground);
+}
+
+.theme-warisan .btn-cream {
+  color: var(--cream);
+}
+.theme-warisan .btn-cream:hover,
+.theme-warisan .btn-cream:focus-visible {
+  background: var(--cream);
+  color: var(--ground-dark);
+}
+
+/*
+ * Anchor links glide instead of jumping. The reference leaves this on `auto`,
+ * but a jump between sections this large reads as a page swap.
+ *
+ * Scoped with :has() so it cannot leak into the other sample routes, and dropped
+ * entirely when the visitor asks for reduced motion.
+ */
+@media (prefers-reduced-motion: no-preference) {
+  html:has(.theme-warisan) {
+    scroll-behavior: smooth;
+  }
+}
+
+/* The header is fixed, so anchor targets need to clear it on arrival. */
+.theme-warisan section[id] {
+  scroll-margin-top: 92px;
+}
+
 /* Sans is reserved for labels, nav and micro-type — never for running text. */
 .theme-warisan .label {
   font-family: var(--font-body);

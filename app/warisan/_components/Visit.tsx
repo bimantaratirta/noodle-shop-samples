@@ -1,6 +1,5 @@
-import { copy, outlet, delivery, brand, CONTENT_STATUS } from "@/lib/content";
+import { copy, outlet, brand, CONTENT_STATUS } from "@/lib/content";
 import { Ornament } from "./Ornament";
-import { Arrow } from "./Arrow";
 
 /**
  * Visit + order.
@@ -31,7 +30,8 @@ export function Visit() {
         </h2>
         <Ornament className="mt-6" />
 
-        <div className="mt-14 grid gap-x-12 gap-y-10 sm:grid-cols-3">
+        {/* Two columns now — ordering moved out to its own section. */}
+        <div className="mx-auto mt-14 grid max-w-[760px] gap-x-14 gap-y-10 sm:grid-cols-2">
           <div>
             <h3 className="label pb-3" style={{ color: "var(--accent)" }}>
               Address
@@ -73,30 +73,6 @@ export function Visit() {
             </div>
           </div>
 
-          <div id="order">
-            <h3 className="label pb-3" style={{ color: "var(--accent)" }}>
-              Delivery
-            </h3>
-            <div className="border-t pt-4" style={{ borderColor: "var(--line)" }}>
-              <ul>
-                {delivery.map((d) => (
-                  <li key={d.name} className="mb-2.5 last:mb-0">
-                    <a
-                      href={d.url}
-                      className="group inline-flex items-center gap-3 text-[17px]"
-                      style={{ transition: "opacity 0.15s var(--ease)" }}
-                    >
-                      {d.name}
-                      <Arrow width={34} className="opacity-45" />
-                    </a>
-                  </li>
-                ))}
-              </ul>
-              <p className="mt-4 text-[15px] leading-relaxed" style={{ color: "var(--ink-muted)" }}>
-                Takeaway at the counter, no app needed.
-              </p>
-            </div>
-          </div>
         </div>
 
         <p

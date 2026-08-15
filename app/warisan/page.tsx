@@ -8,7 +8,8 @@ import { DishGrid } from "./_components/DishGrid";
 import { MenuSection } from "./_components/MenuSection";
 import { Feature } from "./_components/Feature";
 import { Visit } from "./_components/Visit";
-import { Newsletter } from "./_components/Newsletter";
+import { OrderSection } from "./_components/OrderSection";
+import { Contact } from "./_components/Contact";
 import { SiteFooter } from "./_components/SiteFooter";
 
 /**
@@ -24,7 +25,10 @@ import { SiteFooter } from "./_components/SiteFooter";
  *   5  DishGrid          running copy + stacked framed photographs
  *   6  Feature           one dish on a bordered plate, leading into the menu
  *   7  MenuSection       the written menu
- *   8  Visit             address, hours, delivery
+ *   8  Visit             address and hours
+ *   9  OrderSection      the delivery apps, as their own destination
+ *   10 Contact           photo + tagline | ruled band | mailto
+ *   11 SiteFooter        four columns
  *
  * Feature sits BEFORE the menu, not after. After it, the block had no job: it
  * advertised a dish listed a screen above it and its only action pointed back up
@@ -32,8 +36,6 @@ import { SiteFooter } from "./_components/SiteFooter";
  * place — it gives one dish a photograph and a full sentence, which matters more
  * now that the menu itself carries no prices, and its link finally points
  * forwards.
- *   9  Newsletter        photo + tagline | ruled band | sign-up
- *   10 SiteFooter        four columns
  *
  * All copy comes from lib/content.ts.
  */
@@ -51,7 +53,8 @@ export default function WarisanPage() {
         <Feature />
         <MenuSection />
         <Visit />
-        <Newsletter />
+        <OrderSection />
+        <Contact />
       </main>
       <SiteFooter />
     </>

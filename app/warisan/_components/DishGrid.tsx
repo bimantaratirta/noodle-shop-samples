@@ -48,17 +48,7 @@ export function DishGrid() {
 
           <div className="mt-9 flex flex-wrap gap-3">
             {copy.dishGrid.actions.map((a) => (
-              <a
-                key={a.label}
-                href={a.href}
-                className="border px-7 py-3 text-[13px]"
-                style={{
-                  borderColor: "var(--ink)",
-                  fontFamily: "var(--font-body)",
-                  fontWeight: 700,
-                  transition: "opacity 0.15s var(--ease)",
-                }}
-              >
+              <a key={a.label} href={a.href} className="btn">
                 {a.label}
               </a>
             ))}

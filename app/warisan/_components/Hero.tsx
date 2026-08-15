@@ -114,18 +114,7 @@ export function Hero() {
         */}
         <div className="absolute inset-x-0 bottom-10 flex flex-wrap items-center justify-center gap-3 px-6">
           {copy.hero.actions.map((a) => (
-            <a
-              key={a.label}
-              href={a.href}
-              className="border px-8 py-3 text-[13px]"
-              style={{
-                borderColor: "var(--cream)",
-                color: "var(--cream)",
-                fontFamily: "var(--font-body)",
-                fontWeight: 700,
-                transition: "background-color 0.3s var(--ease)",
-              }}
-            >
+            <a key={a.label} href={a.href} className="btn-cream">
               {a.label}
             </a>
           ))}

@@ -38,11 +38,6 @@ export function Header() {
     >
       <div className="mx-auto grid max-w-[1440px] grid-cols-[1fr_auto_1fr] items-center gap-4 px-6 py-4 lg:px-10">
         <nav className="hidden items-center gap-6 lg:flex">
-          <span className="label">Explore</span>
-          <span
-            className="block h-4 w-px"
-            style={{ background: "currentColor", opacity: 0.35 }}
-          />
           {copy.nav.map((item) => (
             <a
               key={item.label}

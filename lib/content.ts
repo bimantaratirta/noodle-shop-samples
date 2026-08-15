@@ -292,6 +292,21 @@ export const copy = {
       "Thirty seats. Comfortable with grandparents and a pram, just as comfortable on your own with a book.",
   },
 
+  /**
+   * Ordering gets its own block rather than a third column inside Visit.
+   *
+   * The nav and the header button both advertise "Order" as a destination, and
+   * it wasn't one — the links sat 262px below the "Find us" heading, so landing
+   * there either hid that heading or showed exactly the same view as Visit.
+   * A named section is what makes the two nav items mean different things.
+   */
+  order: {
+    eyebrow: "Or stay where you are",
+    heading: "HAVE IT SENT OVER",
+    body: "Same bowl, same broth, packed to travel. Delivery runs through the three apps; takeaway is always available at the counter.",
+    takeaway: "Prefer to collect? Order at the counter — no app, no fee.",
+  },
+
   /** Block 5 on the reference: long copy one side, stacked framed photos the other. */
   dishGrid: {
     eyebrow: "TAIPEI COMFORT FOOD",
@@ -330,16 +345,22 @@ export const copy = {
     image: "/placeholder/feature.jpg",
   },
 
-  /** Block 10: image + tagline one side, sign-up the other, ruled band between. */
-  newsletter: {
-    heading: "WORD FROM THE SHOP",
-    body: "The occasional note — a new bowl, a change of hours, the odd thing worth queueing for. Nothing else.",
-    fields: [
-      { name: "name", label: "FIRST NAME", hint: "So we know who we're writing to" },
-      { name: "email", label: "EMAIL ADDRESS", hint: "So we can reach you", type: "email" },
-    ],
-    consent: "I'd like the occasional email from The Beef Noodle Shop.",
-    button: "Sign up",
+  /**
+   * Block 10: image + tagline one side, get-in-touch the other, ruled band between.
+   *
+   * This was a sign-up form. It is now a mailto, which is the honest version for
+   * a shop with no mailing-list backend: an email client opens, the visitor can
+   * see exactly what they are sending, and nothing is collected by a page that
+   * has nowhere to put it.
+   */
+  contact: {
+    heading: "WRITE TO US",
+    body: "Large group, a question about the kitchen, or something we got wrong — it reaches the shop directly, and someone here answers it.",
+    /** PLACEHOLDER — the real address must come from the client. */
+    email: "email@example.com",
+    subject: "Hello from thebeefnoodleshop.com",
+    button: "Send us an email",
+    reasons: ["Bookings for six or more", "Anything about allergies", "Working with us"],
     image: "/placeholder/tile-visit.jpg",
   },
 
