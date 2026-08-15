@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { SAMPLES } from "@/lib/samples";
 import { brand, outlet, CONTENT_STATUS } from "@/lib/content";
@@ -31,9 +32,13 @@ export default function EntryPage() {
             {brand.name} <span className="font-normal">{brand.chinese}</span>
           </h1>
           <p className="mt-3 max-w-2xl text-base leading-relaxed" style={{ color: "var(--neutral-muted)" }}>
-            Tiga arah desain untuk {outlet.name}. Ketiganya memakai konten yang
-            sama persis — menu, harga, cerita, jam buka — supaya satu-satunya
-            variabel yang dibandingkan adalah desainnya.
+            Arah desain untuk {outlet.name}. Semuanya memakai konten yang sama
+            persis — menu, harga, cerita, jam buka — supaya satu-satunya variabel
+            yang dibandingkan adalah desainnya.{" "}
+            <strong style={{ color: "var(--neutral-ink)" }}>
+              Arah yang dikerjakan: Warisan.
+            </strong>{" "}
+            Sisanya disimpan sebagai catatan apa yang sempat dipertimbangkan.
           </p>
         </header>
 
@@ -43,8 +48,11 @@ export default function EntryPage() {
             style={{ borderColor: "#B5502C", color: "var(--neutral-muted)" }}
           >
             <strong style={{ color: "var(--neutral-ink)" }}>Konten masih placeholder.</strong>{" "}
-            Harga, jam buka, nomor unit dan link delivery belum dari klien. Foto
-            juga belum ada. Lihat <code>lib/content.ts</code>.
+            Jam buka, nomor unit, alamat email dan link delivery belum dari klien.
+            Foto dan video hero memakai stock berlisensi, bukan milik resto.
+            Lihat <code>lib/content.ts</code> dan{" "}
+            <code>public/placeholder/README.md</code>.{" "}
+            <code>npm run build</code> menolak jalan selama ini masih begini.
           </p>
         )}
 
@@ -72,8 +80,11 @@ export default function EntryPage() {
                   </code>
                   <span
                     className="ml-auto text-xs uppercase tracking-[0.15em]"
-                    style={{ color: "var(--neutral-muted)" }}
+                    style={{
+                      color: sample.status === "built" ? "#B5502C" : "var(--neutral-muted)",
+                    }}
                   >
+                    {sample.status === "built" ? "Dikerjakan" : "Tidak dipilih"} ·{" "}
                     {GROUND_LABEL[sample.ground]}
                   </span>
                 </div>
@@ -81,6 +92,22 @@ export default function EntryPage() {
                 <p className="mt-1 text-sm italic" style={{ color: "var(--neutral-muted)" }}>
                   {sample.gloss}
                 </p>
+
+                {/* Only a direction that exists has something to show. */}
+                {sample.preview && (
+                  <div
+                    className="relative mt-5 aspect-[16/10] w-full overflow-hidden rounded border"
+                    style={{ borderColor: "var(--neutral-line)" }}
+                  >
+                    <Image
+                      src={sample.preview}
+                      alt={`Tangkapan layar arah ${sample.name}`}
+                      fill
+                      sizes="(max-width: 900px) 100vw, 820px"
+                      className="object-cover object-top"
+                    />
+                  </div>
+                )}
 
                 <div className="mt-5 flex gap-1.5" aria-hidden>
                   {sample.swatches.map((hex) => (
@@ -104,6 +131,28 @@ export default function EntryPage() {
                     <dd>{sample.risk}</dd>
                   </div>
                 </dl>
+
+                {sample.built && (
+                  <div
+                    className="mt-5 border-t pt-4"
+                    style={{ borderColor: "var(--neutral-line)" }}
+                  >
+                    <p className="text-sm font-medium">
+                      Terbangun · {sample.built.blocks} blok · {sample.built.height}
+                    </p>
+                    <ul
+                      className="mt-2 space-y-1 text-sm"
+                      style={{ color: "var(--neutral-muted)" }}
+                    >
+                      {sample.built.notes.map((n) => (
+                        <li key={n} className="flex gap-2">
+                          <span aria-hidden>·</span>
+                          <span>{n}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
               </Link>
             </li>
           ))}

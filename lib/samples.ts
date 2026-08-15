@@ -9,7 +9,7 @@
  * direction so it survives being reordered or dropped.
  */
 
-export type SampleSlug = "kaldu" | "terang" | "bara";
+export type SampleSlug = "warisan" | "kaldu" | "terang" | "bara";
 
 export interface Sample {
   slug: SampleSlug;
@@ -27,9 +27,51 @@ export interface Sample {
   risk: string;
   /** Swatches for the entry-page card, in visual order. */
   swatches: string[];
+  /** Screenshot shown on the entry page. Only directions that exist have one. */
+  preview?: string;
+  /** What actually got built, for a direction that is finished. */
+  built?: {
+    blocks: number;
+    height: string;
+    notes: string[];
+  };
+  /**
+   * Where this direction stands.
+   * `built`   — the real page exists
+   * `stub`    — placeholder only
+   * `dropped` — kept as a record of what was considered and not chosen
+   */
+  status: "built" | "stub" | "dropped";
 }
 
 export const SAMPLES: Sample[] = [
+  {
+    slug: "warisan",
+    name: "Warisan",
+    gloss: "heritage — the thing you inherit rather than invent",
+    thesis:
+      "Replika bahasa visual Dishoom: serif uppercase ber-tracking lebar, foto berbingkai garis rambut dengan caption arsip, body rata kanan-kiri, tile foto ber-label outline. Cerita 1980-an jadi tulang punggungnya.",
+    derivedFrom: "dishoom.com — diukur langsung lewat probe DOM, bukan dikira-kira",
+    ground: "campuran",
+    risk:
+      "Bergantung penuh pada fotografi arsip dan ruangan yang nyata. Dengan stock pun layout-nya kebaca, tapi dengan foto lemah seluruh arah ini runtuh.",
+    swatches: ["#F0ECE0", "#353839", "#B5502C", "#1A1512"],
+    status: "built",
+    preview: "/previews/warisan.jpg",
+    built: {
+      blocks: 11,
+      height: "±9.400px",
+      notes: [
+        "Hero scroll-through: kartu inset 1066×738 membuka jadi full-bleed 1440×900",
+        "Reveal kata per kata mengikuti scroll, tanpa library animasi",
+        "Tile hover memutar klip video; plat melebar memunculkan panah",
+        "Fraunces + Cabin, pengganti open-source untuk Cheltenham + Gill Sans Nova",
+        "Semua transisi cubic-bezier(.4,0,.2,1), sesuai hasil ukur",
+        "Anchor meluncur, mati di bawah prefers-reduced-motion",
+        "Blok penghargaan & arsip resep sengaja dilewati — belum ada isinya",
+      ],
+    },
+  },
   {
     slug: "kaldu",
     name: "Kaldu",
@@ -41,6 +83,7 @@ export const SAMPLES: Sample[] = [
     risk:
       "Gelap membaca sebagai mahal. Brief melarang keras terlihat eksklusif — harus dilawan dengan harga yang terlihat jelas dan copy yang membumi.",
     swatches: ["#1A1512", "#B5502C", "#C99A3F", "#F4EDE1"],
+    status: "dropped",
   },
   {
     slug: "terang",
@@ -53,6 +96,7 @@ export const SAMPLES: Sample[] = [
     risk:
       "Grotesk murni bisa terbaca dingin. Brief minta hangat dan berkarakter, bukan Swiss yang steril.",
     swatches: ["#F4EDE1", "#2B2320", "#B5502C", "#C99A3F"],
+    status: "dropped",
   },
   {
     slug: "bara",
@@ -65,6 +109,7 @@ export const SAMPLES: Sample[] = [
     risk:
       "Hibrida paling gampang jadi kompromi yang tidak berpendirian. Peralihan cream→gelap harus terasa disengaja, bukan ragu-ragu.",
     swatches: ["#F4EDE1", "#1A1512", "#B5502C", "#C99A3F"],
+    status: "dropped",
   },
 ];
 
