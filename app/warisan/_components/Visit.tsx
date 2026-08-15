@@ -1,4 +1,7 @@
-import { copy, outlet, brand, CONTENT_STATUS } from "@/lib/content";
+// Opening hours and the unit number are still placeholders; the note that used
+// to say so on the page has been removed at the client's request. It stays
+// recorded in lib/content.ts and public/placeholder/README.md.
+import { copy, outlet, brand } from "@/lib/content";
 import { Ornament } from "./Ornament";
 
 /**
@@ -81,16 +84,6 @@ export function Visit() {
         >
           {copy.visit.seatingNote} This is a {brand.dietary.toLowerCase()} kitchen.
         </p>
-
-        {CONTENT_STATUS.placeholder && (
-          <p
-            className="mt-6 border-l-2 py-1 pl-4 text-[13px] leading-relaxed"
-            style={{ borderColor: "var(--accent)", color: "var(--ink-muted)" }}
-          >
-            Opening hours, unit number and delivery links on this page are
-            placeholders, not client-supplied. See <code>lib/content.ts</code>.
-          </p>
-        )}
       </div>
     </section>
   );
