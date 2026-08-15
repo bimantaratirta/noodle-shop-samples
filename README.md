@@ -3,24 +3,45 @@
 Repo perbandingan desain untuk **The Beef Noodle Shop 牛肉麵**, restoran bakmi sapi
 Taiwan di Paradigm Mall, Petaling Jaya.
 
-Isinya tiga arah desain yang berdiri sendiri, disajikan berdampingan supaya bisa
-dipilih satu. **Belum ada yang dibangun** — tahap sekarang menetapkan strukturnya
-dulu, biar semua orang kerja di atas kerangka yang sama.
+**Arah yang dikerjakan: Warisan (`/warisan`)** — replika bahasa visual
+[dishoom.com](https://www.dishoom.com/) dengan konten The Beef Noodle Shop.
+Tiga arah lain disimpan sebagai stub, sebagai catatan apa yang sempat
+dipertimbangkan dan kenapa tidak dipilih.
 
 ```bash
 npm install
 npm run dev
 ```
 
-| Route      | Arah       | Ground   | Turunan dari                          |
-| ---------- | ---------- | -------- | ------------------------------------- |
-| `/`        | Pintu masuk | netral   | —                                     |
-| `/kaldu`   | Kaldu      | gelap    | Ember (aura.build)                    |
-| `/terang`  | Terang     | terang   | Little Latte (aura.build)             |
-| `/bara`    | Bara       | campuran | Ember + Little Latte + Dishoom        |
+| Route      | Arah        | Ground   | Turunan dari                   | Status        |
+| ---------- | ----------- | -------- | ------------------------------ | ------------- |
+| `/`        | Pintu masuk | netral   | —                              | —             |
+| `/warisan` | Warisan     | campuran | dishoom.com                    | **dikerjakan** |
+| `/kaldu`   | Kaldu       | gelap    | Ember (aura.build)             | tidak dipilih |
+| `/terang`  | Terang      | terang   | Little Latte (aura.build)      | tidak dipilih |
+| `/bara`    | Bara        | campuran | Ember + Little Latte + Dishoom | tidak dipilih |
 
 Nama route sengaja tematik, bukan `sample1`–`sample3`. Kalau nanti satu arah
 dibuang atau urutannya berubah, namanya tetap masuk akal.
+
+### Cara Warisan diturunkan
+
+Bukan dikira-kira dari screenshot. Halaman referensinya di-probe langsung untuk
+membaca computed style-nya, lalu angkanya dipakai:
+
+| Diukur                | Nilai                                    | Dipakai jadi          |
+| --------------------- | ---------------------------------------- | --------------------- |
+| Ground                | `rgb(240,236,224)`                       | `--ground`            |
+| Ink                   | `rgb(53,56,57)`                          | `--ink`               |
+| Teks di atas gelap    | `rgb(255,253,249)`                       | `--cream`             |
+| Display serif         | ITC Cheltenham                           | **Fraunces** (open)   |
+| Sans humanis          | Gill Sans Nova                           | **Cabin** (open)      |
+| Heading uppercase     | tracking `0.18–0.25em`                   | `.display-wide`       |
+| Nav / label           | 15px, uppercase, tracking `0.25em`       | `.label`              |
+
+Yang ditiru itu **struktur dan perlakuan** — bukan foto, copy, atau aset merek
+mereka. Di mana referensi dan brief berselisih, brief yang menang: `--accent`
+tetap Broth Rust `#B5502C` dari palette klien.
 
 ## Tiga aturan yang menjaga perbandingan ini tetap jujur
 
@@ -63,14 +84,16 @@ docs/                 brief, alasan tiap arah, konvensi kode
 
 ## Status
 
-| Bagian                     | Status                                      |
-| -------------------------- | ------------------------------------------- |
-| Struktur repo & routing    | selesai                                     |
-| Token warna per arah       | selesai (dari palette brief)                |
-| Konten bersama             | terisi, **harga & jam masih placeholder**   |
-| Tipografi                  | belum dipilih — kandidat ada di `docs/02`   |
-| Desain ketiga arah         | **belum dibangun**                          |
-| Foto                       | **belum ada** — placeholder                 |
+| Bagian                     | Status                                       |
+| -------------------------- | -------------------------------------------- |
+| Struktur repo & routing    | selesai                                      |
+| Token warna per arah       | selesai (dari palette brief + hasil ukur)    |
+| Konten bersama             | terisi, **harga & jam masih placeholder**    |
+| Tipografi Warisan          | Fraunces + Cabin, sudah terpasang            |
+| Desain `/warisan`          | **selesai** — 7 section, siap direview       |
+| Desain kaldu/terang/bara   | stub, tidak dilanjutkan                      |
+| Foto                       | **belum ada** — placeholder bergenerate      |
+| Font 繁中                   | masih fallback sistem — belum di-subset      |
 
 ## Yang masih ditunggu dari klien
 

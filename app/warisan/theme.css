@@ -1,0 +1,77 @@
+/*
+ * Warisan — the Dishoom-derived direction.
+ *
+ * Values are measured off dishoom.com rather than guessed: ground rgb(240,236,224),
+ * ink rgb(53,56,57), text-on-dark rgb(255,253,249). Where the reference and our
+ * brief disagree, the brief wins — so `--accent` is Broth Rust #B5502C from the
+ * client's palette, not Dishoom's own accent.
+ *
+ * Same token NAMES as the other directions (see app/kaldu/theme.css) so anything
+ * built here can be lifted across and re-skin itself.
+ */
+
+.theme-warisan {
+  --ground: #f0ece0; /* measured: rgb(240,236,224) */
+  --ground-alt: #e7e0cf;
+  --ground-dark: #1a1512; /* hero + the broth section */
+
+  --ink: #353839; /* measured: rgb(53,56,57) */
+  --ink-muted: #6f6a5f;
+  --cream: #fffdf9; /* measured: text on dark */
+  --cream-muted: #c4bfaf;
+
+  --accent: #b5502c; /* Broth Rust — from the brief, not the reference */
+  --gold: #c99a3f; /* Warm Gold — echoes the 2700–3000K shopfront neon */
+
+  --line: rgba(53, 56, 57, 0.3);
+  --line-cream: rgba(255, 253, 249, 0.42);
+
+  --font-display: var(--font-warisan-display), Georgia, serif;
+  --font-body: var(--font-warisan-body), ui-sans-serif, system-ui, sans-serif;
+
+  background: var(--ground);
+  color: var(--ink);
+  font-family: var(--font-display);
+}
+
+/*
+ * Dishoom's signature move: uppercase display serif on very WIDE positive
+ * tracking (measured 0.18–0.25em). This is the opposite of Little Latte's tight
+ * negative tracking — get it wrong and the whole direction stops reading.
+ */
+.theme-warisan .display-wide {
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-weight: 400;
+  line-height: 1.32;
+}
+
+/* Sans is reserved for labels, nav and micro-type — never for running text. */
+.theme-warisan .label {
+  font-family: var(--font-body);
+  text-transform: uppercase;
+  letter-spacing: 0.25em;
+  font-weight: 600;
+  font-size: 0.72rem;
+}
+
+/* Body copy is justified in a narrow measure, as on the reference. */
+.theme-warisan .prose-justified {
+  text-align: justify;
+  hyphens: auto;
+  line-height: 1.72;
+}
+
+/* Archival photo framing: a hairline rule, not a shadow. */
+.theme-warisan .framed {
+  border: 1px solid var(--line);
+}
+
+.theme-warisan .on-dark {
+  background: var(--ground-dark);
+  color: var(--cream);
+  --ink: var(--cream);
+  --ink-muted: var(--cream-muted);
+  --line: var(--line-cream);
+}

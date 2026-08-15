@@ -52,10 +52,13 @@ export const outlet = {
   country: "Malaysia",
   seats: 30,
   openedOn: "2026-08-01",
-  /** PLACEHOLDER — mall hours assumed, not confirmed. */
+  /**
+   * PLACEHOLDER — mall hours assumed, not confirmed.
+   * Day names in English to match the rest of the customer-facing copy.
+   */
   hours: [
-    { days: "Isnin – Jumaat", open: "11:00", close: "22:00" },
-    { days: "Sabtu – Ahad", open: "10:00", close: "22:00" },
+    { days: "Monday – Friday", open: "11:00", close: "22:00" },
+    { days: "Saturday – Sunday", open: "10:00", close: "22:00" },
   ],
 } as const;
 
@@ -68,15 +71,21 @@ export const delivery = [
 
 /* ── Story ───────────────────────────────────────────────────────────── */
 
-/** Drawn from the brief's section 2. The pull quote is the client's own words. */
+/**
+ * Drawn from the brief's section 2. The pull quote is the client's own words.
+ *
+ * Copy here is customer-facing and therefore ENGLISH — the site serves diners in
+ * PJ/KL, where English is the working language. Traditional Chinese appears as a
+ * heritage signal (see docs/01-brief.md), never as a parallel translation.
+ */
 export const story = {
   era: "1980s",
   pullQuote:
     "We didn't invent this recipe for a trend cycle. We inherited it, and we're not cutting corners on it.",
   beats: [
-    "Orang tua pendiri kami menjalankan kedai bakmi sapi — kaldunya sudah mendidih berjam-jam sebelum kedainya buka.",
-    "Pelanggan tetap tidak perlu melihat menu.",
-    "Kedai ini kelanjutannya. Perawatan yang sama, standar yang sama, disesuaikan dengan cara orang makan hari ini.",
+    "In the 1980s, our founder's parents ran a beef noodle shop. The broth had already been simmering for hours before the door was unlocked.",
+    "Regulars never needed to look at the menu.",
+    "This shop is the continuation. The same care, the same standards, updated for how people eat today.",
   ],
   sourcing: ["Australian beef", "Australian soup bone", "Quality pork"],
 } as const;
@@ -182,3 +191,119 @@ export const menu: MenuSection[] = [
 export function price(value: number): string {
   return `RM ${value.toFixed(2)}`;
 }
+
+/* ── Page copy ───────────────────────────────────────────────────────── */
+
+/**
+ * Section copy for the site. Shared, like everything else here — a second
+ * direction would render these same strings in its own visual language.
+ *
+ * English throughout, with Traditional Chinese used only where it signals the
+ * Taiwanese lineage. Written short, warm and a little cheeky, matching the tone
+ * the client already set with "Just Slurp It." and "On A Noodle Roll."
+ */
+export const copy = {
+  nav: [
+    { label: "Menu", href: "#menu" },
+    { label: "Our Story", href: "#story" },
+    { label: "Visit", href: "#visit" },
+    { label: "Order", href: "#order" },
+  ],
+
+  hero: {
+    welcome: "好味道，好心情。",
+    quote:
+      "The broth was already on before the door was unlocked. The regulars never needed the menu.",
+    actions: [
+      { label: "See the menu", href: "#menu" },
+      { label: "Find us", href: "#visit" },
+    ],
+  },
+
+  loveLetter: {
+    /** Rendered as staggered lines, first flush left, the rest indented. */
+    headingLines: [
+      "This shop is a continuation —",
+      "the same pot, the same patience, the same",
+      "refusal to cut the corner that matters.",
+    ],
+    body: [
+      "In the 1980s our founder's parents ran a beef noodle shop. Not a concept, not a launch — a shop. The broth simmered for hours before the door was unlocked, and the regulars never looked at the menu because they already knew.",
+      "We didn't invent this recipe for a trend cycle. We inherited it. What changed is the room, the city and the year. What didn't change is the bone, the hours, and the standard nobody sees but everybody tastes.",
+    ],
+    caption: {
+      label: "ABOVE:",
+      text: "The original shop, sometime in the late 1980s.",
+    },
+  },
+
+  tiles: {
+    eyebrow: "Treasured guest",
+    headingLines: ["READ THE MENU, FIND THE SHOP,", "OR HAVE IT SENT OVER"],
+    items: [
+      {
+        title: "MENU",
+        subtitle: "Beef noodles, rice, sides and sweets",
+        href: "#menu",
+        image: "/placeholder/tile-menu.jpg",
+      },
+      {
+        title: "VISIT",
+        subtitle: "Paradigm Mall, Petaling Jaya",
+        href: "#visit",
+        image: "/placeholder/tile-visit.jpg",
+      },
+      {
+        title: "DELIVERY",
+        subtitle: "Grab, ShopeeFood and Foodpanda",
+        href: "#order",
+        image: "/placeholder/tile-order.jpg",
+      },
+    ],
+  },
+
+  menu: {
+    eyebrow: "Every bowl, every price",
+    heading: "WHAT WE COOK",
+    note: "Australian beef and soup bone. Quality pork. Nothing hurried.",
+  },
+
+  broth: {
+    eyebrow: "Before opening",
+    heading: "THE PART NOBODY SEES",
+    body: "Bone, water, time. The broth starts hours before the shutter goes up, and it finishes when it is ready — not when service starts.",
+  },
+
+  visit: {
+    eyebrow: "Come and sit",
+    heading: "FIND US",
+    seatingNote:
+      "Thirty seats. Comfortable with grandparents and a pram, just as comfortable on your own with a book.",
+  },
+
+  footer: {
+    columns: [
+      {
+        title: "VISIT",
+        links: [
+          { label: "Paradigm Mall, PJ", href: "#visit" },
+          { label: "Opening hours", href: "#visit" },
+        ],
+      },
+      {
+        title: "EAT",
+        links: [
+          { label: "Full menu", href: "#menu" },
+          { label: "Delivery", href: "#order" },
+        ],
+      },
+      {
+        title: "ABOUT",
+        links: [
+          { label: "Our story", href: "#story" },
+          { label: "Sourcing", href: "#story" },
+        ],
+      },
+    ],
+  },
+} as const;

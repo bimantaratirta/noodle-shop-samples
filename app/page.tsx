@@ -31,9 +31,13 @@ export default function EntryPage() {
             {brand.name} <span className="font-normal">{brand.chinese}</span>
           </h1>
           <p className="mt-3 max-w-2xl text-base leading-relaxed" style={{ color: "var(--neutral-muted)" }}>
-            Tiga arah desain untuk {outlet.name}. Ketiganya memakai konten yang
-            sama persis — menu, harga, cerita, jam buka — supaya satu-satunya
-            variabel yang dibandingkan adalah desainnya.
+            Arah desain untuk {outlet.name}. Semuanya memakai konten yang sama
+            persis — menu, harga, cerita, jam buka — supaya satu-satunya variabel
+            yang dibandingkan adalah desainnya.{" "}
+            <strong style={{ color: "var(--neutral-ink)" }}>
+              Arah yang dikerjakan: Warisan.
+            </strong>{" "}
+            Sisanya disimpan sebagai catatan apa yang sempat dipertimbangkan.
           </p>
         </header>
 
@@ -72,8 +76,11 @@ export default function EntryPage() {
                   </code>
                   <span
                     className="ml-auto text-xs uppercase tracking-[0.15em]"
-                    style={{ color: "var(--neutral-muted)" }}
+                    style={{
+                      color: sample.status === "built" ? "#B5502C" : "var(--neutral-muted)",
+                    }}
                   >
+                    {sample.status === "built" ? "Dikerjakan" : "Tidak dipilih"} ·{" "}
                     {GROUND_LABEL[sample.ground]}
                   </span>
                 </div>
