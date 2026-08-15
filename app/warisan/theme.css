@@ -15,8 +15,17 @@
   --ground-alt: #e7e0cf;
   --ground-dark: #1a1512; /* hero + the broth section */
 
-  --ink: #353839; /* measured: rgb(53,56,57) */
-  --ink-muted: #6f6a5f;
+  /*
+   * The light-surface values are kept under their own names as well, because
+   * `.on-dark` flips --ink to cream and anything that is a light surface INSIDE
+   * a dark section needs a way back to them. See `.plate`.
+   */
+  --ink-on-light: #353839; /* measured: rgb(53,56,57) */
+  --ink-muted-on-light: #6f6a5f;
+  --line-on-light: rgba(53, 56, 57, 0.3);
+
+  --ink: var(--ink-on-light);
+  --ink-muted: var(--ink-muted-on-light);
   --cream: #fffdf9; /* measured: text on dark */
   --cream-muted: #c4bfaf;
 
@@ -136,7 +145,18 @@
  * outline — that was the detail that made the first pass read as approximate.
  */
 .theme-warisan .plate {
+  /*
+   * A plate is always a LIGHT surface, including when it sits over a dark
+   * full-bleed section. It therefore resets the ink tokens instead of
+   * inheriting the ones `.on-dark` inverted — without this it renders cream
+   * text on a cream fill, with an invisible border to match.
+   */
+  --ink: var(--ink-on-light);
+  --ink-muted: var(--ink-muted-on-light);
+  --line: var(--line-on-light);
+
   background: var(--ground);
+  color: var(--ink);
   border: 1px solid var(--ink);
   box-shadow: inset 0 0 0 1px var(--ground), inset 0 0 0 2px var(--ink);
   transition: padding 0.3s var(--ease), background-color 0.3s var(--ease);
