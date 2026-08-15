@@ -30,8 +30,7 @@ export function Bowls() {
   return (
     <section
       id="bowls"
-      className="relative overflow-hidden px-6 py-24 lg:px-10 lg:py-32"
-      style={{ background: "var(--ground-alt)" }}
+      className="band-dark relative overflow-hidden px-6 py-24 lg:px-10 lg:py-32"
     >
       {/* 牛肉麵 as a graphic, not a footnote. */}
       <span
@@ -43,7 +42,7 @@ export function Bowls() {
 
       <div className="relative mx-auto max-w-[1320px]">
         <Reveal className="max-w-[38ch]">
-          <p className="rule-label label enter" style={{ color: "var(--accent)" }}>
+          <p className="rule-label label enter" style={{ color: "var(--accent-text)" }}>
             The bowls
           </p>
           <h2 className="display enter mt-6 text-[42px] sm:text-[58px]">
@@ -71,7 +70,7 @@ export function Bowls() {
                 </div>
 
                 <div className="mt-6 flex items-baseline gap-4">
-                  <span className="label" style={{ color: "var(--accent)" }}>
+                  <span className="label" style={{ color: "var(--accent-text)" }}>
                     {item.section}
                   </span>
                   <span

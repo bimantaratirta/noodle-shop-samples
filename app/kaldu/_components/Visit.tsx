@@ -10,10 +10,10 @@ import { Reveal } from "./Reveal";
  */
 export function Visit() {
   return (
-    <section id="visit" className="px-6 py-24 lg:px-10 lg:py-32">
+    <section id="visit" className="band-dark px-6 py-24 lg:px-10 lg:py-32">
       <Reveal className="mx-auto max-w-[1320px]">
         <div className="text-center">
-          <p className="label enter" style={{ color: "var(--accent)" }}>
+          <p className="label enter" style={{ color: "var(--accent-text)" }}>
             Visit us
           </p>
           <h2 className="display enter mx-auto mt-6 max-w-[16ch] text-[38px] sm:text-[52px]">
@@ -26,7 +26,7 @@ export function Visit() {
 
         <div className="mt-20 grid gap-12 sm:grid-cols-3">
           <div className="enter">
-            <h3 className="label pb-4" style={{ color: "var(--accent)" }}>
+            <h3 className="label pb-4" style={{ color: "var(--accent-text)" }}>
               Where
             </h3>
             <div className="border-t pt-5" style={{ borderColor: "var(--line-strong)" }}>
@@ -40,7 +40,7 @@ export function Visit() {
           </div>
 
           <div className="enter">
-            <h3 className="label pb-4" style={{ color: "var(--accent)" }}>
+            <h3 className="label pb-4" style={{ color: "var(--accent-text)" }}>
               When
             </h3>
             <div className="border-t pt-5" style={{ borderColor: "var(--line-strong)" }}>
@@ -56,7 +56,7 @@ export function Visit() {
           </div>
 
           <div className="enter" id="order">
-            <h3 className="label pb-4" style={{ color: "var(--accent)" }}>
+            <h3 className="label pb-4" style={{ color: "var(--accent-text)" }}>
               Delivery
             </h3>
             <div className="border-t pt-5" style={{ borderColor: "var(--line-strong)" }}>

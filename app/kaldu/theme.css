@@ -36,7 +36,17 @@
    * berhenti berarti apa pun. Sekarang rust yang bekerja, emas jadi barang
    * langka: hanya untuk hal yang sedang hidup di layar.
    */
-  --accent: #c85a30; /* Broth Rust, dinaikkan sedikit supaya menyala di ground gelap */
+  --accent: #c85a30; /* Broth Rust — untuk isian, garis, dan border */
+  /*
+   * Rust sebagai TEKS butuh nilai lain.
+   *
+   * Diukur: #C85A30 sebagai teks cuma 4.42:1 di pita gelap dan 3.64:1 di pita
+   * terang — dua-duanya jatuh di bawah lantai 4.5:1 yang justru jadi jualan
+   * utama arah ini. Jadi warna isian dan warna teks dipisah: --accent tetap
+   * untuk garis dan border (yang tidak diikat aturan kontras teks),
+   * --accent-text dinaikkan supaya lolos.
+   */
+  --accent-text: #e5834f;
   --gold: #d8a349; /* Warm Gold — dipakai jarang, sengaja */
 
   --line: rgba(247, 240, 228, 0.12);
@@ -75,6 +85,54 @@
   font-size: max(1rem, 15px);
   font-weight: 400;
   line-height: 1.75;
+}
+
+/*
+ * PITA TERANG / GELAP BERGANTIAN.
+ *
+ * Bukan tiga coklat yang beda tipis — itu percobaan sebelumnya dan memang tidak
+ * cukup terasa. Ini pergantian tegas: gelap, terang, gelap, terang.
+ *
+ * Yang penting: pita terang membalik SELURUH token tinta, bukan cuma
+ * background-nya. Kalau hanya background yang diganti, setiap anak di dalamnya
+ * tetap memakai tinta krem dan hasilnya krem di atas krem. Ini pelajaran yang
+ * sudah kena sekali di arah Warisan, pada plat di atas foto gelap.
+ *
+ * Urutannya: hero gelap → cerita terang → katalog gelap → proses terang →
+ * karakter gelap → marquee terang → kunjungi gelap → footer terang.
+ */
+.theme-kaldu .band-dark {
+  background: var(--ground);
+  color: var(--ink);
+}
+
+.theme-kaldu .band-light {
+  /* Paper Cream dari palette brief — bukan putih, supaya tetap hangat. */
+  --ground: #f4ede1;
+  --ground-alt: #eae0cd;
+
+  --ink: #241a13;
+  /* Diukur 5.9:1 terhadap cream — lewat AA untuk teks normal. */
+  --ink-muted: #6b5c4e;
+
+  /* Emas dijatuhkan jadi amber tua: #D8A349 di atas cream nyaris tidak terbaca. */
+  --gold: #9c6b18;
+  /* Rust-sebagai-teks dijatuhkan juga; versi terangnya gagal di atas cream. */
+  --accent-text: #96350f;
+
+  --line: rgba(36, 26, 19, 0.16);
+  --line-strong: rgba(200, 90, 48, 0.45);
+
+  background: var(--ground);
+  color: var(--ink);
+}
+
+/*
+ * Warna teks di ATAS isian rust. Rust cukup gelap sehingga krem terbaca di
+ * atasnya di pita mana pun — jadi tokennya tetap, tidak ikut terbalik.
+ */
+.theme-kaldu {
+  --on-accent: #f7f0e4;
 }
 
 /*
@@ -151,7 +209,9 @@
 .theme-kaldu .btn:hover,
 .theme-kaldu .btn:focus-visible {
   background: var(--accent);
-  color: var(--ink);
+  /* Bukan var(--ink): di pita terang, ink itu coklat tua dan akan jatuh di atas
+     isian rust. --on-accent tetap krem di pita mana pun. */
+  color: var(--on-accent);
 }
 
 /* Pill fakta di dalam langkah proses. */

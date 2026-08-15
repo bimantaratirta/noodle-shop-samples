@@ -75,12 +75,12 @@ export function Process() {
   }, []);
 
   return (
-    <section id="process" className="px-6 lg:px-10" style={{ background: "var(--ground-alt)" }}>
+    <section id="process" className="band-light px-6 lg:px-10">
       <div className="mx-auto grid max-w-[1320px] gap-x-16 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
         {/* ── pinned column ─────────────────────────────────────────── */}
         <div className="hidden lg:block">
           <div className="sticky top-0 flex h-svh flex-col justify-center py-16">
-            <p className="rule-label label" style={{ color: "var(--accent)" }}>
+            <p className="rule-label label" style={{ color: "var(--accent-text)" }}>
               Our process
             </p>
             <h2 className="display mt-6 text-[44px]">
@@ -127,7 +127,7 @@ export function Process() {
         <div className="py-16 lg:py-24">
           {/* Heading repeats on small screens, where nothing is pinned. */}
           <div className="lg:hidden">
-            <p className="rule-label label" style={{ color: "var(--accent)" }}>
+            <p className="rule-label label" style={{ color: "var(--accent-text)" }}>
               Our process
             </p>
             <h2 className="display mt-5 text-[34px]">

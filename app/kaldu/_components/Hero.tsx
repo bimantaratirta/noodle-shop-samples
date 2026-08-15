@@ -26,7 +26,7 @@ export function Hero() {
   }, []);
 
   return (
-    <section id="top" className="relative h-svh min-h-[640px] w-full overflow-hidden">
+    <section id="top" className="band-dark relative h-svh min-h-[640px] w-full overflow-hidden">
       {motion === true ? (
         <video
           className="absolute inset-0 h-full w-full object-cover"
@@ -70,7 +70,7 @@ export function Hero() {
       </span>
 
       <div className="relative mx-auto flex h-full max-w-[1320px] flex-col justify-end px-6 pb-24 lg:px-10">
-        <p className="rule-label label" style={{ color: "var(--accent)" }}>
+        <p className="rule-label label" style={{ color: "var(--accent-text)" }}>
           Est. {story.era} · Taiwanese beef noodles
         </p>
 
