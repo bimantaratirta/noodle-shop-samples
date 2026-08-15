@@ -11,7 +11,7 @@ import { Reveal } from "./Reveal";
  */
 export function Character() {
   return (
-    <section className="relative overflow-hidden px-6 py-24 lg:px-10 lg:py-32">
+    <section className="band-warm relative overflow-hidden px-6 py-24 lg:px-10 lg:py-32">
       <Image
         src="/placeholder/broth.jpg"
         alt=""

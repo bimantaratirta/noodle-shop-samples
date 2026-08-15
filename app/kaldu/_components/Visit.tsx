@@ -10,7 +10,7 @@ import { Reveal } from "./Reveal";
  */
 export function Visit() {
   return (
-    <section id="visit" className="px-6 py-24 lg:px-10 lg:py-32">
+    <section id="visit" className="band-deep px-6 py-24 lg:px-10 lg:py-32">
       <Reveal className="mx-auto max-w-[1320px]">
         <div className="text-center">
           <p className="label enter" style={{ color: "var(--accent)" }}>

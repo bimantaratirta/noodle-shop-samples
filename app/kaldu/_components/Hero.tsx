@@ -26,7 +26,7 @@ export function Hero() {
   }, []);
 
   return (
-    <section id="top" className="relative h-svh min-h-[640px] w-full overflow-hidden">
+    <section id="top" className="band-deep relative h-svh min-h-[640px] w-full overflow-hidden">
       {motion === true ? (
         <video
           className="absolute inset-0 h-full w-full object-cover"
