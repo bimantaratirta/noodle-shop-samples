@@ -1,28 +1,46 @@
 /*
  * Kaldu — ground gelap, diturunkan dari traverse-railway-10.aura.build (Ember).
  *
- * Nilai struktural diukur langsung dari halamannya. Di mana referensi dan brief
- * berselisih, brief yang menang: ground memakai #1A1512 dari palette klien, bukan
- * #080604 milik Ember, dan aksennya Broth Rust + Warm Gold.
+ * Strukturnya diukur dari halaman itu; rasanya sengaja tidak.
+ *
+ * Referensinya memakai Playfair Display + Inter dengan satu ground rata dan emas
+ * di setiap elemen. Menyamainya persis menghasilkan halaman yang benar tapi tanpa
+ * suara. Yang dipertahankan: kurva geraknya, mekanik sticky-nya, kerapatan
+ * katalognya. Yang diganti: tipografi, peran warna, dan ritme layout-nya.
  *
  * Nama token identik dengan arah lain (lihat app/warisan/theme.css) supaya
  * komponen bisa diangkat antar arah dan berganti kulit sendiri.
  */
 
 .theme-kaldu {
-  --ground: #1a1512;
-  --ground-alt: #241d19;
+  /*
+   * Tiga ground, bukan satu. Satu ground rata untuk seluruh halaman adalah
+   * separuh alasan pass pertama terasa datar — mata tidak punya penanda sudah
+   * sampai mana.
+   */
+  --ground: #17110e; /* paling dalam — hero, jeda */
+  --ground-alt: #221913; /* satu tingkat naik — section bercerita */
+  --ground-warm: #2e1f16; /* paling hangat — tempat kaldu "menyala" */
 
-  --ink: #f4ede1;
-  /* Diukur: 8.12:1 terhadap ground — lewat AAA. Kegagalan kontras di referensi
+  --ink: #f7f0e4;
+  /* Diukur 8.12:1 terhadap ground — lewat AAA. Kegagalan kontras di referensi
      datang dari ukuran dan weight, bukan dari warnanya. */
   --ink-muted: #b8ac9c;
 
-  --accent: #b5502c; /* Broth Rust */
-  --gold: #c99a3f; /* Warm Gold */
+  /*
+   * Peran warnanya dibalik dari pass pertama.
+   *
+   * Brief menyebut Broth Rust sebagai PRIMER dan Warm Gold cuma sebagai aksen
+   * "yang menggemakan cahaya neon gerai". Pass pertama memakai emas di
+   * mana-mana — setiap eyebrow, setiap angka, setiap garis — sampai emas
+   * berhenti berarti apa pun. Sekarang rust yang bekerja, emas jadi barang
+   * langka: hanya untuk hal yang sedang hidup di layar.
+   */
+  --accent: #c85a30; /* Broth Rust, dinaikkan sedikit supaya menyala di ground gelap */
+  --gold: #d8a349; /* Warm Gold — dipakai jarang, sengaja */
 
-  --line: rgba(244, 237, 225, 0.14);
-  --line-strong: rgba(244, 237, 225, 0.28);
+  --line: rgba(247, 240, 228, 0.12);
+  --line-strong: rgba(200, 90, 48, 0.42); /* garis pun ikut hangat, bukan abu-abu */
 
   --font-display: var(--font-kaldu-display), Georgia, serif;
   --font-body: var(--font-kaldu-body), ui-sans-serif, system-ui, sans-serif;
@@ -59,16 +77,20 @@
   line-height: 1.75;
 }
 
+/*
+ * Label pun diset dengan serif, bukan sans. Tidak ada sans netral di mana pun di
+ * arah ini — begitu satu muncul, bagian itu langsung terbaca seperti panel admin.
+ */
 .theme-kaldu .label {
   font-family: var(--font-body);
-  font-size: max(0.75rem, 12px);
+  font-size: max(0.8rem, 13px);
   font-weight: 500;
-  letter-spacing: 0.22em;
+  letter-spacing: 0.26em;
   text-transform: uppercase;
   line-height: 1.4;
 }
 
-/* Eyebrow bergaris pendek, perangkat khas referensi. */
+/* Eyebrow bergaris pendek. Garisnya rust, bukan emas — emas disimpan. */
 .theme-kaldu .rule-label {
   display: flex;
   align-items: center;
@@ -78,18 +100,34 @@
   content: "";
   display: block;
   width: 2.4rem;
-  height: 1px;
-  background: var(--gold);
+  height: 2px;
+  background: var(--accent);
   flex: none;
+}
+
+/*
+ * 牛肉麵 sebagai elemen grafis besar, bukan sekadar teks kecil pendamping.
+ * Brief menyebutnya sebagai penanda keaslian Taiwan, dan logo belum ada — jadi
+ * karakter ini yang memikul kerja identitas.
+ */
+.theme-kaldu .han-mark {
+  font-family: var(--font-display);
+  line-height: 0.9;
+  letter-spacing: 0.06em;
+  color: transparent;
+  -webkit-text-stroke: 1px var(--line-strong);
+  user-select: none;
 }
 
 /* Display serif, dengan italic emas sebagai satu-satunya alat penekanan. */
 .theme-kaldu .display {
   font-family: var(--font-display);
   font-weight: 400;
-  line-height: 1.12;
-  letter-spacing: -0.02em;
+  line-height: 1.06;
+  letter-spacing: -0.015em;
 }
+/* Italic emas adalah satu-satunya alat penekanan — dan karena emas dipakai
+   jarang di tempat lain, di sini ia benar-benar terasa menyala. */
 .theme-kaldu .display em {
   font-style: italic;
   color: var(--gold);
@@ -106,14 +144,14 @@
   letter-spacing: 0.22em;
   text-transform: uppercase;
   padding: 1.1rem 2.3rem;
-  border: 1px solid var(--gold);
+  border: 1px solid var(--accent);
   color: var(--ink);
   transition: background-color 0.6s var(--ease), color 0.6s var(--ease);
 }
 .theme-kaldu .btn:hover,
 .theme-kaldu .btn:focus-visible {
-  background: var(--gold);
-  color: var(--ground);
+  background: var(--accent);
+  color: var(--ink);
 }
 
 /* Pill fakta di dalam langkah proses. */

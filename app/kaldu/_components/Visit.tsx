@@ -13,7 +13,7 @@ export function Visit() {
     <section id="visit" className="px-6 py-24 lg:px-10 lg:py-32">
       <Reveal className="mx-auto max-w-[1320px]">
         <div className="text-center">
-          <p className="label enter" style={{ color: "var(--gold)" }}>
+          <p className="label enter" style={{ color: "var(--accent)" }}>
             Visit us
           </p>
           <h2 className="display enter mx-auto mt-6 max-w-[16ch] text-[38px] sm:text-[52px]">
@@ -26,7 +26,7 @@ export function Visit() {
 
         <div className="mt-20 grid gap-12 sm:grid-cols-3">
           <div className="enter">
-            <h3 className="label pb-4" style={{ color: "var(--gold)" }}>
+            <h3 className="label pb-4" style={{ color: "var(--accent)" }}>
               Where
             </h3>
             <div className="border-t pt-5" style={{ borderColor: "var(--line-strong)" }}>
@@ -40,7 +40,7 @@ export function Visit() {
           </div>
 
           <div className="enter">
-            <h3 className="label pb-4" style={{ color: "var(--gold)" }}>
+            <h3 className="label pb-4" style={{ color: "var(--accent)" }}>
               When
             </h3>
             <div className="border-t pt-5" style={{ borderColor: "var(--line-strong)" }}>
@@ -56,7 +56,7 @@ export function Visit() {
           </div>
 
           <div className="enter" id="order">
-            <h3 className="label pb-4" style={{ color: "var(--gold)" }}>
+            <h3 className="label pb-4" style={{ color: "var(--accent)" }}>
               Delivery
             </h3>
             <div className="border-t pt-5" style={{ borderColor: "var(--line-strong)" }}>
@@ -66,7 +66,7 @@ export function Visit() {
                     <a
                       href={d.url}
                       style={{ transition: "color 0.3s var(--ease)" }}
-                      className="hover:text-[var(--gold)]"
+                      className="hover:text-[var(--accent)]"
                     >
                       {d.name}
                     </a>

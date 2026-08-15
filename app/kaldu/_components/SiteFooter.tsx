@@ -9,7 +9,7 @@ export function SiteFooter() {
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
           {copy.footer.columns.map((col) => (
             <div key={col.title}>
-              <h3 className="label pb-4" style={{ color: "var(--gold)" }}>
+              <h3 className="label pb-4" style={{ color: "var(--accent)" }}>
                 {col.title}
               </h3>
               <ul className="border-t pt-5" style={{ borderColor: "var(--line)" }}>

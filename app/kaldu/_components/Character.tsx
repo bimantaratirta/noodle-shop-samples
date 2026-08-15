@@ -22,7 +22,7 @@ export function Character() {
       />
 
       <Reveal className="relative mx-auto max-w-[1320px]">
-        <p className="rule-label label enter" style={{ color: "var(--gold)" }}>
+        <p className="rule-label label enter" style={{ color: "var(--accent)" }}>
           The character
         </p>
         <h2 className="display enter mt-6 max-w-[18ch] text-[38px] sm:text-[48px]">
@@ -36,7 +36,7 @@ export function Character() {
               className="enter border-t pt-6"
               style={{ borderColor: "var(--line-strong)" }}
             >
-              <h3 className="display text-[24px]" style={{ color: "var(--gold)" }}>
+              <h3 className="display text-[24px]" style={{ color: "var(--accent)" }}>
                 {n.label}
               </h3>
               <p className="mt-3" style={{ color: "var(--ink-muted)" }}>

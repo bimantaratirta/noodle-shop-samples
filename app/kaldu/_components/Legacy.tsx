@@ -12,7 +12,7 @@ export function Legacy() {
     <section id="story" className="px-6 py-24 lg:px-10 lg:py-32">
       <Reveal className="mx-auto grid max-w-[1320px] items-center gap-x-16 gap-y-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,0.85fr)]">
         <div>
-          <p className="rule-label label enter" style={{ color: "var(--gold)" }}>
+          <p className="rule-label label enter" style={{ color: "var(--accent)" }}>
             Our heritage
           </p>
 

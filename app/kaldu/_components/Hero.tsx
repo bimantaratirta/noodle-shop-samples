@@ -57,8 +57,20 @@ export function Hero() {
         }}
       />
 
+      {/*
+        牛肉麵 set as a huge outlined mark down the right side. The logo does not
+        exist yet, so these characters carry the identity — and the brief calls
+        them the signal of Taiwanese lineage rather than a translation.
+      */}
+      <span
+        className="han-mark pointer-events-none absolute right-6 top-1/2 hidden -translate-y-1/2 text-[150px] lg:block xl:text-[190px]"
+        aria-hidden
+      >
+        牛肉麵
+      </span>
+
       <div className="relative mx-auto flex h-full max-w-[1320px] flex-col justify-end px-6 pb-24 lg:px-10">
-        <p className="rule-label label" style={{ color: "var(--gold)" }}>
+        <p className="rule-label label" style={{ color: "var(--accent)" }}>
           Est. {story.era} · Taiwanese beef noodles
         </p>
 

@@ -96,8 +96,13 @@ export interface MenuItem {
   name: string;
   chinese: string;
   description: string;
-  /** PLACEHOLDER price in MYR. */
+  /** PLACEHOLDER price in MYR. Kept as data; not printed on any page. */
   price: number;
+  /**
+   * Every dish carries its OWN photograph. Repeating one image across a grid
+   * makes eight dishes read as one dish eight times.
+   */
+  image: string;
 }
 
 export interface MenuSection {
@@ -119,18 +124,21 @@ export const menu: MenuSection[] = [
         chinese: "紅燒牛肉麵",
         description: "Australian beef shin, soup bone broth, hand-pulled noodles.",
         price: 24.9,
+        image: "/placeholder/story-bowl.jpg",
       },
       {
         name: "Clear Broth Beef Noodle",
         chinese: "清燉牛肉麵",
         description: "The lighter bowl. Same bone, longer simmer, less soy.",
         price: 24.9,
+        image: "/placeholder/broth.jpg",
       },
       {
         name: "Beef Tendon Noodle",
         chinese: "牛筋麵",
         description: "Tendon braised until it gives way completely.",
         price: 27.9,
+        image: "/placeholder/feature.jpg",
       },
     ],
   },
@@ -144,12 +152,14 @@ export const menu: MenuSection[] = [
         chinese: "滷肉飯",
         description: "Braised minced pork over rice, soft egg.",
         price: 12.9,
+        image: "/placeholder/tile-order.jpg",
       },
       {
         name: "Pork Chop Rice",
         chinese: "排骨飯",
         description: "Marinated pork chop, pickled greens, rice.",
         price: 18.9,
+        image: "/placeholder/sourcing.jpg",
       },
     ],
   },
@@ -163,6 +173,7 @@ export const menu: MenuSection[] = [
         chinese: "刈包",
         description: "Steamed bun, braised pork belly, peanut, coriander.",
         price: 9.9,
+        image: "/placeholder/tile-menu.jpg",
       },
     ],
   },
@@ -176,12 +187,14 @@ export const menu: MenuSection[] = [
         chinese: "剉冰",
         description: "Seasonal fruit, condensed milk.",
         price: 13.9,
+        image: "/placeholder/tile-visit.jpg",
       },
       {
         name: "Plum Juice",
         chinese: "酸梅湯",
         description: "Sour, cold, cuts through the broth.",
         price: 7.9,
+        image: "/placeholder/story-archive.jpg",
       },
     ],
   },
