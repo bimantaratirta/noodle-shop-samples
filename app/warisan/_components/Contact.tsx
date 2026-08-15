@@ -1,5 +1,7 @@
 import Image from "next/image";
-import { brand, copy, CONTENT_STATUS } from "@/lib/content";
+// The address is still a placeholder; the note that used to say so on the page
+// has been removed at the client's request. It stays recorded in lib/content.ts.
+import { brand, copy } from "@/lib/content";
 import { Arrow } from "./Arrow";
 
 /**
@@ -77,16 +79,6 @@ export function Contact() {
           <p className="mt-5 text-[14px]" style={{ color: "var(--ink-muted)" }}>
             {copy.contact.email}
           </p>
-
-          {CONTENT_STATUS.placeholder && (
-            <p
-              className="mt-6 max-w-[46ch] border-l-2 py-1 pl-4 text-[13px] leading-relaxed"
-              style={{ borderColor: "var(--accent)", color: "var(--ink-muted)" }}
-            >
-              That address is a placeholder — the shop’s real one has to come from
-              the client before this goes anywhere near a visitor.
-            </p>
-          )}
         </div>
       </div>
     </section>

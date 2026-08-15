@@ -1,4 +1,7 @@
-import { copy, delivery, CONTENT_STATUS } from "@/lib/content";
+// The three merchant URLs are still placeholders; the note that used to say so
+// on the page has been removed at the client's request. It is still recorded in
+// lib/content.ts and public/placeholder/README.md.
+import { copy, delivery } from "@/lib/content";
 import { Ornament } from "./Ornament";
 import { Arrow } from "./Arrow";
 
@@ -51,16 +54,6 @@ export function OrderSection() {
         <p className="mt-10 text-center text-[16px] italic" style={{ color: "var(--ink-muted)" }}>
           {copy.order.takeaway}
         </p>
-
-        {CONTENT_STATUS.placeholder && (
-          <p
-            className="mx-auto mt-8 max-w-[56ch] border-l-2 py-1 pl-4 text-[13px] leading-relaxed"
-            style={{ borderColor: "var(--accent)", color: "var(--ink-muted)" }}
-          >
-            The three links go nowhere yet — the real merchant URLs have to come
-            from the client’s GrabFood, ShopeeFood and Foodpanda accounts.
-          </p>
-        )}
       </div>
     </section>
   );
