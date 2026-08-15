@@ -98,6 +98,14 @@ serif hangat dan berkarakter. Kalau arah ini dipilih, kehangatan harus datang da
 tempat lain — Broth Rust yang dipakai lebih berani, dan fotografi yang benar-benar
 hangat.
 
+**Catatan build (draf pertama, `/terang`):** tombol lingkaran outline "Pesan"
+sempat dibangun tapi dicabut lagi atas arahan langsung — halaman sekarang tidak
+punya CTA lingkaran sama sekali. Struktur section juga diperluas melebihi thesis
+awal (ada section heritage foto + paragraf cerita bisnis di antara Story dan
+Signature) untuk lebih dekat ke jumlah section template Little Latte aslinya, dan
+"Best Sellers" di-rename jadi "Signature" karena tidak ada data penjualan untuk
+klaim itu. Lihat riwayat commit `app/terang/` untuk detail.
+
 ## Arah 3 — Bara (`/bara`)
 
 **Ground campuran. Hibrida — rekomendasi awal.**
@@ -117,15 +125,18 @@ sudah melayang jadi Kaldu dan perbandingannya berhenti berguna.
 
 ---
 
-## Tipografi — kandidat, belum diputuskan
+## Tipografi
 
-Sengaja belum di-wire. Token `--font-display` dan `--font-body` sudah
-dideklarasikan di tiap `theme.css`, tinggal diikat ke typeface saat build.
+Token `--font-display` dan `--font-body` dideklarasikan di tiap `theme.css`,
+diikat ke typeface lewat `next/font` saat direction-nya dibangun. **Terang
+sudah di-wire** (Archivo, dua instance — 700/900 buat display, 400/500 buat
+body — lihat `app/terang/layout.tsx`). Kaldu dan Bara masih kandidat, belum
+diputuskan.
 
 | Arah   | Display                                    | Body                        |
 | ------ | ------------------------------------------ | --------------------------- |
 | Kaldu  | serif transisional berkarakter — Fraunces, EB Garamond | sans netral — Inter, Plus Jakarta Sans |
-| Terang | grotesk tracking rapat — Archivo, Inter Tight | sama dengan display, beda weight |
+| Terang | **Archivo — wired** (700/900)              | Archivo (400/500)           |
 | Bara   | Fraunces (punya optical sizing, hangat)    | Plus Jakarta Sans           |
 
 Untuk 繁中: **harus di-subset**. Situs cuma memakai segelintir karakter. Kandidat

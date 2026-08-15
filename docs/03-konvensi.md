@@ -53,6 +53,13 @@ Identik di ketiga arah, nilainya berbeda:
 Komponen yang diletakkan di dalamnya berganti kulit sendiri tanpa tahu di mana ia
 berada.
 
+**Temuan dari build Terang:** di ground terang (`#F4EDE1`), `--gold` cuma ~2.2:1
+terhadap `--ink` — gagal jauh dari ambang WCAG AA 4.5:1 untuk teks. Jadi meski
+perannya disebut "label mikro" di atas, jangan pakai `--gold` sebagai warna teks
+di ground terang — pakai untuk garis/hairline/aksen non-teks saja, atau untuk
+teks besar (≥24px) yang cuma butuh ambang 3:1. `--accent` juga cuma ~4.35:1 di
+ground terang — lolos ambang "large text" tapi mepet untuk teks kecil.
+
 ## Foto
 
 Placeholder ada di `public/placeholder/`. Aturannya: **jangan pernah mengunci

@@ -5,8 +5,12 @@ Taiwan di Paradigm Mall, Petaling Jaya.
 
 **Arah yang dikerjakan: Warisan (`/warisan`)** — replika bahasa visual
 [dishoom.com](https://www.dishoom.com/) dengan konten The Beef Noodle Shop.
-Tiga arah lain disimpan sebagai stub, sebagai catatan apa yang sempat
-dipertimbangkan dan kenapa tidak dipilih.
+Kaldu dan Bara disimpan sebagai stub, catatan apa yang sempat dipertimbangkan
+dan kenapa tidak dipilih.
+
+**Branch ini (`terang-build`) juga menyimpan draf pertama Terang** (`/terang`)
+— dibangun sebelum arah Warisan disepakati. Disimpan terpisah dari `main`
+sebagai referensi, bukan diusulkan ulang sebagai pilihan.
 
 ```bash
 npm install
@@ -123,10 +127,15 @@ app/
     theme.css         token .theme-kaldu
     layout.tsx        muat font di sini, bukan di root
     page.tsx          stub — ganti dengan halaman asli saat dibangun
-  terang/             idem
-  bara/               idem
+  terang/
+    theme.css         token .theme-terang
+    layout.tsx        font Archivo (next/font), dibind ke --font-terang-*
+    page.tsx          halaman asli — dibangun
+    _components/      komponen khusus arah Terang
+  bara/               idem seperti kaldu — masih stub
+  warisan/            arah terpilih (selesai) — lihat "Cara Warisan diturunkan" di atas
 components/
-  SampleStub.tsx      placeholder "belum dibangun", dipakai ketiga route
+  SampleStub.tsx      placeholder "belum dibangun", dipakai kaldu & bara (terang sudah lepas dari ini)
 lib/
   samples.ts          registry ketiga arah — tesis, risiko, swatch
   content.ts          SATU sumber konten restoran untuk ketiga arah
@@ -173,19 +182,24 @@ terpengaruh), dan flag hilang (exit 1).
 | -------------------------- | -------------------------------------------- |
 | Struktur repo & routing    | selesai                                      |
 | Token warna per arah       | selesai (dari palette brief + hasil ukur)    |
-| Konten bersama             | terisi, **harga & jam masih placeholder**    |
+| Konten bersama             | terisi, **harga & jam masih placeholder**; `story.narrative` (dipakai `/terang`) juga **placeholder — karangan**, bukan dari brief |
 | Tipografi Warisan          | Fraunces + Cabin, sudah terpasang            |
+| Tipografi Terang           | Archivo, sudah terpasang (di branch `terang-build`) |
 | Desain `/warisan`          | **selesai** — 7 section, siap direview       |
-| Desain kaldu/terang/bara   | stub, tidak dilanjutkan                      |
-| Foto                       | **belum ada** — placeholder bergenerate      |
+| Desain `/terang`           | **draf pertama selesai di branch `terang-build`** — belum di-merge ke `main`, disimpan sebagai referensi |
+| Desain kaldu/bara          | stub, tidak dilanjutkan                      |
+| Foto                       | **belum ada** — placeholder bergenerate. `/terang` pakai foto referensi Unsplash sementara, ditandai jelas "Temp stock" di tiap gambar |
 | Font 繁中                   | masih fallback sistem — belum di-subset      |
 
 ## Yang masih ditunggu dari klien
 
 1. **Foto.** Ini penentu terbesar hasil akhirnya. Ketiga arah bertumpu pada
    fotografi full-bleed yang nyata — ruangan 30-pax, mangkuk, panci, uap.
-   Tanpa itu, sebagus apa pun layout-nya akan terbaca kosong.
-2. **Menu dan harga sebenarnya.** Yang ada sekarang karangan, lihat
+   Tanpa itu, sebagus apa pun layout-nya akan terbaca kosong. Terang sementara
+   pakai foto referensi Unsplash berlabel "Temp stock" persis di tempat foto
+   asli nanti masuk — bukan buat dikirim ke klien.
+2. **Menu, harga, dan cerita bisnis sebenarnya.** Yang ada sekarang karangan
+   (termasuk `story.narrative`, ditulis panjang buat ngisi layout), lihat
    `lib/content.ts`.
 3. **Jam buka, nomor unit persis di Paradigm Mall, link merchant** GrabFood /
    ShopeeFood / Foodpanda.
