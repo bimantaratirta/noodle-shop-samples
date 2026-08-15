@@ -153,8 +153,13 @@ export interface MenuItem {
   name: string;
   chinese: string;
   description: string;
-  /** PLACEHOLDER price in MYR. */
+  /** PLACEHOLDER price in MYR. Kept as data; not printed on any page. */
   price: number;
+  /**
+   * Every dish carries its OWN photograph. Repeating one image across a grid
+   * makes eight dishes read as one dish eight times.
+   */
+  image: string;
 }
 
 export interface MenuSection {
@@ -176,18 +181,21 @@ export const menu: MenuSection[] = [
         chinese: "紅燒牛肉麵",
         description: "Australian beef shin, soup bone broth, hand-pulled noodles.",
         price: 24.9,
+        image: "/placeholder/story-bowl.jpg",
       },
       {
         name: "Clear Broth Beef Noodle",
         chinese: "清燉牛肉麵",
         description: "The lighter bowl. Same bone, longer simmer, less soy.",
         price: 24.9,
+        image: "/placeholder/broth.jpg",
       },
       {
         name: "Beef Tendon Noodle",
         chinese: "牛筋麵",
         description: "Tendon braised until it gives way completely.",
         price: 27.9,
+        image: "/placeholder/feature.jpg",
       },
     ],
   },
@@ -201,12 +209,14 @@ export const menu: MenuSection[] = [
         chinese: "滷肉飯",
         description: "Braised minced pork over rice, soft egg.",
         price: 12.9,
+        image: "/placeholder/tile-order.jpg",
       },
       {
         name: "Pork Chop Rice",
         chinese: "排骨飯",
         description: "Marinated pork chop, pickled greens, rice.",
         price: 18.9,
+        image: "/placeholder/sourcing.jpg",
       },
     ],
   },
@@ -220,6 +230,7 @@ export const menu: MenuSection[] = [
         chinese: "刈包",
         description: "Steamed bun, braised pork belly, peanut, coriander.",
         price: 9.9,
+        image: "/placeholder/tile-menu.jpg",
       },
     ],
   },
@@ -233,12 +244,14 @@ export const menu: MenuSection[] = [
         chinese: "剉冰",
         description: "Seasonal fruit, condensed milk.",
         price: 13.9,
+        image: "/placeholder/tile-visit.jpg",
       },
       {
         name: "Plum Juice",
         chinese: "酸梅湯",
         description: "Sour, cold, cuts through the broth.",
         price: 7.9,
+        image: "/placeholder/story-archive.jpg",
       },
     ],
   },
@@ -248,6 +261,84 @@ export const menu: MenuSection[] = [
 export function price(value: number): string {
   return `RM ${value.toFixed(2)}`;
 }
+
+/**
+ * How the broth reads, broken into four notes.
+ *
+ * The equivalent block on the Ember reference is a tasting panel. Same idea,
+ * applied to a bowl instead of a dram — and it gives the quality claim somewhere
+ * concrete to live, which the brief asks for without over-explaining.
+ */
+export const brothNotes = [
+  { label: "Aroma", body: "Star anise and toasted spice first, then beef fat underneath it." },
+  { label: "Body", body: "Full but clear. Collagen from the bone, never thickened with anything." },
+  { label: "Finish", body: "Long and savoury. The chilli arrives last and stays a while." },
+  { label: "After", body: "Clean. You should want the next spoonful, not a glass of water." },
+] as const;
+
+/* ── Process ─────────────────────────────────────────────────────────── */
+
+/**
+ * The five stages, from bone to bowl.
+ *
+ * Every stage carries its OWN image. On the reference this section pins a
+ * column and scrolls five steps past it, but the pinned picture never changes —
+ * a cocktail sits there while the copy talks about malting barley. Pinning a
+ * constant image is the same as not pinning at all, so here the image is part of
+ * the step, not part of the frame.
+ */
+export interface ProcessStep {
+  n: string;
+  name: string;
+  chinese: string;
+  body: string;
+  /** Two short facts, set as pills. Kept factual — no adjectives. */
+  facts: [string, string];
+  image: string;
+}
+
+export const process: ProcessStep[] = [
+  {
+    n: "01",
+    name: "The Bone",
+    chinese: "骨",
+    body: "Australian shin and marrow bone arrive whole and get broken down here, not delivered pre-cut. What goes in the pot is chosen by the person who will be standing over it.",
+    facts: ["Australian beef", "Broken down in-house"],
+    image: "/placeholder/sourcing.jpg",
+  },
+  {
+    n: "02",
+    name: "The Simmer",
+    chinese: "熬",
+    body: "Bone, water, time. It starts hours before the shutter goes up and finishes when it is ready — never when service starts. Skimmed by hand, never boiled hard.",
+    facts: ["From 6am", "Never boiled hard"],
+    image: "/placeholder/broth.jpg",
+  },
+  {
+    n: "03",
+    name: "The Braise",
+    chinese: "紅燒",
+    body: "Soy, rock sugar, star anise and chilli bean paste, held low for hours. The colour comes from the braise itself — there is no shortcut in the pot and nothing added for looks.",
+    facts: ["Four hours", "No colouring"],
+    image: "/placeholder/story-bowl.jpg",
+  },
+  {
+    n: "04",
+    name: "The Noodle",
+    chinese: "麵",
+    body: "Pulled to order and dropped the moment the bowl is called. Thirty seconds too long and the texture is gone, which is why nothing is cooked ahead.",
+    facts: ["Pulled to order", "Cooked 90 seconds"],
+    image: "/placeholder/tile-menu.jpg",
+  },
+  {
+    n: "05",
+    name: "The Bowl",
+    chinese: "碗",
+    body: "Broth first, noodle second, beef last, greens on top. Built in that order every time so the noodle never sits in the broth waiting for the rest to arrive.",
+    facts: ["Built to order", "Served immediately"],
+    image: "/placeholder/feature.jpg",
+  },
+];
 
 /* ── Page copy ───────────────────────────────────────────────────────── */
 

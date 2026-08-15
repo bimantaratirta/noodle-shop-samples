@@ -77,13 +77,28 @@ export const SAMPLES: Sample[] = [
     name: "Kaldu",
     gloss: "broth — the thing that simmers before the shop opens",
     thesis:
-      "Gelap, dalam, dan tenang. Kualitas disampaikan lewat kerajinan dan pengekangan, bukan lewat volume.",
-    derivedFrom: "Ember (aura.build) — deep dark aesthetic, sticky scroll",
+      "Gelap, dalam, dan tenang. Struktur dan mekanik sticky-nya diambil dari Ember; tipografi, peran warna, dan ritme layout-nya sengaja tidak — menyamai persis menghasilkan halaman yang benar tapi tanpa suara.",
+    derivedFrom: "Ember (aura.build) — strukturnya diukur, rasanya diganti",
     ground: "gelap",
     risk:
-      "Gelap membaca sebagai mahal. Brief melarang keras terlihat eksklusif — harus dilawan dengan harga yang terlihat jelas dan copy yang membumi.",
-    swatches: ["#1A1512", "#B5502C", "#C99A3F", "#F4EDE1"],
-    status: "dropped",
+      "Gelap tetap membaca sebagai mahal, dan brief melarang keras terlihat eksklusif. Sejak harga dihapus atas permintaan klien, penangkalnya tinggal nada dan kehangatan — tidak ada lagi angka yang membumikan halaman ini.",
+    swatches: ["#17110E", "#2E1F16", "#C85A30", "#D8A349"],
+    status: "built",
+    preview: "/previews/kaldu.jpg",
+    built: {
+      blocks: 8,
+      height: "±7.900px",
+      notes: [
+        "Instrument Serif + Newsreader — sengaja BUKAN Playfair+Inter milik referensi",
+        "Proses sticky dengan gambar yang BERGANTI per langkah + indikator 01/05",
+        "Section proses 2.192px vs 3.740px di referensi, konten sama banyak",
+        "Lantai tipografi: badan ≥15px/400, label ≥12px/500 — referensi turun ke 9px/300",
+        "Easing cubic-bezier(.16,1,.3,1) dengan stagger 0.1s, sesuai hasil ukur",
+        "Rust jadi warna kerja, emas dibuat langka; tiga tingkat ground, bukan satu",
+        "Tanpa harga; tiap hidangan punya fotonya sendiri, grid berirama lebar/sempit",
+        "Marquee penghargaan diganti tagline — resto belum punya penghargaan",
+      ],
+    },
   },
   {
     slug: "terang",
