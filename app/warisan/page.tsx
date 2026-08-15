@@ -1,5 +1,6 @@
 import { Header } from "./_components/Header";
 import { Hero } from "./_components/Hero";
+import { RuledBand } from "./_components/RuledBand";
 import { LoveLetter } from "./_components/LoveLetter";
 import { Tiles } from "./_components/Tiles";
 import { MenuSection } from "./_components/MenuSection";
@@ -18,6 +19,7 @@ export default function WarisanPage() {
       <Header />
       <main>
         <Hero />
+        <RuledBand />
         <LoveLetter />
         <Tiles />
         <MenuSection />

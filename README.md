@@ -43,6 +43,29 @@ Yang ditiru itu **struktur dan perlakuan** — bukan foto, copy, atau aset merek
 mereka. Di mana referensi dan brief berselisih, brief yang menang: `--accent`
 tetap Broth Rust `#B5502C` dari palette klien.
 
+### Gerak
+
+Referensi **tidak memakai library animasi** — tidak ada GSAP, tidak ada Lenis,
+`scroll-behavior` biasa. Semuanya CSS transition dengan satu kurva:
+`cubic-bezier(0.4, 0, 0.2, 1)` pada 0.15s / 0.3s / 0.5s / 0.7s. Satu kurva untuk
+segalanya itu sebagian besar alasan kenapa situsnya terasa tenang, bukan ramai.
+
+| Gerak                | Mekanisme                                                                 |
+| -------------------- | ------------------------------------------------------------------------- |
+| Reveal kata          | Tiap kata dibungkus `<span>` sendiri, mulai dari `--cream-muted` lalu transisi ke `--ink` saat naik melewati 68% tinggi viewport (`RevealWords.tsx`) |
+| Header membalik      | Transparan + cream di atas hero, jadi solid + ink setelah hero lewat       |
+| Plat tile            | Melebar ke bawah saat hover, memunculkan panah berekor                     |
+| Foto tile            | `scale(1.035)` selama 0.7s                                                 |
+
+`RevealWords` sengaja memakai handler scroll ber-rAF, **bukan
+IntersectionObserver**. Observer hanya menyala saat ada *transisi*; apa pun yang
+terlewat dalam satu lompatan — reload di tengah halaman, klik anchor, scroll
+terprogram — akan tersangkut selamanya di warna muted. Cek posisi dievaluasi dari
+mana pun halaman berada. Ini bukan teori: versi observer-nya gagal di tes,
+0 dari 21 kata menyala.
+
+Semua gerak dimatikan di bawah `prefers-reduced-motion: reduce`.
+
 ## Tiga aturan yang menjaga perbandingan ini tetap jujur
 
 **1. Konten dibagi, desain tidak.** Semua teks — menu, harga, cerita, jam buka —

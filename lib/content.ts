@@ -211,7 +211,10 @@ export const copy = {
   ],
 
   hero: {
+    /** Sits where the reference puts its own greeting line, above the headline. */
     welcome: "好味道，好心情。",
+    /** The tagline IS the hero headline, exactly as the reference does it. */
+    headline: "“Good food, better mood.”",
     quote:
       "The broth was already on before the door was unlocked. The regulars never needed the menu.",
     actions: [
@@ -272,6 +275,8 @@ export const copy = {
     eyebrow: "Before opening",
     heading: "THE PART NOBODY SEES",
     body: "Bone, water, time. The broth starts hours before the shutter goes up, and it finishes when it is ready — not when service starts.",
+    link: "Read our story",
+    listLabel: "Sourced",
   },
 
   visit: {

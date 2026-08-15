@@ -1,20 +1,21 @@
 import Image from "next/image";
 import { copy } from "@/lib/content";
 import { Ornament } from "./Ornament";
+import { Arrow } from "./Arrow";
 
 /**
- * The three-tile router from the reference: small serif eyebrow, a centred
- * uppercase heading on wide tracking, then full-bleed photo tiles each carrying
- * an outlined cream label box near the bottom — border only, no fill, so the
- * photograph stays visible through it.
+ * The three-tile router.
+ *
+ * Corrected against the recording: the label is a cream-FILLED plate with a
+ * double rule and dark text — not the transparent cream outline of the first
+ * pass — and the photographs underneath carry no gradient scrim. On hover the
+ * plate grows downward to reveal the long-tailed arrow.
  */
 export function Tiles() {
   return (
-    <section className="px-6 py-20 sm:py-24 lg:px-10" style={{ background: "var(--ground-alt)" }}>
+    <section className="px-6 py-24 lg:px-10" style={{ background: "var(--ground-alt)" }}>
       <div className="mx-auto max-w-[1240px]">
-        <Ornament className="mb-8" />
-
-        <p className="text-center text-[19px] italic" style={{ color: "var(--ink-muted)" }}>
+        <p className="text-center text-[19px]" style={{ color: "var(--ink-muted)" }}>
           {copy.tiles.eyebrow}
         </p>
 
@@ -26,7 +27,9 @@ export function Tiles() {
           ))}
         </h2>
 
-        <ul className="mt-14 grid gap-5 sm:grid-cols-3">
+        <Ornament className="mt-7" />
+
+        <ul className="mt-14 grid gap-6 sm:grid-cols-3">
           {copy.tiles.items.map((tile) => (
             <li key={tile.title}>
               <a href={tile.href} className="group relative block aspect-[3/4] overflow-hidden">
@@ -35,27 +38,22 @@ export function Tiles() {
                   alt=""
                   fill
                   sizes="(max-width: 640px) 100vw, 400px"
-                  className="object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+                  className="object-cover"
+                  style={{ transition: "transform 0.7s var(--ease)" }}
                 />
-                <span
-                  className="absolute inset-0"
-                  style={{ background: "linear-gradient(to bottom, transparent 45%, rgba(16,12,10,.55) 100%)" }}
-                />
-                <span
-                  className="absolute inset-x-5 bottom-6 border px-4 py-4 text-center"
-                  style={{ borderColor: "var(--line-cream)" }}
-                >
-                  <span
-                    className="display-wide block text-[15px] sm:text-[17px]"
-                    style={{ color: "var(--cream)" }}
-                  >
+
+                <span className="plate absolute inset-x-6 bottom-7 block px-4 py-4 text-center group-hover:pb-7">
+                  <span className="display-wide block text-[15px] sm:text-[17px]">
                     {tile.title}
                   </span>
                   <span
                     className="mt-1.5 block text-[13px] italic leading-snug"
-                    style={{ color: "var(--cream-muted)" }}
+                    style={{ color: "var(--ink-muted)" }}
                   >
                     {tile.subtitle}
+                  </span>
+                  <span className="plate-arrow mt-2 flex justify-center overflow-hidden">
+                    <Arrow />
                   </span>
                 </span>
               </a>

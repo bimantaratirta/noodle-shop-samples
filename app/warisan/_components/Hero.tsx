@@ -2,60 +2,78 @@ import Image from "next/image";
 import { copy } from "@/lib/content";
 
 /**
- * Hero. The reference does NOT run its hero image full-bleed — it insets a
- * rounded card on a dark ground, which is what stops the page reading like every
- * other restaurant site. The bilingual welcome line sits above the quote, small,
- * exactly where the reference puts its Hindi greeting.
+ * Hero — corrected to match the reference after watching it in motion.
+ *
+ * The first pass inset a rounded card; the real thing is FULL-BLEED and full
+ * viewport height, very dark, with the header floating over it. The headline is
+ * set in small caps (large initials, small capitals for the rest), which is what
+ * gives it the engraved look a plain uppercase setting can't reach.
+ *
+ * The bilingual welcome sits where the reference puts its own greeting line.
  */
 export function Hero() {
   return (
-    <section id="top" className="on-dark px-4 pb-14 pt-4 sm:px-6 sm:pb-20">
-      <div className="relative mx-auto aspect-[16/10] w-full max-w-[1320px] overflow-hidden rounded-[4px] sm:aspect-[16/9]">
-        <Image
-          src="/placeholder/hero-room.jpg"
-          alt="The dining room"
-          fill
-          priority
-          sizes="(max-width: 1400px) 100vw, 1320px"
-          className="object-cover"
-        />
-        <div
-          className="absolute inset-0"
+    <section id="top" className="on-dark relative h-svh min-h-[620px] w-full overflow-hidden">
+      <Image
+        src="/placeholder/hero-room.jpg"
+        alt="The dining room"
+        fill
+        priority
+        sizes="100vw"
+        className="object-cover"
+      />
+      <div
+        className="absolute inset-0"
+        style={{
+          background:
+            "linear-gradient(to bottom, rgba(14,10,8,.72) 0%, rgba(14,10,8,.5) 45%, rgba(14,10,8,.85) 100%)",
+        }}
+      />
+
+      <div className="relative flex h-full flex-col items-center justify-center px-6 text-center">
+        <p
+          className="label"
+          style={{ color: "var(--cream-muted)", letterSpacing: "0.3em" }}
+        >
+          {copy.hero.welcome}
+        </p>
+
+        <h1
+          className="mt-6 max-w-[20ch] text-[30px] leading-[1.34] sm:max-w-[30ch] sm:text-[46px]"
           style={{
-            background:
-              "linear-gradient(to bottom, rgba(16,12,10,.55) 0%, rgba(16,12,10,.25) 40%, rgba(16,12,10,.8) 100%)",
+            color: "var(--cream)",
+            fontVariantCaps: "small-caps",
+            letterSpacing: "0.055em",
           }}
-        />
+        >
+          {copy.hero.headline}
+        </h1>
 
-        <div className="absolute inset-0 flex flex-col items-center justify-center px-6 text-center">
-          <p className="text-[15px] sm:text-[17px]" style={{ color: "var(--cream-muted)" }}>
-            {copy.hero.welcome}
-          </p>
-          <p
-            className="mt-4 max-w-[22ch] text-[22px] leading-[1.5] sm:max-w-[46ch] sm:text-[30px]"
-            style={{ color: "var(--cream)", letterSpacing: "0.06em" }}
+        <p
+          className="mt-7 max-w-[44ch] text-[16px] leading-[1.7]"
+          style={{ color: "var(--cream-muted)" }}
+        >
+          {copy.hero.quote}
+        </p>
+      </div>
+
+      <div className="absolute inset-x-0 bottom-14 flex flex-wrap items-center justify-center gap-3 px-6">
+        {copy.hero.actions.map((a) => (
+          <a
+            key={a.label}
+            href={a.href}
+            className="border px-8 py-3 text-[13px]"
+            style={{
+              borderColor: "var(--cream)",
+              color: "var(--cream)",
+              fontFamily: "var(--font-body)",
+              fontWeight: 700,
+              transition: "background-color 0.3s var(--ease)",
+            }}
           >
-            {copy.hero.quote}
-          </p>
-        </div>
-
-        <div className="absolute inset-x-0 bottom-8 flex flex-wrap items-center justify-center gap-3 px-6">
-          {copy.hero.actions.map((a) => (
-            <a
-              key={a.label}
-              href={a.href}
-              className="border px-7 py-3 text-[13px] transition-colors hover:bg-white/10"
-              style={{
-                borderColor: "var(--cream)",
-                color: "var(--cream)",
-                fontFamily: "var(--font-body)",
-                fontWeight: 700,
-              }}
-            >
-              {a.label}
-            </a>
-          ))}
-        </div>
+            {a.label}
+          </a>
+        ))}
       </div>
     </section>
   );
