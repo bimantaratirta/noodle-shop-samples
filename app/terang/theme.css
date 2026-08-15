@@ -1,0 +1,25 @@
+/*
+ * Terang — ground terang.
+ *
+ * Same token names as the other two directions, different values. Scoped to
+ * `.theme-terang` so nothing leaks. See app/kaldu/theme.css for the rationale.
+ */
+
+.theme-terang {
+  /* Paper Cream from the brief. Warm, never sterile white. */
+  --ground: #f4ede1;
+  --ground-alt: #ede4d5;
+
+  --ink: #2b2320; /* Ink Brown — warmer than pure black, per the brief */
+  --ink-muted: #6e625a;
+
+  --accent: #b5502c; /* Broth Rust */
+  --gold: #c99a3f; /* Warm Gold */
+
+  --line: rgba(43, 35, 32, 0.16);
+
+  --font-display: var(--font-terang-display, ui-sans-serif, system-ui, sans-serif);
+  --font-body: var(--font-terang-body, ui-sans-serif, system-ui, sans-serif);
+
+  font-family: var(--font-body);
+}

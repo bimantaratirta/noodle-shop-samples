@@ -1,0 +1,31 @@
+/*
+ * Kaldu — ground gelap.
+ *
+ * Every token is scoped to `.theme-kaldu` so it cannot leak into the other two
+ * samples. Same token NAMES across all three directions, different values —
+ * that way a component written for one can be lifted into another and simply
+ * re-skins itself.
+ *
+ * `--font-display` / `--font-body` are declared but not yet bound to a typeface.
+ * Picking the faces is a design decision that belongs to the build phase; see
+ * docs/02-arah-desain.md for the candidates.
+ */
+
+.theme-kaldu {
+  /* Ground: warm near-black, never neutral grey. Brief anchors on warmth. */
+  --ground: #1a1512;
+  --ground-alt: #241d19;
+
+  --ink: #f4ede1;
+  --ink-muted: #b8ac9c;
+
+  --accent: #b5502c; /* Broth Rust */
+  --gold: #c99a3f; /* Warm Gold — echoes the 2700–3000K shopfront neon */
+
+  --line: rgba(244, 237, 225, 0.14);
+
+  --font-display: var(--font-kaldu-display, Georgia, "Times New Roman", serif);
+  --font-body: var(--font-kaldu-body, ui-sans-serif, system-ui, sans-serif);
+
+  font-family: var(--font-body);
+}

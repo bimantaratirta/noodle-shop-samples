@@ -1,0 +1,36 @@
+@import "tailwindcss";
+
+/*
+ * Root stylesheet. Deliberately almost empty.
+ *
+ * Nothing brand-related belongs here. Each sample owns its own ground colour,
+ * type and tokens in `app/<slug>/theme.css`, scoped to a `.theme-<slug>` class.
+ * If a colour lives here, all three samples inherit it and stop being an
+ * honest comparison.
+ *
+ * The entry page at `/` uses the neutral tokens below on purpose — it is a
+ * tool for choosing between directions, not a fourth direction.
+ */
+
+:root {
+  --neutral-ground: #f6f5f3;
+  --neutral-panel: #ffffff;
+  --neutral-ink: #16130f;
+  --neutral-muted: #6d675f;
+  --neutral-line: #ddd8d1;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+}
+
+/* Samples set their own type; this only covers the entry page. */
+.neutral-shell {
+  background: var(--neutral-ground);
+  color: var(--neutral-ink);
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+}
