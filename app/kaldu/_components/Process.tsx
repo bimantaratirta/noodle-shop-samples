@@ -75,7 +75,7 @@ export function Process() {
   }, []);
 
   return (
-    <section id="process" className="band-deep px-6 lg:px-10">
+    <section id="process" className="px-6 lg:px-10" style={{ background: "var(--ground-alt)" }}>
       <div className="mx-auto grid max-w-[1320px] gap-x-16 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
         {/* ── pinned column ─────────────────────────────────────────── */}
         <div className="hidden lg:block">

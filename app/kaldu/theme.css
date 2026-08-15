@@ -18,9 +18,9 @@
    * separuh alasan pass pertama terasa datar — mata tidak punya penanda sudah
    * sampai mana.
    */
-  --ground: #150f0c; /* paling dalam, nyaris hitam hangat */
-  --ground-alt: #241a13; /* coklat gelap */
-  --ground-warm: #332217; /* coklat, paling hangat */
+  --ground: #17110e; /* paling dalam — hero, jeda */
+  --ground-alt: #221913; /* satu tingkat naik — section bercerita */
+  --ground-warm: #2e1f16; /* paling hangat — tempat kaldu "menyala" */
 
   --ink: #f7f0e4;
   /* Diukur 8.12:1 terhadap ground — lewat AAA. Kegagalan kontras di referensi
@@ -75,30 +75,6 @@
   font-size: max(1rem, 15px);
   font-weight: 400;
   line-height: 1.75;
-}
-
-/*
- * PITA GROUND YANG BERSELANG-SELING.
- *
- * Urutannya: dalam → coklat → coklat gelap, berulang. Satu ground rata sepanjang
- * halaman membuat mata kehilangan penanda sudah sampai mana; tiga tingkat yang
- * bergantian memberi ritme tanpa perlu garis pemisah atau ornamen tambahan.
- *
- * Ditulis sebagai kelas, bukan style inline per komponen, supaya urutannya bisa
- * dibaca di satu tempat dan diubah tanpa menyentuh delapan file.
- *
- *   .band-deep   #150F0C  hero, proses, kunjungi
- *   .band-warm   #33221F  cerita, karakter — tempat kaldunya "menyala"
- *   .band-brown  #241A13  katalog, marquee, footer
- */
-.theme-kaldu .band-deep {
-  background: var(--ground);
-}
-.theme-kaldu .band-warm {
-  background: var(--ground-warm);
-}
-.theme-kaldu .band-brown {
-  background: var(--ground-alt);
 }
 
 /*

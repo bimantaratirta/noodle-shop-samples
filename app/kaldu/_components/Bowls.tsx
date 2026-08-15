@@ -30,16 +30,12 @@ export function Bowls() {
   return (
     <section
       id="bowls"
-      className="band-brown relative overflow-hidden px-6 py-24 lg:px-10 lg:py-32"
+      className="relative overflow-hidden px-6 py-24 lg:px-10 lg:py-32"
+      style={{ background: "var(--ground-alt)" }}
     >
-      {/*
-        牛肉麵 as a graphic, not a footnote.
-
-        Sits fully inside the frame rather than bleeding off the right edge — a
-        half-cut 麵 reads as a mistake, not as a deliberate crop.
-      */}
+      {/* 牛肉麵 as a graphic, not a footnote. */}
       <span
-        className="han-mark pointer-events-none absolute right-10 top-14 hidden text-[150px] xl:block xl:text-[172px]"
+        className="han-mark pointer-events-none absolute -right-10 top-10 hidden text-[190px] lg:block"
         aria-hidden
       >
         牛肉麵
@@ -59,7 +55,7 @@ export function Bowls() {
           </p>
         </Reveal>
 
-        <Reveal as="ul" className="mt-14 grid gap-x-8 gap-y-16 lg:grid-cols-12" step={0.08}>
+        <Reveal as="ul" className="mt-20 grid gap-x-8 gap-y-16 lg:grid-cols-12" step={0.08}>
           {items.map((item, i) => {
             const r = RHYTHM[i % RHYTHM.length];
             return (
