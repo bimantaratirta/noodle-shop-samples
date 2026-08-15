@@ -35,6 +35,13 @@ export const brand = {
   /** Crew t-shirt lines already developed by the client. Real, from the brief. */
   crewLines: ["Just Slurp It.", "On A Noodle Roll."],
   /**
+   * Brand personality, from the brief's "Kepribadian merek" section
+   * (docs/01-brief.md) — drafted there in Indonesian, normalized to English
+   * here to match the register the rest of this file already uses.
+   */
+  personality:
+    "Fun, energetic, and modern — but rooted in tradition. Warm and bold, never loud. Simple and clean, but never cold.",
+  /**
    * Non-halal. In Malaysia this is not a footnote — it sets expectations and
    * defines the addressable audience. Every direction must state it calmly and
    * early, never buried in a footer.
@@ -66,6 +73,40 @@ export const delivery = [
   { name: "Foodpanda", url: "#" },
 ] as const;
 
+/* ── Navigation & labels ─────────────────────────────────────────────── */
+
+/**
+ * Short nav labels. Generic on purpose so any direction can reuse them —
+ * don't bend the wording to flatter one sample's layout.
+ */
+export const nav = {
+  home: "Home",
+  story: "Story",
+  menu: "Menu",
+  visit: "Visit",
+  /** Approved CTA wording (docs/02-arah-desain.md) — Malay, deliberately. */
+  order: "Pesan",
+} as const;
+
+/** Eyebrow words for data blocks above that don't carry their own caption yet. */
+export const labels = {
+  hours: "Hours",
+  location: "Location",
+  delivery: "Delivery",
+  dietary: "Dietary",
+  /** Section eyebrow for the small set of dishes highlighted on the page. */
+  signature: "Signature",
+} as const;
+
+/** Formats an opening date into a short label, e.g. "Open since Aug 2026". */
+export function openedLabel(isoDate: string): string {
+  const formatted = new Date(isoDate).toLocaleDateString("en-US", {
+    month: "short",
+    year: "numeric",
+  });
+  return `Open since ${formatted}`;
+}
+
 /* ── Story ───────────────────────────────────────────────────────────── */
 
 /** Drawn from the brief's section 2. The pull quote is the client's own words. */
@@ -73,12 +114,35 @@ export const story = {
   era: "1980s",
   pullQuote:
     "We didn't invent this recipe for a trend cycle. We inherited it, and we're not cutting corners on it.",
+  /*
+   * Normalized to English — same facts as the brief, matching the register
+   * everything else in this file already uses (tagline, pullQuote,
+   * crewLines). The Indonesian draft these came from is a drafting
+   * artifact, not client-supplied wording, so translating is a format
+   * change, not new content.
+   */
   beats: [
-    "Orang tua pendiri kami menjalankan kedai bakmi sapi — kaldunya sudah mendidih berjam-jam sebelum kedainya buka.",
-    "Pelanggan tetap tidak perlu melihat menu.",
-    "Kedai ini kelanjutannya. Perawatan yang sama, standar yang sama, disesuaikan dengan cara orang makan hari ini.",
+    "Our founders' parents ran a beef noodle stall — the broth was already simmering for hours before the doors opened.",
+    "Regulars never needed to look at the menu.",
+    "This shop is the continuation. Same care, same standard, adapted to how people eat today.",
   ],
   sourcing: ["Australian beef", "Australian soup bone", "Quality pork"],
+  /**
+   * PLACEHOLDER — INVENTED, not from the brief. Long-form narrative copy
+   * written to give a full story section a realistic shape (same reason
+   * the menu/prices/hours placeholders exist — see the file header). It's
+   * grounded in the real facts above (era, sourcing, seats, delivery,
+   * dietary, tagline, crewLines) but the sentences themselves are not
+   * client-supplied. Replace with the client's actual story before this
+   * ships — do not show this copy to the client as if it were real.
+   */
+  narrative: [
+    "Long before this room existed, there was a stall — a single pot, a single family, and a broth that started simmering hours before anyone walked in. That's where this recipe comes from: not a test kitchen, not a focus group, but a kitchen that opened before sunrise because the soup needed the time.",
+    "The people who ate there stopped needing the menu. They knew what they wanted, and they knew it would be ready the way it always was. That kind of trust isn't built in a season — it's built bowl by bowl, over years, by never quietly changing the recipe when no one's watching.",
+    "What's in the bowl hasn't changed just because the room has. Australian beef shin and soup bone, simmered the long way. Noodles pulled by hand, not cut from a machine. Pork sourced for quality, not for the lowest price on the invoice. None of it is dramatic — it's just the difference between food made to be eaten and food made to be sold.",
+    "This room is the next chapter, not a reinvention. Thirty seats at Paradigm Mall, Petaling Jaya, takeaway at the counter, and delivery through GrabFood, ShopeeFood, and Foodpanda for the days a bowl needs to come to you instead. Everyone's welcome at the table — the kitchen is non-halal, stated plainly, not as a footnote.",
+    "Good food, better mood — 好味道，好心情 — isn't a slogan dreamed up for a signboard. It's what the people behind this counter actually believe, crew t-shirts and all: just slurp it, get back on the noodle roll, and let the bowl do the talking. The plan is more rooms like this one — but the broth starts the same way in every single one.",
+  ],
 } as const;
 
 /* ── Menu ────────────────────────────────────────────────────────────── */

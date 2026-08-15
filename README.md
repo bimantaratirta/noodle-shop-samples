@@ -4,8 +4,8 @@ Repo perbandingan desain untuk **The Beef Noodle Shop 牛肉麵**, restoran bakm
 Taiwan di Paradigm Mall, Petaling Jaya.
 
 Isinya tiga arah desain yang berdiri sendiri, disajikan berdampingan supaya bisa
-dipilih satu. **Belum ada yang dibangun** — tahap sekarang menetapkan strukturnya
-dulu, biar semua orang kerja di atas kerangka yang sama.
+dipilih satu. **Terang sudah punya draf pertama** (`/terang`) — Kaldu dan Bara
+masih stub, menunggu giliran dibangun di atas kerangka yang sama.
 
 ```bash
 npm install
@@ -50,10 +50,14 @@ app/
     theme.css         token .theme-kaldu
     layout.tsx        muat font di sini, bukan di root
     page.tsx          stub — ganti dengan halaman asli saat dibangun
-  terang/             idem
-  bara/               idem
+  terang/
+    theme.css         token .theme-terang
+    layout.tsx        font Archivo (next/font), dibind ke --font-terang-*
+    page.tsx          halaman asli — dibangun
+    _components/      komponen khusus arah Terang
+  bara/               idem seperti kaldu — masih stub
 components/
-  SampleStub.tsx      placeholder "belum dibangun", dipakai ketiga route
+  SampleStub.tsx      placeholder "belum dibangun", dipakai kaldu & bara (terang sudah lepas dari ini)
 lib/
   samples.ts          registry ketiga arah — tesis, risiko, swatch
   content.ts          SATU sumber konten restoran untuk ketiga arah
@@ -67,17 +71,20 @@ docs/                 brief, alasan tiap arah, konvensi kode
 | -------------------------- | ------------------------------------------- |
 | Struktur repo & routing    | selesai                                     |
 | Token warna per arah       | selesai (dari palette brief)                |
-| Konten bersama             | terisi, **harga & jam masih placeholder**   |
-| Tipografi                  | belum dipilih — kandidat ada di `docs/02`   |
-| Desain ketiga arah         | **belum dibangun**                          |
-| Foto                       | **belum ada** — placeholder                 |
+| Konten bersama             | terisi, **harga & jam masih placeholder**; `story.narrative` juga ditandai **placeholder — karangan**, bukan dari brief |
+| Tipografi                  | Terang: Archivo (dibind via `next/font`). Kaldu/Bara: belum dipilih — kandidat ada di `docs/02` |
+| Desain ketiga arah         | **Terang: draf pertama selesai** (`/terang`). Kaldu & Bara: **belum dibangun** |
+| Foto                       | **Foto asli klien belum ada.** Terang pakai foto referensi Unsplash sementara, ditandai jelas "Temp stock" di tiap gambar |
 
 ## Yang masih ditunggu dari klien
 
 1. **Foto.** Ini penentu terbesar hasil akhirnya. Ketiga arah bertumpu pada
    fotografi full-bleed yang nyata — ruangan 30-pax, mangkuk, panci, uap.
-   Tanpa itu, sebagus apa pun layout-nya akan terbaca kosong.
-2. **Menu dan harga sebenarnya.** Yang ada sekarang karangan, lihat
+   Tanpa itu, sebagus apa pun layout-nya akan terbaca kosong. Terang sementara
+   pakai foto referensi Unsplash berlabel "Temp stock" persis di tempat foto
+   asli nanti masuk — bukan buat dikirim ke klien.
+2. **Menu, harga, dan cerita bisnis sebenarnya.** Yang ada sekarang karangan
+   (termasuk `story.narrative`, ditulis panjang buat ngisi layout), lihat
    `lib/content.ts`.
 3. **Jam buka, nomor unit persis di Paradigm Mall, link merchant** GrabFood /
    ShopeeFood / Foodpanda.
