@@ -1,31 +1,181 @@
 /*
- * Kaldu — ground gelap.
+ * Kaldu — ground gelap, diturunkan dari traverse-railway-10.aura.build (Ember).
  *
- * Every token is scoped to `.theme-kaldu` so it cannot leak into the other two
- * samples. Same token NAMES across all three directions, different values —
- * that way a component written for one can be lifted into another and simply
- * re-skins itself.
+ * Nilai struktural diukur langsung dari halamannya. Di mana referensi dan brief
+ * berselisih, brief yang menang: ground memakai #1A1512 dari palette klien, bukan
+ * #080604 milik Ember, dan aksennya Broth Rust + Warm Gold.
  *
- * `--font-display` / `--font-body` are declared but not yet bound to a typeface.
- * Picking the faces is a design decision that belongs to the build phase; see
- * docs/02-arah-desain.md for the candidates.
+ * Nama token identik dengan arah lain (lihat app/warisan/theme.css) supaya
+ * komponen bisa diangkat antar arah dan berganti kulit sendiri.
  */
 
 .theme-kaldu {
-  /* Ground: warm near-black, never neutral grey. Brief anchors on warmth. */
   --ground: #1a1512;
   --ground-alt: #241d19;
 
   --ink: #f4ede1;
+  /* Diukur: 8.12:1 terhadap ground — lewat AAA. Kegagalan kontras di referensi
+     datang dari ukuran dan weight, bukan dari warnanya. */
   --ink-muted: #b8ac9c;
 
   --accent: #b5502c; /* Broth Rust */
-  --gold: #c99a3f; /* Warm Gold — echoes the 2700–3000K shopfront neon */
+  --gold: #c99a3f; /* Warm Gold */
 
   --line: rgba(244, 237, 225, 0.14);
+  --line-strong: rgba(244, 237, 225, 0.28);
 
-  --font-display: var(--font-kaldu-display, Georgia, "Times New Roman", serif);
-  --font-body: var(--font-kaldu-body, ui-sans-serif, system-ui, sans-serif);
+  --font-display: var(--font-kaldu-display), Georgia, serif;
+  --font-body: var(--font-kaldu-body), ui-sans-serif, system-ui, sans-serif;
 
+  /*
+   * Kurva Ember, bukan kurva Dishoom. Diukur: cubic-bezier(0.16, 1, 0.3, 1)
+   * pada 0.6s dan 0.8s, dengan stagger 0.1s dan 0.2s. Karakternya melesat lalu
+   * mendarat pelan — berbeda dari .4,0,.2,1 yang rata.
+   */
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+
+  background: var(--ground);
+  color: var(--ink);
   font-family: var(--font-body);
+}
+
+/*
+ * BATAS BAWAH TIPOGRAFI.
+ *
+ * Ini perbaikan paling penting terhadap referensinya. Di sana 8 dari 29 node
+ * teks jatuh di bawah 4.5:1, memakai weight 300 pada ukuran serendah 8,96px.
+ * Kombinasi kecil + tipis + pucat itu yang bikin susah dibaca, dan brief kita
+ * menyebut "multi-generational groups" — jadi lantainya dinaikkan:
+ *
+ *   teks badan   ≥ 15px, weight ≥ 400
+ *   label mikro  ≥ 12px, weight ≥ 500, dan selalu ber-tracking
+ *
+ * Tidak ada apa pun di arah ini yang boleh turun di bawah itu.
+ */
+.theme-kaldu p,
+.theme-kaldu li {
+  font-size: max(1rem, 15px);
+  font-weight: 400;
+  line-height: 1.75;
+}
+
+.theme-kaldu .label {
+  font-family: var(--font-body);
+  font-size: max(0.75rem, 12px);
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  line-height: 1.4;
+}
+
+/* Eyebrow bergaris pendek, perangkat khas referensi. */
+.theme-kaldu .rule-label {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+}
+.theme-kaldu .rule-label::before {
+  content: "";
+  display: block;
+  width: 2.4rem;
+  height: 1px;
+  background: var(--gold);
+  flex: none;
+}
+
+/* Display serif, dengan italic emas sebagai satu-satunya alat penekanan. */
+.theme-kaldu .display {
+  font-family: var(--font-display);
+  font-weight: 400;
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+}
+.theme-kaldu .display em {
+  font-style: italic;
+  color: var(--gold);
+}
+
+/* Tombol outline hairline; terisi saat hover. */
+.theme-kaldu .btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.9rem;
+  font-family: var(--font-body);
+  font-size: max(0.75rem, 12px);
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  padding: 1.1rem 2.3rem;
+  border: 1px solid var(--gold);
+  color: var(--ink);
+  transition: background-color 0.6s var(--ease), color 0.6s var(--ease);
+}
+.theme-kaldu .btn:hover,
+.theme-kaldu .btn:focus-visible {
+  background: var(--gold);
+  color: var(--ground);
+}
+
+/* Pill fakta di dalam langkah proses. */
+.theme-kaldu .pill {
+  display: inline-block;
+  font-size: max(0.75rem, 12px);
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  color: var(--ink-muted);
+}
+
+/* Masuk ke layar: naik sedikit sambil memudar, di-stagger. */
+.theme-kaldu .enter {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.8s var(--ease), transform 0.8s var(--ease);
+}
+.theme-kaldu .enter[data-shown="true"] {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .theme-kaldu .enter {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/*
+ * Marquee. Slow enough to actually read — the reference runs its equivalent at a
+ * speed and a contrast that make it scenery rather than information.
+ */
+@keyframes kaldu-marquee {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-33.333%, 0, 0);
+  }
+}
+
+.theme-kaldu .marquee-track {
+  animation: kaldu-marquee 48s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .theme-kaldu .marquee-track {
+    animation: none;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html:has(.theme-kaldu) {
+    scroll-behavior: smooth;
+  }
+}
+
+.theme-kaldu section[id] {
+  scroll-margin-top: 88px;
 }

@@ -83,7 +83,21 @@ export const SAMPLES: Sample[] = [
     risk:
       "Gelap membaca sebagai mahal. Brief melarang keras terlihat eksklusif — harus dilawan dengan harga yang terlihat jelas dan copy yang membumi.",
     swatches: ["#1A1512", "#B5502C", "#C99A3F", "#F4EDE1"],
-    status: "dropped",
+    status: "built",
+    preview: "/previews/kaldu.jpg",
+    built: {
+      blocks: 8,
+      height: "±7.900px",
+      notes: [
+        "Playfair Display + Inter — pasangan asli referensinya, dua-duanya gratis",
+        "Proses sticky dengan gambar yang BERGANTI per langkah + indikator 01/05",
+        "Section proses 2.192px vs 3.740px di referensi, konten sama banyak",
+        "Lantai tipografi: badan ≥15px/400, label ≥12px/500 — referensi turun ke 9px/300",
+        "Easing cubic-bezier(.16,1,.3,1) dengan stagger 0.1s, sesuai hasil ukur",
+        "Harga tampil penuh kontras, melawan risiko terbaca eksklusif",
+        "Marquee penghargaan diganti tagline — resto belum punya penghargaan",
+      ],
+    },
   },
   {
     slug: "terang",
