@@ -1,5 +1,5 @@
-import Image from "next/image";
 import { copy } from "@/lib/content";
+import { HeroMedia } from "./HeroMedia";
 
 /**
  * Hero — corrected to match the reference after watching it in motion.
@@ -14,14 +14,7 @@ import { copy } from "@/lib/content";
 export function Hero() {
   return (
     <section id="top" className="on-dark relative h-svh min-h-[620px] w-full overflow-hidden">
-      <Image
-        src="/placeholder/hero-room.jpg"
-        alt="The dining room"
-        fill
-        priority
-        sizes="100vw"
-        className="object-cover"
-      />
+      <HeroMedia />
       <div
         className="absolute inset-0"
         style={{

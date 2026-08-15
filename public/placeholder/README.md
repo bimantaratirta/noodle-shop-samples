@@ -1,23 +1,56 @@
-# Foto placeholder
+# Media sementara
 
-Folder ini menampung gambar sementara supaya layout punya bentuk nyata untuk
-dipegang. **Tidak ada satu pun di sini yang boleh sampai ke klien.**
+**Semua isi folder ini placeholder. Tidak satu pun boleh ikut tayang.**
 
-## Foto asli yang dibutuhkan
+Sekarang isinya stock berlisensi, bukan gambar generate — supaya `/warisan` bisa
+dinilai 1:1 terhadap referensinya. Layout yang bertumpu pada fotografi tidak bisa
+dinilai dengan kotak abu-abu.
 
-Ini risiko terbesar project. Ketiga arah bertumpu pada fotografi full-bleed yang
-nyata — kalau fotonya lemah, layout sebagus apa pun akan terbaca kosong.
+## Isi
 
-| Slot                | Kebutuhan                                                                 |
-| ------------------- | ------------------------------------------------------------------------- |
-| Hero — ruangan      | Ruangan 30-pax, lebar, cahaya siang atau cahaya neon warm-white sore. Ini yang akan ditumpuki huruf outline 牛肉麵, jadi butuh area yang relatif tenang di tengah. |
-| Hero — mangkuk      | Semangkuk bakmi sapi dari atas, uap terlihat. Sumber cahaya hangat.        |
-| Cerita / warisan    | Tangan, panci, kaldu. Gelap, dokumenter, bukan food-styling yang dipoles. Untuk section gelap di `Bara` dan sepanjang `Kaldu`. |
-| Menu                | Satu foto bersih per kategori — bakmi, nasi, gua bao, shaved ice, plum juice. |
-| Arsip 1980-an       | Kalau keluarga pendiri punya foto kedai lama, ini aset paling berharga di seluruh situs. Dishoom membangun mereknya di atas hal seperti ini. **Layak ditanyakan ke klien secara spesifik.** |
+| File                 | Sumber                    | Slot                                |
+| -------------------- | ------------------------- | ----------------------------------- |
+| `hero.mp4`           | Pexels (Pexels License)   | Video latar hero, 1600px, 11,8s, senyap |
+| `hero-poster.jpg`    | frame dari `hero.mp4`     | Poster + pengganti saat reduced-motion |
+| `story-archive.jpg`  | Unsplash (Unsplash License) | Foto arsip di section cerita       |
+| `story-bowl.jpg`     | Unsplash                  | Detail mangkuk                      |
+| `tile-menu.jpg`      | Unsplash                  | Tile MENU                           |
+| `tile-visit.jpg`     | Unsplash                  | Tile VISIT                          |
+| `tile-order.jpg`     | Unsplash                  | Tile DELIVERY                       |
+| `broth.jpg`          | Unsplash                  | Section gelap                       |
+| `sourcing.jpg`       | Unsplash                  | Cadangan                            |
 
-## Catatan teknis
+Unsplash License dan Pexels License sama-sama mengizinkan pemakaian komersial
+tanpa atribusi. Keduanya melarang menjual ulang asetnya sendiri, yang tidak kita
+lakukan.
 
-Jangan mengunci layout ke rasio aspek file placeholder mana pun. Foto asli akan
-datang dengan crop berbeda. Tinggi ditentukan container plus `object-fit: cover`,
-bukan ditentukan gambarnya.
+## Kenapa tetap harus diganti
+
+Lisensinya membolehkan, tapi **memasang foto mi buatan restoran lain di situs
+restoran yang sungguhan itu menyesatkan pelanggan.** Orang menganggap foto di
+situs restoran adalah makanan yang akan mereka terima. Ini boleh dipakai untuk
+review internal dan presentasi ke klien; sebelum tayang, harus diganti foto milik
+klien sendiri.
+
+## Catatan kuratorial
+
+Pass pertama menarik kedai ramen **Jepang** — ada ラーメン, 担担麺, 玉子焼き di
+papannya. Brief melarang itu secara eksplisit: *"culturally specific (Taiwanese,
+not generic 'Asian')"* dan *"avoid literal chopsticks-and-lantern clichés"*.
+Sudah diganti dengan yang Tionghoa/Taiwan (Traditional Chinese, gerobak 甜不辣,
+kedai 紅茶冰) atau yang tanpa papan nama sama sekali. **Kalau nanti mengganti
+gambar mana pun di sini, periksa ini lagi** — hasil pencarian stock untuk "noodle"
+condong ke Jepang secara default.
+
+## Foto asli yang dibutuhkan dari klien
+
+| Slot             | Kebutuhan                                                              |
+| ---------------- | ---------------------------------------------------------------------- |
+| Video hero       | Ruangan 30-pax atau panci kaldu, gelap, gerak pelan, tanpa audio        |
+| Arsip 1980-an    | **Aset paling berharga di seluruh situs.** Kalau keluarga pendiri punya foto kedai lama, minta. Dishoom membangun mereknya di atas foto seperti ini. |
+| Mangkuk          | Dari atas, uap terlihat, cahaya hangat                                 |
+| Tampak depan     | Gerai di Paradigm Mall, sore hari saat neon warm-white menyala          |
+| Kemasan takeaway | Untuk tile DELIVERY — sekarang diisi foto interior, semantiknya meleset |
+
+Jangan mengunci layout ke rasio aspek file mana pun di sini. Tinggi ditentukan
+container plus `object-fit: cover`, bukan oleh gambarnya.
