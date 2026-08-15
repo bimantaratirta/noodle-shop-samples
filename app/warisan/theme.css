@@ -119,6 +119,18 @@
   );
 }
 
+/* Same rule-stack turned on its side, dividing the newsletter block. */
+.theme-warisan .ruled-band-v {
+  width: 26px;
+  background-image: repeating-linear-gradient(
+    to right,
+    var(--line) 0px,
+    var(--line) 1px,
+    transparent 1px,
+    transparent 5px
+  );
+}
+
 /*
  * Tile label plate: cream FILL with a double rule, dark text. Not a transparent
  * outline — that was the detail that made the first pass read as approximate.

@@ -47,6 +47,7 @@ condong ke Jepang secara default.
 | Slot             | Kebutuhan                                                              |
 | ---------------- | ---------------------------------------------------------------------- |
 | Video hero       | Ruangan 30-pax atau panci kaldu, gelap, gerak pelan, tanpa audio        |
+| Video tile ×3    | **Ketiga tile sekarang berbagi satu klip yang sama** (`hero.mp4`), karena cuma itu yang ada. Masing-masing butuh klip sendiri: mangkuk, gerai, kemasan |
 | Arsip 1980-an    | **Aset paling berharga di seluruh situs.** Kalau keluarga pendiri punya foto kedai lama, minta. Dishoom membangun mereknya di atas foto seperti ini. |
 | Mangkuk          | Dari atas, uap terlihat, cahaya hangat                                 |
 | Tampak depan     | Gerai di Paradigm Mall, sore hari saat neon warm-white menyala          |

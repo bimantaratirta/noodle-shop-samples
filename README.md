@@ -52,10 +52,39 @@ segalanya itu sebagian besar alasan kenapa situsnya terasa tenang, bukan ramai.
 
 | Gerak                | Mekanisme                                                                 |
 | -------------------- | ------------------------------------------------------------------------- |
+| Hero scroll-through  | Kartu inset (1066×738, radius 5px) membuka jadi full-bleed (1440×900, radius 0) sepanjang 0.85 viewport pertama (`Hero.tsx`) |
 | Reveal kata          | Tiap kata dibungkus `<span>` sendiri, mulai dari `--cream-muted` lalu transisi ke `--ink` saat naik melewati 68% tinggi viewport (`RevealWords.tsx`) |
 | Header membalik      | Transparan + cream di atas hero, jadi solid + ink setelah hero lewat       |
+| Tile hover           | Klip senyap fade-in di atas still lalu diputar; keluar → pause + rewind (`TileCard.tsx`) |
 | Plat tile            | Melebar ke bawah saat hover, memunculkan panah berekor                     |
 | Foto tile            | `scale(1.035)` selama 0.7s                                                 |
+
+### Sepuluh blok
+
+Referensinya punya 11 blok / 11.218px. Punya kita 10 blok / 9.463px.
+
+| # | Blok           | Ada di referensi | Kita |
+| - | -------------- | ---------------- | ---- |
+| 1 | Hero scroll-through | ✓ | ✓ |
+| 2 | Love letter (reveal kata) | ✓ | ✓ |
+| 3 | Router 3 tile (hover video) | ✓ | ✓ |
+| 4 | Full-bleed + daftar rata kanan | ✓ | ✓ |
+| 5 | Grid hidangan | ✓ | ✓ |
+| 6 | Menu tertulis | — | ✓ (tambahan kita) |
+| 7 | Banner unggulan | ✓ | ✓ |
+| 8 | Visit / lokasi | — | ✓ (tambahan kita) |
+| 9 | Newsletter | ✓ | ✓ |
+| 10 | Footer | ✓ | ✓ |
+| — | Carousel resep | ✓ | **sengaja dilewati** |
+| — | Penghargaan | ✓ | **sengaja dilewati** |
+
+Dua yang dilewati bukan karena sulit. Restonya buka 1 Agustus 2026 — belum punya
+penghargaan dan belum punya arsip resep. Memasang blok itu berarti mengisi klaim
+yang tidak ada, dan itu justru melawan posisi anti-hype yang jadi inti brief.
+
+Form newsletter **tidak terhubung ke apa pun**. Menekan Sign up memberi tahu
+begitu, bukan diam seolah terkirim — sign-up yang tampak jalan padahal tidak itu
+lebih buruk daripada tidak ada sama sekali.
 
 `RevealWords` sengaja memakai handler scroll ber-rAF, **bukan
 IntersectionObserver**. Observer hanya menyala saat ada *transisi*; apa pun yang

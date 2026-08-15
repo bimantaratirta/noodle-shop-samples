@@ -1,7 +1,6 @@
-import Image from "next/image";
 import { copy } from "@/lib/content";
 import { Ornament } from "./Ornament";
-import { Arrow } from "./Arrow";
+import { TileCard } from "./TileCard";
 
 /**
  * The three-tile router.
@@ -32,31 +31,13 @@ export function Tiles() {
         <ul className="mt-14 grid gap-6 sm:grid-cols-3">
           {copy.tiles.items.map((tile) => (
             <li key={tile.title}>
-              <a href={tile.href} className="group relative block aspect-[3/4] overflow-hidden">
-                <Image
-                  src={tile.image}
-                  alt=""
-                  fill
-                  sizes="(max-width: 640px) 100vw, 400px"
-                  className="object-cover"
-                  style={{ transition: "transform 0.7s var(--ease)" }}
-                />
-
-                <span className="plate absolute inset-x-6 bottom-7 block px-4 py-4 text-center group-hover:pb-7">
-                  <span className="display-wide block text-[15px] sm:text-[17px]">
-                    {tile.title}
-                  </span>
-                  <span
-                    className="mt-1.5 block text-[13px] italic leading-snug"
-                    style={{ color: "var(--ink-muted)" }}
-                  >
-                    {tile.subtitle}
-                  </span>
-                  <span className="plate-arrow mt-2 flex justify-center overflow-hidden">
-                    <Arrow />
-                  </span>
-                </span>
-              </a>
+              <TileCard
+                title={tile.title}
+                subtitle={tile.subtitle}
+                href={tile.href}
+                image={tile.image}
+                video="/placeholder/hero.mp4"
+              />
             </li>
           ))}
         </ul>

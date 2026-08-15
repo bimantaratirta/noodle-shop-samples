@@ -286,6 +286,50 @@ export const copy = {
       "Thirty seats. Comfortable with grandparents and a pram, just as comfortable on your own with a book.",
   },
 
+  /** Block 5 on the reference: long copy one side, stacked framed photos the other. */
+  dishGrid: {
+    eyebrow: "TAIPEI COMFORT FOOD",
+    heading: "Eat the way they eat at home",
+    body: [
+      "A bowl of beef noodles is not one recipe. It is a shop's answer to the same question everybody asks — how long will you wait, and what will you not skip.",
+      "Ours takes the long answer. Australian shin and soup bone go in before the shutter is up. The red-braise gets its colour from soy and time, never from a shortcut. The clear broth gets nothing but bone, water and patience.",
+      "Around the bowl sits the rest of the table: lu rou fan for the quiet appetite, a pork chop for the hungry one, gua bao to share, shaved ice and plum juice to cut the heat.",
+    ],
+    actions: [
+      { label: "See the menu", href: "#menu" },
+      { label: "Find us", href: "#visit" },
+    ],
+    images: [
+      { src: "/placeholder/story-bowl.jpg", caption: "The red-braised bowl, as it leaves the pass" },
+      { src: "/placeholder/sourcing.jpg", caption: "Bone and shin, before the long simmer" },
+      { src: "/placeholder/tile-menu.jpg", caption: "Greens, chilli oil and the rest of the table" },
+    ],
+  },
+
+  /** Block 6: a single featured dish, set on a bordered plate over a photo. */
+  feature: {
+    eyebrow: "THIS MONTH",
+    headlineLeft: "ONE BOWL",
+    headlineRight: "WORTH THE WAIT",
+    subtitle: "Beef tendon, braised until it gives way completely",
+    link: "See the menu",
+    href: "#menu",
+    image: "/placeholder/broth.jpg",
+  },
+
+  /** Block 10: image + tagline one side, sign-up the other, ruled band between. */
+  newsletter: {
+    heading: "WORD FROM THE SHOP",
+    body: "The occasional note — a new bowl, a change of hours, the odd thing worth queueing for. Nothing else.",
+    fields: [
+      { name: "name", label: "FIRST NAME", hint: "So we know who we're writing to" },
+      { name: "email", label: "EMAIL ADDRESS", hint: "So we can reach you", type: "email" },
+    ],
+    consent: "I'd like the occasional email from The Beef Noodle Shop.",
+    button: "Sign up",
+    image: "/placeholder/tile-visit.jpg",
+  },
+
   footer: {
     columns: [
       {
@@ -293,13 +337,26 @@ export const copy = {
         links: [
           { label: "Paradigm Mall, PJ", href: "#visit" },
           { label: "Opening hours", href: "#visit" },
+          { label: "Getting here", href: "#visit" },
+          { label: "Large groups", href: "#visit" },
         ],
       },
       {
         title: "EAT",
         links: [
           { label: "Full menu", href: "#menu" },
-          { label: "Delivery", href: "#order" },
+          { label: "Beef noodles", href: "#menu" },
+          { label: "Rice and sides", href: "#menu" },
+          { label: "Sweets and drinks", href: "#menu" },
+        ],
+      },
+      {
+        title: "ORDER",
+        links: [
+          { label: "GrabFood", href: "#order" },
+          { label: "ShopeeFood", href: "#order" },
+          { label: "Foodpanda", href: "#order" },
+          { label: "Takeaway", href: "#order" },
         ],
       },
       {
@@ -307,6 +364,8 @@ export const copy = {
         links: [
           { label: "Our story", href: "#story" },
           { label: "Sourcing", href: "#story" },
+          { label: "Working with us", href: "#visit" },
+          { label: "Contact", href: "#visit" },
         ],
       },
     ],

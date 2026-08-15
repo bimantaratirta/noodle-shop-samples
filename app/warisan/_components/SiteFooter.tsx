@@ -11,7 +11,7 @@ export function SiteFooter() {
   return (
     <footer className="px-6 py-16 lg:px-10" style={{ background: "var(--ground)" }}>
       <div className="mx-auto max-w-[1240px]">
-        <div className="grid gap-10 sm:grid-cols-3">
+        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
           {copy.footer.columns.map((col) => (
             <div key={col.title}>
               <h3 className="label pb-3">{col.title}</h3>
