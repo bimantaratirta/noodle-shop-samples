@@ -4,7 +4,7 @@ import { brand, copy, outlet } from "@/lib/content";
 /** Footer: link columns, then the wordmark and bilingual tagline given room. */
 export function SiteFooter() {
   return (
-    <footer className="band-light px-6 py-16 lg:px-10">
+    <footer className="band-brown px-6 py-16 lg:px-10">
       <div className="mx-auto max-w-[1320px]">
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
           {copy.footer.columns.map((col) => (

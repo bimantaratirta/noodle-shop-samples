@@ -90,13 +90,10 @@
 /*
  * PITA TERANG / GELAP BERGANTIAN.
  *
- * Bukan tiga coklat yang beda tipis — itu percobaan sebelumnya dan memang tidak
- * cukup terasa. Ini pergantian tegas: gelap, terang, gelap, terang.
+ * Dua tingkat, bukan tiga yang beda tipis. Gelap, coklat, gelap, coklat.
  *
- * Yang penting: pita terang membalik SELURUH token tinta, bukan cuma
- * background-nya. Kalau hanya background yang diganti, setiap anak di dalamnya
- * tetap memakai tinta krem dan hasilnya krem di atas krem. Ini pelajaran yang
- * sudah kena sekali di arah Warisan, pada plat di atas foto gelap.
+ * Dua-duanya gelap, jadi tintanya tetap krem di mana pun dan tidak ada token
+ * yang perlu dibalik.
  *
  * Urutannya: hero gelap → cerita terang → katalog gelap → proses terang →
  * karakter gelap → marquee terang → kunjungi gelap → footer terang.
@@ -106,22 +103,21 @@
   color: var(--ink);
 }
 
-.theme-kaldu .band-light {
-  /* Paper Cream dari palette brief — bukan putih, supaya tetap hangat. */
-  --ground: #f4ede1;
-  --ground-alt: #eae0cd;
-
-  --ink: #241a13;
-  /* Diukur 5.9:1 terhadap cream — lewat AA untuk teks normal. */
-  --ink-muted: #6b5c4e;
-
-  /* Emas dijatuhkan jadi amber tua: #D8A349 di atas cream nyaris tidak terbaca. */
-  --gold: #9c6b18;
-  /* Rust-sebagai-teks dijatuhkan juga; versi terangnya gagal di atas cream. */
-  --accent-text: #96350f;
-
-  --line: rgba(36, 26, 19, 0.16);
-  --line-strong: rgba(200, 90, 48, 0.45);
+.theme-kaldu .band-brown {
+  /*
+   * Coklat, bukan cream.
+   *
+   * Percobaan cream membuat pergantiannya terasa, tapi terlalu terang untuk arah
+   * yang seharusnya gelap sepanjang halaman. Coklat ini cukup naik dari ground
+   * terdalam untuk terbaca sebagai pita berbeda, tanpa halamannya berhenti
+   * terasa seperti kedai yang remang.
+   *
+   * Karena tetap gelap, tintanya tidak perlu dibalik sama sekali — semua token
+   * krem dari .theme-kaldu tetap berlaku. Ini juga menghapus seluruh
+   * penyesuaian --gold dan --accent-text yang tadi dibutuhkan di atas cream.
+   */
+  --ground: #3b2719;
+  --ground-alt: #4a3221;
 
   background: var(--ground);
   color: var(--ink);

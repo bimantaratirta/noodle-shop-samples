@@ -21,7 +21,7 @@ export function Marquee() {
   return (
     <section
       aria-hidden
-      className="band-light overflow-hidden border-y py-8"
+      className="band-brown overflow-hidden border-y py-8"
       style={{ borderColor: "var(--line)" }}
     >
       <div className="marquee-track flex w-max items-center gap-14">
