@@ -17,7 +17,13 @@ export function DishGrid() {
 
   return (
     <section className="px-6 py-24 sm:py-28 lg:px-10">
-      <div className="mx-auto grid max-w-[1240px] gap-x-16 gap-y-12 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)]">
+      {/*
+        Measured off the reference: the text column is a third of the width, not
+        half. Giving it half is what made the first pass read as approximate —
+        the copy stretched, the photographs shrank, and the asymmetry that makes
+        the block work disappeared.
+      */}
+      <div className="mx-auto grid max-w-[1240px] gap-x-14 gap-y-12 lg:grid-cols-[minmax(0,0.58fr)_minmax(0,1fr)]">
         <div>
           <span
             className="block h-px w-24"
@@ -62,12 +68,12 @@ export function DishGrid() {
         <div>
           <figure>
             <div className="framed">
-              <div className="relative aspect-[4/3] w-full overflow-hidden">
+              <div className="relative aspect-[16/11] w-full overflow-hidden">
                 <Image
                   src={lead.src}
                   alt=""
                   fill
-                  sizes="(max-width: 1024px) 100vw, 660px"
+                  sizes="(max-width: 1024px) 100vw, 700px"
                   className="object-cover"
                 />
               </div>
@@ -80,11 +86,11 @@ export function DishGrid() {
             </figcaption>
           </figure>
 
-          <div className="mt-10 grid gap-6 sm:grid-cols-2">
+          <div className="mt-8 grid gap-5 sm:grid-cols-2">
             {rest.map((img) => (
               <figure key={img.src + img.caption}>
                 <div className="framed">
-                  <div className="relative aspect-[4/5] w-full overflow-hidden">
+                  <div className="relative aspect-[4/3] w-full overflow-hidden">
                     <Image
                       src={img.src}
                       alt=""

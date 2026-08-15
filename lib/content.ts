@@ -266,9 +266,15 @@ export const copy = {
   },
 
   menu: {
-    eyebrow: "Every bowl, every price",
+    eyebrow: "From the pass",
     heading: "WHAT WE COOK",
     note: "Australian beef and soup bone. Quality pork. Nothing hurried.",
+    /**
+     * Prices are deliberately not printed on the page — the client asked for the
+     * menu to read as a menu, not a price list. They stay in `menu[].items[].price`
+     * so the delivery-app listings and any printed menu can still use one source.
+     */
+    priceNote: "Prices on GrabFood, ShopeeFood and Foodpanda.",
   },
 
   broth: {
@@ -314,7 +320,7 @@ export const copy = {
     subtitle: "Beef tendon, braised until it gives way completely",
     link: "See the menu",
     href: "#menu",
-    image: "/placeholder/broth.jpg",
+    image: "/placeholder/feature.jpg",
   },
 
   /** Block 10: image + tagline one side, sign-up the other, ruled band between. */

@@ -1,16 +1,27 @@
 import { copy, outlet, delivery, brand, CONTENT_STATUS } from "@/lib/content";
 import { Ornament } from "./Ornament";
+import { Arrow } from "./Arrow";
 
 /**
- * Visit + order. Deliberately plain: address, hours, how to get it delivered.
+ * Visit + order.
  *
- * The non-halal line is stated here in full sentence form rather than as a badge
- * — in Malaysia it sets expectations, and burying it in a footer would be both
- * unhelpful and faintly evasive.
+ * Rebuilt for precision. The first pass set the delivery apps as three stacked
+ * boxed buttons, which read as a form control rather than part of the same
+ * editorial system, and left a hole under the address column. Now all three
+ * columns are the same kind of object — a ruled heading over a list — and the
+ * delivery apps are text links carrying the same long-tailed arrow used
+ * elsewhere on the page.
+ *
+ * The non-halal line is stated as a sentence rather than a badge: in Malaysia it
+ * sets expectations, and burying or abbreviating it would be evasive.
  */
 export function Visit() {
   return (
-    <section id="visit" className="px-6 py-20 sm:py-28 lg:px-10" style={{ background: "var(--ground-alt)" }}>
+    <section
+      id="visit"
+      className="px-6 py-24 lg:px-10"
+      style={{ background: "var(--ground-alt)" }}
+    >
       <div className="mx-auto max-w-[1080px]">
         <p className="text-center text-[19px] italic" style={{ color: "var(--ink-muted)" }}>
           {copy.visit.eyebrow}
@@ -20,20 +31,20 @@ export function Visit() {
         </h2>
         <Ornament className="mt-6" />
 
-        <div className="mt-14 grid gap-12 sm:grid-cols-3">
+        <div className="mt-14 grid gap-x-12 gap-y-10 sm:grid-cols-3">
           <div>
             <h3 className="label pb-3" style={{ color: "var(--accent)" }}>
               Address
             </h3>
             <div className="border-t pt-4" style={{ borderColor: "var(--line)" }}>
-              <p className="text-[17px] leading-relaxed">
-                {outlet.name}
+              <p className="text-[17px] leading-[1.7]">{outlet.name}</p>
+              <p className="mt-1 text-[17px] leading-[1.7]" style={{ color: "var(--ink-muted)" }}>
+                {outlet.unit}
                 <br />
-                <span style={{ color: "var(--ink-muted)" }}>
-                  {outlet.unit}
-                  <br />
-                  {outlet.city}
-                </span>
+                {outlet.city}
+              </p>
+              <p className="mt-4 text-[15px] leading-relaxed" style={{ color: "var(--ink-muted)" }}>
+                {outlet.seats} seats, inside the mall.
               </p>
             </div>
           </div>
@@ -43,16 +54,22 @@ export function Visit() {
               Hours
             </h3>
             <div className="border-t pt-4" style={{ borderColor: "var(--line)" }}>
-              <ul className="space-y-2 text-[17px]">
+              <ul>
                 {outlet.hours.map((h) => (
-                  <li key={h.days} className="flex justify-between gap-4">
-                    <span>{h.days}</span>
-                    <span className="tabular-nums" style={{ color: "var(--ink-muted)" }}>
-                      {h.open}–{h.close}
+                  <li key={h.days} className="mb-2.5 last:mb-0">
+                    <span className="block text-[17px] leading-tight">{h.days}</span>
+                    <span
+                      className="block text-[15px] tabular-nums"
+                      style={{ color: "var(--ink-muted)" }}
+                    >
+                      {h.open} – {h.close}
                     </span>
                   </li>
                 ))}
               </ul>
+              <p className="mt-4 text-[15px] leading-relaxed" style={{ color: "var(--ink-muted)" }}>
+                Kitchen closes thirty minutes before the shop does.
+              </p>
             </div>
           </div>
 
@@ -61,40 +78,40 @@ export function Visit() {
               Delivery
             </h3>
             <div className="border-t pt-4" style={{ borderColor: "var(--line)" }}>
-              <ul className="space-y-3">
+              <ul>
                 {delivery.map((d) => (
-                  <li key={d.name}>
+                  <li key={d.name} className="mb-2.5 last:mb-0">
                     <a
                       href={d.url}
-                      className="inline-block border px-4 py-2 text-[13px] transition-opacity hover:opacity-65"
-                      style={{
-                        borderColor: "var(--ink)",
-                        fontFamily: "var(--font-body)",
-                        fontWeight: 700,
-                      }}
+                      className="group inline-flex items-center gap-3 text-[17px]"
+                      style={{ transition: "opacity 0.15s var(--ease)" }}
                     >
                       {d.name}
+                      <Arrow width={34} className="opacity-45" />
                     </a>
                   </li>
                 ))}
               </ul>
+              <p className="mt-4 text-[15px] leading-relaxed" style={{ color: "var(--ink-muted)" }}>
+                Takeaway at the counter, no app needed.
+              </p>
             </div>
           </div>
         </div>
 
         <p
-          className="mx-auto mt-16 max-w-[54ch] text-center text-[16px] leading-relaxed"
-          style={{ color: "var(--ink-muted)" }}
+          className="mt-16 border-t pt-8 text-[16px] leading-relaxed"
+          style={{ borderColor: "var(--line)", color: "var(--ink-muted)" }}
         >
           {copy.visit.seatingNote} This is a {brand.dietary.toLowerCase()} kitchen.
         </p>
 
         {CONTENT_STATUS.placeholder && (
           <p
-            className="mx-auto mt-8 max-w-[60ch] border-l-2 py-1 pl-4 text-[13px] leading-relaxed"
+            className="mt-6 border-l-2 py-1 pl-4 text-[13px] leading-relaxed"
             style={{ borderColor: "var(--accent)", color: "var(--ink-muted)" }}
           >
-            Prices, opening hours, unit number and delivery links on this page are
+            Opening hours, unit number and delivery links on this page are
             placeholders, not client-supplied. See <code>lib/content.ts</code>.
           </p>
         )}

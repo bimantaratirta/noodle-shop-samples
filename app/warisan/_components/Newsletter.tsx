@@ -19,7 +19,12 @@ export function Newsletter() {
 
   return (
     <section className="w-full" style={{ background: "var(--ground)" }}>
-      <div className="grid lg:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)]">
+      {/*
+        6:4, not 50:50. Measured on the reference the photograph runs to roughly
+        61% of the width before the rule band — an even split made the block read
+        as a two-up comparison rather than a picture with a form beside it.
+      */}
+      <div className="grid lg:grid-cols-[minmax(0,6fr)_auto_minmax(0,4fr)]">
         <div className="relative min-h-[380px] lg:min-h-[560px]">
           <Image
             src={copy.newsletter.image}

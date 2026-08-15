@@ -28,10 +28,12 @@ export function Feature() {
       />
 
       <div className="relative mx-auto flex min-h-[560px] max-w-[1320px] items-end px-6 py-14 lg:px-10">
-        <div
-          className="w-full max-w-[440px] border px-7 py-8"
-          style={{ borderColor: "var(--line-cream)", background: "rgba(240,236,224,.94)" }}
-        >
+        {/*
+          The plate uses the same double rule as the tile labels — a flat filled
+          box with no frame was the other reason this block read as an intrusion
+          rather than a piece of the same system.
+        */}
+        <div className="plate w-full max-w-[440px] px-8 py-9">
           <p className="label" style={{ color: "var(--ink)" }}>
             {copy.feature.eyebrow}
           </p>
