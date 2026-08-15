@@ -134,6 +134,39 @@ public/placeholder/   foto sementara + catatan foto asli yang dibutuhkan
 docs/                 brief, alasan tiap arah, konvensi kode
 ```
 
+## Pengaman build
+
+`npm run build` **menolak jalan** selama situs masih membawa konten placeholder.
+
+```
+✖ Refusing to build: the site is still carrying placeholder content
+    CONTENT_STATUS.placeholder is still true
+    contact email is still email@example.com
+    GrabFood link still points at #
+    ...
+```
+
+Catatan placeholder yang dulu tampil di halaman sudah dihapus supaya bersih saat
+dipresentasikan ke klien. Itu sekaligus menghapus satu-satunya hal yang mencegah
+jam buka karangan dan mailto mati ikut ter-deploy seolah data nyata. Pengaman ini
+mengembalikan remnya, di tempat yang tidak bisa dilewati orang tanpa sadar.
+
+| | |
+| --- | --- |
+| Kapan jalan | `prebuild`, jadi hanya pada `npm run build` — `npm run dev` tidak tersentuh |
+| Cek manual | `npm run check:placeholders` |
+| Lolos sengaja | `ALLOW_PLACEHOLDER_BUILD=1 npm run build` (lolos dengan peringatan besar) |
+| Skrip | `scripts/check-placeholders.mjs` |
+
+Yang diperiksa: flag `CONTENT_STATUS.placeholder`, **dan** nilai-nilai yang memang
+masih karangan (email, ketiga link delivery, nomor unit). Jadi menurunkan flag-nya
+saja tidak cukup untuk lolos.
+
+Pengaman ini **fail closed**: kalau flag-nya hilang atau diganti nama, build ikut
+gagal, bukan diam-diam lolos. Sudah ditest untuk keempat jalur — normal (exit 1,
+`next build` tidak sempat mulai), override (exit 0 + peringatan), `dev` (tidak
+terpengaruh), dan flag hilang (exit 1).
+
 ## Status
 
 | Bagian                     | Status                                       |
