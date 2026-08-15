@@ -312,13 +312,20 @@ export const copy = {
     ],
   },
 
-  /** Block 6: a single featured dish, set on a bordered plate over a photo. */
+  /**
+   * A single dish on a bordered plate, sitting just ahead of the menu.
+   *
+   * The eyebrow deliberately avoids "this month" — that promises a rotation the
+   * client would then have to keep up, and the shop is a fortnight old. Framing
+   * it for a first-time visitor commits to nothing and does more work.
+   */
   feature: {
-    eyebrow: "THIS MONTH",
-    headlineLeft: "ONE BOWL",
-    headlineRight: "WORTH THE WAIT",
-    subtitle: "Beef tendon, braised until it gives way completely",
-    link: "See the menu",
+    eyebrow: "IF IT'S YOUR FIRST TIME",
+    headlineLeft: "START",
+    headlineRight: "WITH THE TENDON",
+    subtitle:
+      "Braised until it gives way completely. The bowl that tells you whether a shop is cutting corners.",
+    link: "See the full menu",
     href: "#menu",
     image: "/placeholder/feature.jpg",
   },

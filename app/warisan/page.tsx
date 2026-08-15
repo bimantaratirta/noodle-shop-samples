@@ -22,9 +22,16 @@ import { SiteFooter } from "./_components/SiteFooter";
  *   3  Tiles             three-way router, hover-to-play video
  *   4  Broth             full-bleed, copy bottom-left, list flush right
  *   5  DishGrid          running copy + stacked framed photographs
- *   6  MenuSection       the written menu with prices
- *   7  Feature           one dish on a bordered plate
+ *   6  Feature           one dish on a bordered plate, leading into the menu
+ *   7  MenuSection       the written menu
  *   8  Visit             address, hours, delivery
+ *
+ * Feature sits BEFORE the menu, not after. After it, the block had no job: it
+ * advertised a dish listed a screen above it and its only action pointed back up
+ * to what you had just scrolled past. Ahead of the menu the same block earns its
+ * place — it gives one dish a photograph and a full sentence, which matters more
+ * now that the menu itself carries no prices, and its link finally points
+ * forwards.
  *   9  Newsletter        photo + tagline | ruled band | sign-up
  *   10 SiteFooter        four columns
  *
@@ -41,8 +48,8 @@ export default function WarisanPage() {
         <Tiles />
         <Broth />
         <DishGrid />
-        <MenuSection />
         <Feature />
+        <MenuSection />
         <Visit />
         <Newsletter />
       </main>
